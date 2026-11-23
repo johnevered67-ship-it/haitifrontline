@@ -1,0 +1,538 @@
+{
+ "updated": "2026-11-23T13:58:00-06:00",
+ "items": [
+  {
+   "id": "2026-11-23-pm-visits-salvadoran-base",
+   "ts": "2026-11-23T09:56:00-06:00",
+   "exact": true,
+   "kind": "article",
+   "source": "El Diario de Hoy",
+   "handle": "",
+   "headline": "Haiti's prime minister makes first visit to Salvadoran troops' base",
+   "summary": "Prime Minister Alix Didier Fils-Aimé made his first official visit to the base housing the Salvadoran soldiers, days after three of them were killed in a blast. He met privately with the Salvadoran general leading the mission, according to EFE.",
+   "status": "reported",
+   "note": "Reported by El Diario de Hoy, citing EFE and a Gang Suppression Force post; the exact date of the visit was not given.",
+   "url": "https://eldiariodehoy.com/noticias/nacionales/ministro-haiti-soldados-salvadorenos/101447/2026",
+   "es": {
+    "headline": "El primer ministro de Haití visita por primera vez la base de las tropas salvadoreñas",
+    "summary": "El primer ministro Alix Didier Fils-Aimé hizo su primera visita oficial a la base donde están los soldados salvadoreños, días después de que tres de ellos murieran en una explosión. Según EFE, se reunió en privado con el general salvadoreño que dirige la misión.",
+    "note": "Lo reportó El Diario de Hoy, con base en EFE y una publicación de la Fuerza de Supresión de Pandillas; no se precisó la fecha exacta de la visita."
+   },
+   "ht": {
+    "headline": "Premye minis Ayiti a vizite baz twoup salvadoryen yo pou premye fwa",
+    "summary": "Premye Minis Alix Didier Fils-Aimé fè premye vizit ofisyèl li nan baz kote sòlda salvadoryen yo ye, kèk jou apre twa nan yo te mouri nan yon eksplozyon. Li te rankontre an prive ak jeneral salvadoryen ki dirije misyon an, dapre EFE.",
+    "note": "El Diario de Hoy rapòte sa, li site EFE ak yon piblikasyon Fòs Sipresyon Gang yo; yo pa bay dat egzak vizit la."
+   }
+  },
+  {
+   "id": "2026-11-23-gsf-toll-six-ninja",
+   "ts": "2026-11-23T09:46:00-06:00",
+   "exact": true,
+   "kind": "article",
+   "source": "EFE via Infobae",
+   "handle": "",
+   "headline": "Gang force raises Sunday toll to six; local media report gang leader killed",
+   "summary": "The Gang Suppression Force said at least six suspected gang members were killed in Sunday's operations and that five rifles were seized near the Marassa bridge in Tabarre. Local media reported that a gang leader known as Ninja, of Cité Doudoune, was killed near Croix-des-Bouquets, and some put the total toll as high as 40.",
+   "status": "official",
+   "note": "The count of six comes from the GSF via EFE; the higher toll of up to 40 and the gang leader's death come from local media and are not officially confirmed.",
+   "url": "https://www.infobae.com/america/agencias/2026/11/23/al-menos-seis-miembros-de-bandas-haitianas-mueren-en-operacion-de-la-fuerza-antipandillas/",
+   "es": {
+    "headline": "La fuerza antipandillas eleva a seis los muertos del domingo; medios locales reportan la muerte de un cabecilla",
+    "summary": "La Fuerza de Supresión de Pandillas dijo que al menos seis presuntos pandilleros murieron en las operaciones del domingo y que se incautaron cinco fusiles cerca del puente Marassa, en Tabarre. Medios locales reportaron que un cabecilla conocido como Ninja, de Cité Doudoune, murió cerca de Croix-des-Bouquets, y algunos elevan el saldo hasta 40.",
+    "note": "La cifra de seis viene de la GSF vía EFE; el saldo de hasta 40 y la muerte del cabecilla vienen de medios locales y no están confirmados oficialmente."
+   },
+   "ht": {
+    "headline": "Fòs anti-gang lan di sis moun mouri dimanch; medya lokal di yon chèf gang mouri",
+    "summary": "Fòs Sipresyon Gang yo di omwen sis moun yo sispèk kòm manm gang mouri nan operasyon dimanch yo, e yo sezi senk fizi toupre pon Marassa nan Taba. Medya lokal rapòte yon chèf gang yo rele Ninja, nan Site Doudoun, mouri toupre Kwadebouke, e gen kèk ki di bilan an rive jiska 40.",
+    "note": "Chif sis la soti nan GSF atravè EFE; bilan jiska 40 an ak lanmò chèf gang lan soti nan medya lokal, yo pa konfime ofisyèlman."
+   }
+  },
+  {
+   "id": "2026-11-23-ap-contractors-drone",
+   "ts": "2026-11-23T09:15:00-06:00",
+   "kind": "article",
+   "source": "AP",
+   "handle": "",
+   "headline": "Bukele's account of soldiers' deaths: a drone grenade, and contractors who pulled back",
+   "summary": "AP reported that in his Sunday post Bukele said the two corporals were trying to free a grenade from a drone whose battery was running out, and that Lt. Palacios Santos died in the same incident. Bukele also said the lieutenant took charge at a critical moment of an operation after some contractors allegedly retreated; he did not say who the contractors were.",
+   "status": "official",
+   "note": "Bukele's account as reported by AP; not independently verified. EFE described the drone episode as an earlier test in El Salvador, so outlets differ on how it relates to the deaths.",
+   "url": "https://www.wral.com/news/ap/a8e4b-bukele-reveals-circumstances-in-which-3-salvadoran-soldiers-died-fighting-gangs-in-haiti/",
+   "es": {
+    "headline": "El relato de Bukele sobre la muerte de los soldados: una granada en un dron y contratistas que se replegaron",
+    "summary": "AP informó que, en su publicación del domingo, Bukele dijo que los dos cabos intentaban desprender una granada de un dron cuya batería se estaba agotando, y que el teniente Palacios Santos murió en el mismo incidente. Bukele también dijo que el teniente tomó el mando en un momento crítico de una operación después de que algunos contratistas supuestamente se replegaran; no dijo quiénes eran esos contratistas.",
+    "note": "Relato de Bukele según AP; no verificado de forma independiente. EFE describió el episodio del dron como una prueba anterior en El Salvador, por lo que los medios difieren sobre su relación con las muertes."
+   },
+   "ht": {
+    "headline": "Sa Bukele di sou lanmò sòlda yo: yon grenad sou yon dwòn, ak kontraktè ki te fè bak",
+    "summary": "AP rapòte ke nan mesaj li te pibliye dimanch lan, Bukele di de kaporal yo t ap eseye retire yon grenad ki te kole sou yon dwòn pandan batri li t ap fini, e ke Lyetnan Palacios Santos te mouri nan menm ensidan an. Bukele di tou lyetnan an te pran kòmandman nan yon moman kritik pandan yon operasyon apre kèk kontraktè te sanble fè bak; li pa di ki kontraktè sa yo te ye.",
+    "note": "Se vèsyon Bukele jan AP rapòte l; pa gen verifikasyon endepandan. EFE te dekri istwa dwòn nan kòm yon tès anvan nan El Salvador, kidonk medya yo pa dakò sou ki lyen li genyen ak lanmò yo."
+   }
+  },
+  {
+   "id": "2026-11-23-martissant-70",
+   "ts": "2026-11-23T09:10:00-06:00",
+   "kind": "article",
+   "source": "AP",
+   "handle": "",
+   "headline": "Police: more than 70 suspected gang members killed in Martissant since last week",
+   "summary": "Haiti's police say more than 70 suspected gang members have been killed in Martissant since the offensive began last week, according to AP. The area sits on a key corridor linking the capital to the south and west of the country.",
+   "status": "official",
+   "note": "Police figure reported by AP; not independently verified. It updates the earlier police count of 54 over two days.",
+   "url": "https://www.wral.com/news/ap/a8e4b-bukele-reveals-circumstances-in-which-3-salvadoran-soldiers-died-fighting-gangs-in-haiti/",
+   "es": {
+    "headline": "Policía: más de 70 presuntos pandilleros muertos en Martissant desde la semana pasada",
+    "summary": "La policía de Haití afirma que más de 70 presuntos pandilleros han muerto en Martissant desde que comenzó la ofensiva la semana pasada, según AP. La zona está en un corredor clave que une la capital con el sur y el oeste del país.",
+    "note": "Cifra policial reportada por AP; no verificada de forma independiente. Actualiza el conteo policial anterior de 54 en dos días."
+   },
+   "ht": {
+    "headline": "Lapolis: plis pase 70 moun yo sispèk kòm gang mouri Matisan depi semèn pase",
+    "summary": "Lapolis Ayiti di plis pase 70 moun yo sispèk kòm manm gang mouri Matisan depi ofansiv la te kòmanse semèn pase, dapre AP. Zòn nan chita sou yon koridò enpòtan ki konekte kapital la ak sid ak lwès peyi a.",
+    "note": "Chif lapolis, AP rapòte l; pa gen verifikasyon endepandan. Li mete ajou ansyen kont lapolis la ki te di 54 nan de jou."
+   }
+  },
+  {
+   "id": "2026-11-22-bukele-fund-families",
+   "ts": "2026-11-22T20:45:00-06:00",
+   "kind": "post",
+   "source": "Nayib Bukele on X (via El Diario de Hoy)",
+   "handle": "@nayibbukele",
+   "headline": "Bukele announces $1 million fund for families of soldiers killed in Haiti",
+   "summary": "In the same post honoring the three soldiers, Bukele said their families will share a $1 million fund, with $200,000 paid to each family right away and the rest as monthly income, on top of legal military benefits. He also told troops in Haiti that any who want to come home can do so immediately without reprisals, saying others have volunteered to replace them.",
+   "status": "confirmed",
+   "note": "Post content reported by El Diario de Hoy, Prensa Latina and Infobae. The split of $200,000 per family is as reported by El Diario de Hoy.",
+   "url": "https://www.eldiariodehoy.com/noticias/nacionales/bukele-anuncia-fondo-de-un-millon-de-dolares-para-familias-de-tres-militares-muertos-en-haiti/101414/2026/",
+   "es": {
+    "headline": "Bukele anuncia fondo de 1 millón de dólares para las familias de los soldados muertos en Haití",
+    "summary": "En la misma publicación en la que homenajeó a los tres soldados, Bukele dijo que sus familias compartirán un fondo de 1 millón de dólares: 200.000 dólares de inmediato para cada familia y el resto como ingreso mensual, además de las prestaciones de ley de la Fuerza Armada. También dijo a las tropas en Haití que quien quiera regresar puede hacerlo de inmediato y sin represalias, y que otros se han ofrecido a reemplazarlos.",
+    "note": "El contenido de la publicación fue reportado por El Diario de Hoy, Prensa Latina e Infobae. El reparto de 200.000 dólares por familia es según El Diario de Hoy."
+   },
+   "ht": {
+    "headline": "Bukele anonse yon fon 1 milyon dola pou fanmi sòlda ki mouri ann Ayiti yo",
+    "summary": "Nan menm piblikasyon kote li te rann twa sòlda yo omaj, Bukele di fanmi yo pral pataje yon fon 1 milyon dola: 200 000 dola touswit pou chak fanmi, e rès la tankou yon revni chak mwa, anplis avantaj lalwa Fòs Lame a dwe yo. Li di tou twoup ki ann Ayiti yo, nenpòt moun ki vle retounen ka fè sa touswit san represay, e lòt moun ofri pou ranplase yo.",
+    "note": "El Diario de Hoy, Prensa Latina ak Infobae rapòte sa piblikasyon an di. Se El Diario de Hoy ki rapòte 200 000 dola pou chak fanmi."
+   }
+  },
+  {
+   "id": "2026-11-22-bukele-honors-fallen-soldiers",
+   "ts": "2026-11-22T20:30:00-06:00",
+   "kind": "post",
+   "source": "Nayib Bukele on X (via EFE)",
+   "handle": "@nayibbukele",
+   "headline": "Bukele names and honors the three soldiers killed in Haiti",
+   "summary": "In a long post on X on Sunday night, Bukele called Lt. Cristian Daniel Palacios Santos and Corporals Emerson Alexander Zepeda Zelada and Wilber Manuel Serrano Medina Salvadoran heroes. EFE reported that Palacios Santos was buried Sunday in Olocuilta, and that the four missing technicians' whereabouts remain unknown.",
+   "status": "confirmed",
+   "note": "Post content reported by EFE (via Infobae), El Diario de Hoy and Prensa Latina; burial in Olocuilta reported by EFE.",
+   "url": "https://www.infobae.com/america/agencias/2026/11/23/presidente-bukele-elogia-la-trayectoria-de-tres-militares-salvadorenos-fallecidos-en-haiti/",
+   "es": {
+    "headline": "Bukele nombra y homenajea a los tres soldados muertos en Haití",
+    "summary": "En una extensa publicación en X el domingo por la noche, Bukele llamó héroes salvadoreños al teniente Cristian Daniel Palacios Santos y a los cabos Emerson Alexander Zepeda Zelada y Wilber Manuel Serrano Medina. EFE informó que Palacios Santos fue sepultado el domingo en Olocuilta y que se sigue sin conocer el paradero de los cuatro técnicos desaparecidos.",
+    "note": "El contenido de la publicación fue reportado por EFE (vía Infobae), El Diario de Hoy y Prensa Latina; el sepelio en Olocuilta fue reportado por EFE."
+   },
+   "ht": {
+    "headline": "Bukele bay non twa sòlda ki mouri ann Ayiti epi li rann yo omaj",
+    "summary": "Nan yon long piblikasyon sou X dimanch swa, Bukele rele lyetnan Cristian Daniel Palacios Santos ak kaporal Emerson Alexander Zepeda Zelada ak Wilber Manuel Serrano Medina ewo salvadoryen. EFE rapòte yo te antere Palacios Santos dimanch nan Olocuilta, e moun toujou pa konnen kote kat teknisyen ki disparèt yo ye.",
+    "note": "EFE (atravè Infobae), El Diario de Hoy ak Prensa Latina rapòte sa piblikasyon an di; se EFE ki rapòte antèman an nan Olocuilta."
+   }
+  },
+  {
+   "id": "2026-11-22-gsf-three-areas",
+   "ts": "2026-11-22T15:00:00-06:00",
+   "kind": "official",
+   "source": "Gang Suppression Force via EFE",
+   "handle": "",
+   "headline": "Gang Suppression Force runs operations in three areas",
+   "summary": "The multinational force said it carried out simultaneous operations in Cité Soleil and Tabarre in the capital and north of Gros-Morne in Artibonite. It reported one gang member killed, one wounded and a hideout destroyed in Cité Soleil.",
+   "status": "official",
+   "note": "Figures come from the GSF, reported by EFE. Reports don't say whether Salvadoran troops took part in these operations.",
+   "url": "https://eldia.com.do/la-fuerza-de-supresion-de-pandillas-lanza-una-operacion-contra-las-bandas-en-tres-puntos-de-haiti/",
+   "es": {
+    "headline": "La Fuerza de Supresión de Pandillas opera en tres zonas",
+    "summary": "La fuerza multinacional dijo que realizó operaciones simultáneas en Cité Soleil y Tabarre, en la capital, y al norte de Gros-Morne, en Artibonite. Reportó un pandillero muerto, otro herido y un escondite destruido en Cité Soleil.",
+    "note": "Las cifras vienen de la GSF y las reportó EFE. No se precisa si participaron tropas salvadoreñas en estas operaciones."
+   },
+   "ht": {
+    "headline": "Fòs Sipresyon Gang yo fè operasyon nan twa zòn",
+    "summary": "Fòs miltinasyonal la di li fè operasyon an menm tan nan Site Solèy ak Taba nan kapital la, ak nan nò Gwo Mòn nan Latibonit. Li di yon manm gang mouri, yon lòt blese, e yo kraze yon kachèt nan Site Solèy.",
+    "note": "Se GSF ki bay chif yo, EFE rapòte yo. Rapò yo pa di si sòlda salvadoryen te patisipe nan operasyon sa yo."
+   }
+  },
+  {
+   "id": "2026-11-21-armored-reinforcement",
+   "ts": "2026-11-21T21:00:00-06:00",
+   "kind": "official",
+   "source": "Presidency of El Salvador (via Diario Libre)",
+   "handle": "",
+   "headline": "El Salvador says it has reinforced the operation to find the missing technicians",
+   "summary": "On Saturday night the Salvadoran presidency's press office said Bukele had strengthened the military operation in Haiti to locate and rescue the four aviation technicians missing since Oct 18. Bukele shared aerial video of a night convoy of armored vehicles without comment; the government did not say how many vehicles or troops were added or where they would operate.",
+   "status": "official",
+   "note": "Announcement reported by Diario Libre, Infobae (citing EFE) and Noticentro. The size and location of the reinforcement have not been disclosed or independently verified, and no rescue has been reported.",
+   "url": "https://www.diariolibre.com/mundo/haiti/2026/11/22/rescate-de-tecnicos-de-aviacion-el-salvador-en-haiti/3728411",
+   "es": {
+    "headline": "El Salvador dice que reforzó la operación para encontrar a los técnicos desaparecidos",
+    "summary": "El sábado por la noche, la Secretaría de Prensa de la Presidencia salvadoreña dijo que Bukele fortaleció la operación militar en Haití para localizar y rescatar a los cuatro técnicos de aviación desaparecidos desde el 18 de octubre. Bukele compartió sin comentarios un video aéreo de un convoy nocturno de vehículos blindados; el gobierno no dijo cuántos vehículos o soldados se sumaron ni dónde operarán.",
+    "note": "El anuncio fue reportado por Diario Libre, Infobae (citando a EFE) y Noticentro. El tamaño y la ubicación del refuerzo no se han revelado ni verificado de forma independiente, y no se ha informado de ningún rescate."
+   },
+   "ht": {
+    "headline": "El Salvador di li ranfòse operasyon pou jwenn teknisyen ki disparèt yo",
+    "summary": "Samdi swa, biwo laprès prezidans Salvadò a di Bukele ranfòse operasyon militè a ann Ayiti pou jwenn epi delivre kat teknisyen avyasyon ki disparèt depi 18 oktòb yo. Bukele pataje san kòmantè yon videyo ayeryen yon konvwa machin blende nan nwit; gouvènman an pa di konbyen machin oswa sòlda yo ajoute ni ki kote yo pral opere.",
+    "note": "Diario Libre, Infobae (ki site EFE) ak Noticentro rapòte anons lan. Pa gen enfòmasyon ofisyèl ni verifikasyon endepandan sou gwosè ak kote ranfò a, e pa gen okenn rapò sou yon sovtaj."
+   }
+  },
+  {
+   "id": "2026-11-21-martissant-54",
+   "ts": "2026-11-21T12:00:00-06:00",
+   "kind": "official",
+   "source": "Haitian National Police via Infobae",
+   "handle": "",
+   "headline": "Police: 54 suspected gang members killed in two days in Martissant",
+   "summary": "Haiti's police said 20 more suspected gang members were killed on Nov 20, after 34 on Nov 19, in the Martissant offensive. Police said units keep expanding into gang-held territory.",
+   "status": "official",
+   "note": "Police figures, reported by Infobae citing a police statement and EFE. Not independently verified.",
+   "url": "https://www.infobae.com/el-salvador/2026/11/22/54-pandilleros-muertos-en-dos-dias-en-haiti-drones-blindados-y-soldados-de-bukele-en-la-ofensiva-que-busca-recuperar-puerto-principe/",
+   "es": {
+    "headline": "Policía: 54 presuntos pandilleros muertos en dos días en Martissant",
+    "summary": "La policía haitiana dijo que otros 20 presuntos pandilleros murieron el 20 de nov., tras 34 el 19, en la ofensiva de Martissant. Afirmó que sus unidades siguen avanzando en territorio pandillero.",
+    "note": "Cifras policiales, reportadas por Infobae con base en un comunicado policial y EFE. Sin verificación independiente."
+   },
+   "ht": {
+    "headline": "Lapolis: 54 moun yo sispèk se gang mouri nan de jou Matisan",
+    "summary": "Lapolis Ayiti di 20 lòt moun yo sispèk se gang mouri 20 nov., apre 34 te mouri 19 nov., nan atak Matisan an. Li di inite l yo ap kontinye avanse nan teritwa gang yo.",
+    "note": "Chif lapolis, Infobae rapòte yo daprè yon kominike lapolis ak EFE. Poko verifye poukont."
+   }
+  },
+  {
+   "id": "2026-11-21-dispute",
+   "ts": "2026-11-21T09:00:00-06:00",
+   "kind": "article",
+   "source": "Latin Times",
+   "handle": "",
+   "headline": "Fate of the four missing technicians still disputed",
+   "summary": "The gang Lanmò San Jou claims all four Salvadoran technicians missing since Oct 18 were killed. Bukele has publicly rejected that claim, and no remains have been confirmed as theirs.",
+   "status": "disputed",
+   "note": "Gang claim, rejected by El Salvador's government. Not independently confirmed.",
+   "url": "https://latintimes.com/nayib-bukele-files-third-consecutive-term-el-salvadors-2027-election-601641",
+   "es": {
+    "headline": "Sigue en disputa el destino de los cuatro técnicos desaparecidos",
+    "summary": "La pandilla Lanmò San Jou afirma que los cuatro técnicos salvadoreños desaparecidos desde el 18 de oct. fueron asesinados. Bukele lo ha rechazado públicamente y no se ha confirmado que ningún resto sea de ellos.",
+    "note": "Afirmación de una pandilla, rechazada por el gobierno de El Salvador. Sin confirmación independiente."
+   },
+   "ht": {
+    "headline": "Sò kat teknisyen ki disparèt yo toujou diskite",
+    "summary": "Gang Lanmò San Jou di yo touye kat teknisyen salvadoryen ki disparèt depi 18 okt. yo. Bukele rejte sa an piblik, e pa gen okenn rès kadav yo konfime se pou yo.",
+    "note": "Se yon gang ki di sa, gouvènman El Salvador rejte l. Poko konfime poukont."
+   }
+  },
+  {
+   "id": "2026-11-20-us-embassy-condolences",
+   "ts": "2026-11-20T19:00:00-06:00",
+   "kind": "official",
+   "source": "U.S. Embassy in El Salvador (via El Diario de Hoy)",
+   "handle": "",
+   "headline": "U.S. Embassy offers condolences over soldiers killed in Haiti",
+   "summary": "The U.S. Embassy in El Salvador sent its condolences to the families of the soldiers killed in Haiti and to the Salvadoran people, saying the United States stands with El Salvador and honors those who died serving others.",
+   "status": "reported",
+   "note": "Embassy message dated Nov. 20, reported Nov. 23 by El Diario de Hoy; the outlet did not say whether it was a post or a press statement.",
+   "url": "https://elsalvador.com/noticias/nacional/estados-unidos-lamenta-muertes-soldados/1305417/2026",
+   "es": {
+    "headline": "La Embajada de EE. UU. da el pésame por los soldados muertos en Haití",
+    "summary": "La Embajada de Estados Unidos en El Salvador expresó sus condolencias a las familias de los soldados fallecidos en Haití y al pueblo salvadoreño, y dijo que Estados Unidos acompaña a El Salvador y honra a quienes dieron su vida sirviendo a otros.",
+    "note": "Mensaje de la embajada fechado el 20 de noviembre y reportado el 23 por El Diario de Hoy; el medio no precisó si fue una publicación en redes o un comunicado."
+   },
+   "ht": {
+    "headline": "Anbasad Etazini voye kondoleyans pou sòlda ki mouri Ayiti yo",
+    "summary": "Anbasad Etazini nan Salvadò voye kondoleyans bay fanmi sòlda ki mouri Ayiti yo ak pèp salvadoryen an. Li di Etazini kanpe ak Salvadò e li onore moun ki bay lavi yo pou sèvi lòt moun.",
+    "note": "Mesaj anbasad la date 20 novanm, El Diario de Hoy rapòte l 23 novanm; jounal la pa di si se te yon pòs oswa yon deklarasyon."
+   }
+  },
+  {
+   "id": "2026-11-20-blast",
+   "ts": "2026-11-20T17:08:00-06:00",
+   "kind": "article",
+   "source": "Bloomberg",
+   "handle": "",
+   "headline": "Three Salvadoran soldiers killed in Haiti blast",
+   "summary": "El Salvador's military first announced two deaths on social media, saying the soldiers were working with explosive material. A third died after being airlifted to a hospital in the Dominican Republic. A fourth wounded soldier is out of danger.",
+   "status": "confirmed",
+   "note": "Announced by El Salvador's armed forces and reported by Bloomberg, AP and the Haitian Times.",
+   "url": "https://bloomberg.com/news/articles/2026-11-20/el-salvador-troops-killed-in-haiti-blast-after-rescue-deployment",
+   "exact": true,
+   "es": {
+    "headline": "Tres soldados salvadoreños mueren en una explosión en Haití",
+    "summary": "El ejército salvadoreño anunció primero dos muertes en redes sociales y dijo que manipulaban material explosivo. Un tercero murió tras ser trasladado a un hospital en República Dominicana. Un cuarto herido está fuera de peligro.",
+    "note": "Anunciado por la Fuerza Armada de El Salvador y reportado por Bloomberg, AP y el Haitian Times."
+   },
+   "ht": {
+    "headline": "Twa sòlda salvadoryen mouri nan yon eksplozyon ann Ayiti",
+    "summary": "Lame salvadoryen an te anonse de mò sou rezo sosyal yo, li di yo t ap manyen eksplozif. Yon twazyèm mouri apre yo te transpòte l nan yon lopital nan Repiblik Dominikèn. Yon katriyèm ki blese pa an danje ankò.",
+    "note": "Lame El Salvador anonse l, Bloomberg, AP ak Haitian Times rapòte l."
+   }
+  },
+  {
+   "id": "2026-11-20-prisons-deal",
+   "ts": "2026-11-20T16:00:00-06:00",
+   "kind": "official",
+   "source": "Associated Press",
+   "handle": "",
+   "headline": "Haiti announces deal with El Salvador to build three prisons",
+   "summary": "Justice Minister Patrick Pélissier, who toured El Salvador's CECOT mega-prison, said a Salvadoran company will build three prisons with a Haitian firm, the first soon. Costs, locations and any Salvadoran role in funding or running them were not disclosed.",
+   "status": "official",
+   "note": "Announced by Haiti's government and reported by AP and the Haitian Times. El Salvador's government has not publicly commented.",
+   "url": "https://lanacion.com.ar/el-mundo/haiti-acuerda-con-el-salvador-la-construccion-de-tres-carceles-tras-el-envio-de-tropas-de-bukele-nid21112026",
+   "es": {
+    "headline": "Haití anuncia acuerdo con El Salvador para construir tres cárceles",
+    "summary": "El ministro de Justicia, Patrick Pélissier, quien visitó el CECOT en El Salvador, dijo que una empresa salvadoreña construirá tres cárceles junto a una firma haitiana, la primera pronto. No se revelaron costos, ubicaciones ni si El Salvador ayudará a financiarlas o administrarlas.",
+    "note": "Anunciado por el gobierno haitiano y reportado por AP y el Haitian Times. El gobierno salvadoreño no ha comentado públicamente."
+   },
+   "ht": {
+    "headline": "Ayiti anonse akò ak El Salvador pou bati twa prizon",
+    "summary": "Minis Lajistis Patrick Pélissier, ki te vizite gwo prizon CECOT nan El Salvador, di yon konpayi salvadoryen ap bati twa prizon ak yon konpayi ayisyen, premye a byento. Yo pa di konbyen sa ap koute, ki kote, ni si El Salvador ap ede peye oswa jere yo.",
+    "note": "Gouvènman ayisyen an anonse l, AP ak Haitian Times rapòte l. Gouvènman salvadoryen an poko fè kòmantè piblik."
+   }
+  },
+  {
+   "id": "2026-11-20-nuevasideas",
+   "ts": "2026-11-20T08:00:00-06:00",
+   "kind": "post",
+   "source": "Nuevas Ideas",
+   "handle": "@nuevasideas",
+   "headline": "Bukele's party: \"Nos vemos el 28 de febrero\"",
+   "summary": "After Bukele registered for a third term alongside VP Félix Ulloa, his party posted \"See you on Feb 28,\" the date of El Salvador's presidential election.",
+   "status": "confirmed",
+   "note": "Post on X, reported by UPI. Registration confirmed by Reuters and AP.",
+   "url": "https://www.upi.com/Top_News/World-News/2026/11/20/latam-elsalvador-bukele-third-term/7621795196436/",
+   "es": {
+    "headline": "El partido de Bukele: \"Nos vemos el 28 de febrero\"",
+    "summary": "Tras inscribirse Bukele para un tercer mandato junto al vicepresidente Félix Ulloa, su partido publicó \"Nos vemos el 28 de febrero\", fecha de la elección presidencial.",
+    "note": "Publicación en X, reportada por UPI. La inscripción la confirmaron Reuters y AP."
+   },
+   "ht": {
+    "headline": "Pati Bukele a: \"Nos vemos el 28 de febrero\"",
+    "summary": "Apre Bukele enskri pou yon twazyèm manda ak vis prezidan Félix Ulloa, pati li a poste \"N ap wè 28 fevriye\", dat eleksyon prezidansyèl la.",
+    "note": "Pòs sou X, UPI rapòte l. Reuters ak AP konfime enskripsyon an."
+   }
+  },
+  {
+   "id": "2026-11-19-bukele-2500",
+   "ts": "2026-11-19T20:00:00-06:00",
+   "kind": "official",
+   "source": "Nayib Bukele",
+   "handle": "",
+   "headline": "Bukele: about 2,500 Salvadoran soldiers in Haiti",
+   "summary": "Speaking after registering his candidacy, Bukele said the troops are still searching for the four missing soldiers while supporting operations to reclaim territory, and that Haitian residents back them.",
+   "status": "official",
+   "note": "The troop figure comes from El Salvador's government. Earlier independent reports put the force at about 2,000.",
+   "url": "https://dominicantoday.com/bukele-says-salvadoran-forces-in-haiti-have-support-from-local-residents/",
+   "es": {
+    "headline": "Bukele: unos 2.500 soldados salvadoreños en Haití",
+    "summary": "Tras inscribir su candidatura, Bukele dijo que las tropas siguen buscando a los cuatro desaparecidos mientras apoyan operaciones para recuperar territorio, y que los haitianos las respaldan.",
+    "note": "La cifra de tropas viene del gobierno salvadoreño. Reportes independientes previos hablaban de unos 2.000."
+   },
+   "ht": {
+    "headline": "Bukele: anviwon 2,500 sòlda salvadoryen ann Ayiti",
+    "summary": "Apre li enskri kandidati l, Bukele di sòlda yo toujou ap chèche kat moun ki disparèt yo pandan y ap ede reprann teritwa, e Ayisyen yo sipòte yo.",
+    "note": "Se gouvènman salvadoryen an ki bay chif sòlda a. Rapò endepandan anvan yo te di anviwon 2,000."
+   }
+  },
+  {
+   "id": "2026-11-19-pnh-martissant",
+   "ts": "2026-11-19T15:00:00-06:00",
+   "kind": "post",
+   "source": "Haitian National Police",
+   "handle": "@pnh_officiel",
+   "headline": "Police: at least 34 suspected gang members killed in Martissant",
+   "summary": "Haiti's police posted video on X of the Martissant offensive, carried out with a task force from Vectus Global, the private security firm founded by Erik Prince.",
+   "status": "official",
+   "note": "The casualty figure comes from the police and hasn't been independently verified. AP confirmed the operation.",
+   "url": "https://www.nbcnews.com/world/haiti/heavy-fighting-erupts-haiti-armed-forces-fight-gangs-regain-control-ke-rcna610288",
+   "es": {
+    "headline": "Policía: al menos 34 presuntos pandilleros muertos en Martissant",
+    "summary": "La policía de Haití publicó en X un video de la ofensiva en Martissant, realizada con una fuerza de tarea de Vectus Global, la empresa de seguridad privada fundada por Erik Prince.",
+    "note": "La cifra de muertos viene de la policía y no se ha verificado de forma independiente. AP confirmó la operación."
+   },
+   "ht": {
+    "headline": "Lapolis: omwen 34 moun yo sispèk se gang mouri Matisan",
+    "summary": "Lapolis Ayiti poste yon videyo sou X sou atak Matisan an, ki fèt ak yon fòs travay Vectus Global, konpayi sekirite prive Erik Prince te fonde a.",
+    "note": "Se lapolis ki bay chif mò yo, poko verifye poukont. AP konfime operasyon an."
+   }
+  },
+  {
+   "id": "2026-11-19-martissant",
+   "ts": "2026-11-19T12:00:00-06:00",
+   "kind": "article",
+   "source": "Associated Press",
+   "handle": "",
+   "headline": "First major push in 5 years to retake Martissant",
+   "summary": "Haitian armed forces launched an aggressive operation to clear gangs from Martissant, the corridor linking Port-au-Prince to the country's south and west. Gangs have held it for more than five years.",
+   "status": "confirmed",
+   "note": "AP reporting; local media described heavy gunfire and explosive drones.",
+   "url": "https://www.nbcnews.com/world/haiti/heavy-fighting-erupts-haiti-armed-forces-fight-gangs-regain-control-ke-rcna610288",
+   "es": {
+    "headline": "Primera gran ofensiva en 5 años para recuperar Martissant",
+    "summary": "Las fuerzas armadas haitianas lanzaron una operación agresiva para expulsar a las pandillas de Martissant, el corredor que une Puerto Príncipe con el sur y el oeste. Las pandillas lo controlan desde hace más de cinco años.",
+    "note": "Reporte de AP; medios locales describieron intensos disparos y drones explosivos."
+   },
+   "ht": {
+    "headline": "Premye gwo atak an 5 an pou reprann Matisan",
+    "summary": "Fòs ame ayisyen yo lanse yon operasyon agresif pou mete gang yo deyò Matisan, koridò ki konekte Pòtoprens ak Sid la ak Lwès la. Gang yo kontwole l depi plis pase senk ane.",
+    "note": "Rapò AP; medya lokal yo pale de anpil tire ak dwon eksplozif."
+   }
+  },
+  {
+   "id": "2026-11-18-larose-canaan",
+   "ts": "2026-11-18T10:40:00-06:00",
+   "exact": true,
+   "kind": "post",
+   "source": "Nayib Bukele on X (via AP)",
+   "handle": "@nayibbukele",
+   "headline": "Bukele says his troops destroyed gang leader Jeff Larose's home in Canaan",
+   "summary": "Bukele posted a video on X showing Salvadoran helicopters firing on the Canaan mansion of gang leader Jeff Larose, north of Port-au-Prince, calling it a gift to Haitians on the anniversary of the Battle of Vertières. It was not clear whether Larose was killed.",
+   "status": "official",
+   "note": "Bukele's claim and video, reported by AP. The UN-backed Gang Suppression Force said it was not involved; Haitian police and army participation was not known.",
+   "url": "https://www.wlrn.org/americas/2026-11-18/el-salvadors-president-confirms-and-celebrates-attack-on-home-of-key-haitian-gang-leader",
+   "es": {
+    "headline": "Bukele dice que sus tropas destruyeron la casa del líder pandillero Jeff Larose en Canaan",
+    "summary": "Bukele publicó en X un video en el que helicópteros salvadoreños disparan contra la mansión de Jeff Larose en Canaan, al norte de Puerto Príncipe, y lo llamó un regalo para los haitianos en el aniversario de la Batalla de Vertières. No quedó claro si Larose murió.",
+    "note": "Afirmación y video de Bukele, reportados por AP. La Fuerza de Supresión de Pandillas respaldada por la ONU dijo que no participó; no se sabía si intervinieron la policía o el ejército de Haití."
+   },
+   "ht": {
+    "headline": "Bukele di twoup li yo detwi kay chèf gang Jeff Larose nan Kanaan",
+    "summary": "Bukele pibliye yon videyo sou X ki montre elikoptè salvadoryen ap tire sou gwo kay Jeff Larose nan Kanaan, nan nò Pòtoprens, e li di se yon kado pou Ayisyen nan anivèsè Batay Vètyè. Li pa t klè si Larose mouri.",
+    "note": "Deklarasyon ak videyo Bukele, AP rapòte yo. Fòs Sipresyon Gang ONU sipòte a di li pa t patisipe; yo pa t konnen si lapolis oswa lame Ayiti te patisipe."
+   }
+  },
+  {
+   "id": "2026-11-17-march",
+   "ts": "2026-11-17T18:27:00-06:00",
+   "kind": "article",
+   "source": "Associated Press",
+   "handle": "",
+   "headline": "Thousands march in Port-au-Prince to praise Bukele",
+   "summary": "Crowds across Haiti's capital and beyond rallied for El Salvador's president and his troops. Some carried signs begging him not to give up.",
+   "status": "confirmed",
+   "note": "AP reporting.",
+   "url": "https://www.nbcnews.com/world/haiti/thousands-demonstrate-haitis-capital-praise-bukele-salvadoran-troops-f-rcna609918",
+   "exact": true,
+   "es": {
+    "headline": "Miles marchan en Puerto Príncipe para elogiar a Bukele",
+    "summary": "Multitudes en la capital haitiana y otras zonas se manifestaron a favor del presidente salvadoreño y sus tropas. Algunos llevaban carteles pidiéndole que no se rinda.",
+    "note": "Reporte de AP."
+   },
+   "ht": {
+    "headline": "Plizyè milye moun mache nan Pòtoprens pou fè lwanj Bukele",
+    "summary": "Foul moun nan kapital la ak lòt kote te manifeste pou prezidan salvadoryen an ak sòlda l yo. Gen ki te pote pankat pou mande l pa bay legen.",
+    "note": "Rapò AP."
+   }
+  },
+  {
+   "id": "2026-11-17-ohchr",
+   "ts": "2026-11-17T09:00:00-06:00",
+   "kind": "official",
+   "source": "UN Human Rights Office",
+   "handle": "",
+   "headline": "UN: \"atrocious abuses\" continue, protect civilians",
+   "summary": "The UN human rights office urged greater protection for civilians amid continuing gang abuses and intensified security operations.",
+   "status": "confirmed",
+   "note": "UN statement.",
+   "url": "https://news.un.org/en/focus-topic/haiti",
+   "es": {
+    "headline": "ONU: siguen los \"abusos atroces\"; hay que proteger a los civiles",
+    "summary": "La oficina de derechos humanos de la ONU pidió mayor protección para los civiles ante los abusos de las pandillas y la intensificación de las operaciones de seguridad.",
+    "note": "Declaración de la ONU."
+   },
+   "ht": {
+    "headline": "ONI: \"abi terib\" yo kontinye, fòk nou pwoteje sivil yo",
+    "summary": "Biwo dwa moun ONI a mande plis pwoteksyon pou sivil yo devan abi gang yo ak operasyon sekirite k ap ogmante.",
+    "note": "Deklarasyon ONI."
+   }
+  },
+  {
+   "id": "2026-11-13-robots",
+   "ts": "2026-11-13T10:00:00-06:00",
+   "kind": "post",
+   "source": "Nayib Bukele",
+   "handle": "@nayibbukele",
+   "headline": "Bukele posts video of rifle-mounted robot dogs at the stadium",
+   "summary": "The video shows Salvadoran soldiers fitting rifles onto four-legged robots inside Sylvio Cator Stadium, which El Salvador plans to use as a base.",
+   "status": "reported",
+   "note": "Video posted by Bukele, described by SOFX.",
+   "url": "https://www.sofx.com/haiti-police-salvadoran-troops-and-armed-robot-dogs-retake-haitis-national-stadium-from-gangs/",
+   "es": {
+    "headline": "Bukele publica video de perros robot con rifles en el estadio",
+    "summary": "El video muestra a soldados salvadoreños montando rifles en robots de cuatro patas dentro del estadio Sylvio Cator, que El Salvador planea usar como base.",
+    "note": "Video publicado por Bukele y descrito por SOFX."
+   },
+   "ht": {
+    "headline": "Bukele poste videyo chen robo ak fizi nan estad la",
+    "summary": "Videyo a montre sòlda salvadoryen ap monte fizi sou robo kat pye anndan Estad Sylvio Cator, El Salvador planifye sèvi ak li kòm baz.",
+    "note": "Bukele poste videyo a, SOFX dekri l."
+   }
+  },
+  {
+   "id": "2026-11-12-pnh-stadium",
+   "ts": "2026-11-12T19:30:00-06:00",
+   "kind": "post",
+   "source": "Haitian National Police",
+   "handle": "@pnh_officiel",
+   "headline": "Police announce total control of Sylvio Cator Stadium",
+   "summary": "Haiti's police said they had taken full control of the national stadium after more than two years of gang occupation, shared aerial images, and handed it over to Salvadoran forces.",
+   "status": "confirmed",
+   "note": "Official post, confirmed by the Haitian Times and other outlets.",
+   "url": "https://www.newsbeep.com/810332/",
+   "es": {
+    "headline": "La policía anuncia el control total del estadio Sylvio Cator",
+    "summary": "La policía haitiana dijo haber tomado el control total del estadio nacional tras más de dos años de ocupación pandillera, compartió imágenes aéreas y lo entregó a las fuerzas salvadoreñas.",
+    "note": "Publicación oficial, confirmada por el Haitian Times y otros medios."
+   },
+   "ht": {
+    "headline": "Lapolis anonse li kontwole Estad Sylvio Cator nèt",
+    "summary": "Lapolis Ayiti di li pran kontwòl estad nasyonal la nèt apre plis pase de ane gang te okipe l, li pataje foto anlè, epi li remèt li bay fòs salvadoryen yo.",
+    "note": "Pòs ofisyèl, Haitian Times ak lòt medya konfime l."
+   }
+  },
+  {
+   "id": "2026-11-12-bukele-stadium",
+   "ts": "2026-11-12T19:00:00-06:00",
+   "kind": "post",
+   "source": "Nayib Bukele",
+   "handle": "@nayibbukele",
+   "headline": "Bukele announces Haiti's national stadium retaken",
+   "summary": "Bukele said Haitian and Salvadoran forces regained control of Sylvio Cator Stadium in a joint operation. Human remains were found inside.",
+   "status": "confirmed",
+   "note": "Announced by Bukele and confirmed by Haitian police and the Haitian Times.",
+   "url": "https://haitiantimes.com/2026/11/12/haiti-el-salvador-forces-retake-sylvio-cator-stadium/",
+   "es": {
+    "headline": "Bukele anuncia que se recuperó el estadio nacional de Haití",
+    "summary": "Bukele dijo que fuerzas haitianas y salvadoreñas recuperaron el estadio Sylvio Cator en una operación conjunta. Dentro se hallaron restos humanos.",
+    "note": "Anunciado por Bukele y confirmado por la policía haitiana y el Haitian Times."
+   },
+   "ht": {
+    "headline": "Bukele anonse yo reprann estad nasyonal Ayiti",
+    "summary": "Bukele di fòs ayisyen ak salvadoryen reprann Estad Sylvio Cator nan yon operasyon ansanm. Yo jwenn rès kadav moun anndan l.",
+    "note": "Bukele anonse l, lapolis ayisyen ak Haitian Times konfime l."
+   }
+  },
+  {
+   "id": "2026-10-24-remains",
+   "ts": "2026-10-24T12:00:00-05:00",
+   "kind": "official",
+   "source": "Nayib Bukele",
+   "handle": "",
+   "headline": "Bukele: remains found are not the missing soldiers",
+   "summary": "Bukele disputed reports that four bodies recovered near the capital were the missing technicians. The Gang Suppression Force said their identities hadn't been confirmed.",
+   "status": "disputed",
+   "note": "Identities still unconfirmed by the GSF.",
+   "url": "https://haitiantimes.com/2026/10/25/bukele-denies-bodies-haiti-anti-gang-force-salvadoran-soldiers/",
+   "es": {
+    "headline": "Bukele: los restos hallados no son de los soldados desaparecidos",
+    "summary": "Bukele negó los reportes de que cuatro cuerpos hallados cerca de la capital fueran los técnicos desaparecidos. La Fuerza de Supresión de Pandillas dijo que las identidades no estaban confirmadas.",
+    "note": "Identidades aún sin confirmar por la GSF."
+   },
+   "ht": {
+    "headline": "Bukele: rès kadav yo jwenn yo pa pou sòlda ki disparèt yo",
+    "summary": "Bukele demanti rapò ki di kat kadav yo jwenn toupre kapital la se teknisyen ki te disparèt yo. GSF di idantite yo poko konfime.",
+    "note": "GSF poko konfime idantite yo."
+   }
+  }
+ ]
+}

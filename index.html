@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Live, fact-checked tracker of El Salvador's military operation in Haiti: 3D map, daily recaps and every source, in English, Spanish and Haitian Creole.">
+<link rel="canonical" href="https://haitifrontline.com/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Haiti Frontline">
+<meta property="og:url" content="https://haitifrontline.com/">
+<meta property="og:title" content="Haiti Frontline: El Salvador in Haiti, Tracked Live">
+<meta property="og:description" content="Live 3D map, fact-checked updates and daily recaps of El Salvador's operation in Haiti. English, Español, Kreyòl.">
+<meta property="og:image" content="https://haitifrontline.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@haitifrontline">
+<meta name="twitter:title" content="Haiti Frontline: El Salvador in Haiti, Tracked Live">
+<meta name="twitter:description" content="Live 3D map, fact-checked updates and daily recaps. English, Español, Kreyòl.">
+<meta name="twitter:image" content="https://haitifrontline.com/og-image.jpg">
+<title>Haiti Frontline: El Salvador in Haiti, Tracked Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117; --panel:#151b24; --panel2:#1b2330; --line:#2a3443;
+  --ink:#e8edf3; --mute:#93a1b3; --dim:#6b7889;
+  --blue:#4c8dff; --red:#ff5a5f; --gold:#f2c14e; --green:#3ecf8e;
+  --mil:#ff5a5f; --pol:#4c8dff; --hum:#f2c14e;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+a{color:var(--blue)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#111827 0%,var(--bg) 100%)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:12px;flex-wrap:wrap}
+.brand{font-family:Fraunces,serif;font-weight:800;font-size:22px;letter-spacing:.3px}
+.brand span{color:var(--red)}
+.live{display:inline-flex;align-items:center;gap:8px;font:600 12px/1 Inter;text-transform:uppercase;letter-spacing:1.2px;color:var(--mute)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(255,90,95,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,90,95,.6)}70%{box-shadow:0 0 0 10px rgba(255,90,95,0)}100%{box-shadow:0 0 0 0 rgba(255,90,95,0)}}
+.hero{padding:34px 0 30px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:end}
+.hero h1{font-family:Fraunces,serif;font-weight:800;font-size:clamp(30px,4.6vw,50px);line-height:1.05;margin:0 0 12px}
+.hero p{color:var(--mute);margin:0;font-size:16px;max-width:560px}
+.counters{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.counter{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.counter .n{font:700 46px/1 "JetBrains Mono",monospace}
+.counter .l{font-size:12.5px;color:var(--mute);margin-top:8px}
+.counter.red .n{color:var(--red)}
+.counter.gold .n{color:var(--gold)}
+section{padding:30px 0;border-bottom:1px solid var(--line)}
+h2{font-family:Fraunces,serif;font-size:26px;margin:0 0 6px}
+.sub{color:var(--mute);margin:0 0 20px;font-size:14.5px}
+.catchup{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:20px 22px;font-size:17px;line-height:1.65}
+.catchup .stamp{display:block;font:600 11.5px Inter;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.tile .n{font:700 30px/1.1 "JetBrains Mono",monospace}
+.tile .l{font-size:13.5px;margin-top:6px}
+.tile .s{font-size:11.5px;color:var(--dim);margin-top:8px}
+.mapgrid{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+.mapbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+.pin{cursor:pointer}
+.pin circle.ring{transition:r .2s}
+.pin:hover circle.ring,.pin.active circle.ring{r:16}
+.mapnote{font-size:11.5px;color:var(--dim);padding:8px 14px;border-top:1px solid var(--line)}
+.detail{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.detail .tag{display:inline-block;font:600 11px Inter;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;border-radius:6px;background:var(--panel2);color:var(--mute)}
+.detail h3{font-family:Fraunces,serif;font-size:21px;margin:10px 0 6px}
+.detail p{color:#c6d0dc;font-size:14.5px;margin:0 0 10px}
+.detail .when{font:500 12.5px "JetBrains Mono",monospace;color:var(--gold)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{background:var(--panel);border:1px solid var(--line);color:var(--ink);font:600 13px Inter;padding:8px 14px;border-radius:999px;cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tl{position:relative;margin-left:8px;border-left:2px solid var(--line);padding-left:22px}
+.ev{position:relative;padding:0 0 22px}
+.ev::before{content:"";position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--c);border:2px solid var(--bg)}
+.ev .d{font:600 12.5px "JetBrains Mono",monospace;color:var(--mute)}
+.ev .k{font:600 10.5px Inter;letter-spacing:1px;text-transform:uppercase;color:var(--c);margin-left:8px}
+.ev h4{margin:4px 0 4px;font-size:16.5px}
+.ev p{margin:0;color:#b9c4d1;font-size:14.5px}
+.ev .src{font-size:12px;margin-top:4px}
+.ev .src a{color:var(--dim)}
+.ev.hide{display:none}
+.watch{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.q{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.q b{display:block;margin-bottom:6px}
+.q span{color:var(--mute);font-size:14px}
+.debate{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.side{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.side h3{margin:0 0 10px;font-size:15px;text-transform:uppercase;letter-spacing:1.2px}
+.side.pro h3{color:var(--green)} .side.con h3{color:var(--red)}
+.side ul{margin:0;padding-left:18px;color:#c6d0dc;font-size:14.5px}
+.side li{margin-bottom:8px}
+.sources{columns:2;column-gap:28px;font-size:13px;color:var(--mute);padding-left:18px}
+.sources li{margin-bottom:6px;break-inside:avoid}
+footer{padding:26px 0 40px;color:var(--dim);font-size:12.5px}
+.trust{background:#0a0e14;border-bottom:1px solid var(--line);font:500 12px Inter;color:var(--mute)}
+.trust .wrap{display:flex;gap:22px;flex-wrap:wrap;padding:8px 20px;align-items:center}
+.trust b{color:var(--ink);font-weight:600}
+.chk{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:var(--green);color:#0d1117;font-size:10px;font-weight:800;margin-right:6px;vertical-align:-2px}
+.edition{font:500 11.5px "JetBrains Mono",monospace;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.tip{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#1a1405;text-decoration:none;font:700 13px Inter;padding:9px 14px;border-radius:999px;transition:transform .15s}
+.tip:hover{transform:translateY(-1px)}
+.badge{display:inline-flex;align-items:center;font:600 11px Inter;color:var(--green);background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.25);border-radius:6px;padding:3px 8px;margin-top:6px;text-decoration:none}
+.badge:hover{background:rgba(62,207,142,.18)}
+.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.method div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;font-size:14px;color:#c6d0dc}
+.method b{display:block;color:var(--ink);margin-bottom:6px;font-size:15px}
+.support{background:linear-gradient(135deg,#1d1a10,#151b24);border:1px solid #3a3320;border-radius:14px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.support p{margin:4px 0 0;color:var(--mute);font-size:14.5px;max-width:560px}
+.support h3{margin:0;font-family:Fraunces,serif;font-size:21px}
+/* 4D map */
+.stage{position:relative;height:460px;perspective:1100px;overflow:hidden;cursor:grab;background:radial-gradient(ellipse at 50% 25%,#1c2738,#0d1117 72%);touch-action:none;user-select:none}
+.stage:active{cursor:grabbing}
+.plane{position:absolute;left:50%;top:58%;width:800px;height:400px;margin:-200px 0 0 -400px;transform-style:preserve-3d}
+.plane svg{position:absolute;left:0;top:0;width:800px;height:400px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.pillar{position:absolute;width:0;height:0;transform-style:preserve-3d;cursor:pointer}
+.foot{position:absolute;width:38px;height:38px;left:-19px;top:-19px;border:2px solid var(--pc);background:color-mix(in srgb,var(--pc) 22%,transparent);transition:all .5s}
+.pillar.live .foot{animation:ping 1.6s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 var(--pc)}100%{box-shadow:0 0 0 18px transparent}}
+.bar{position:absolute;left:-10px;bottom:0;width:20px;height:var(--h);background:linear-gradient(to top,var(--pc),color-mix(in srgb,var(--pc) 25%,transparent));transform-origin:bottom center;transform:rotateX(-90deg);transition:height .6s,background .6s}
+.bar.b2{transform:rotateX(-90deg) rotateY(90deg)}
+.lbl{position:absolute;bottom:0;left:0;transform-origin:0 100%;transform:rotateX(-90deg) translate(-50%,calc(-1 * var(--h) - 8px));transition:transform .6s;white-space:nowrap;font:600 12px Inter;color:#e8edf3;background:rgba(10,14,20,.9);border:1px solid var(--pc);padding:4px 8px;line-height:1.3;text-align:center}
+.lbl small{display:block;font-weight:500;color:var(--mute);font-size:11px}
+.hud{position:absolute;left:14px;top:14px;font:500 12px "JetBrains Mono",monospace;color:var(--mute);pointer-events:none}
+.hud .hd{font:700 22px "JetBrains Mono",monospace;color:var(--ink)}
+.hud div{margin-bottom:4px}
+.hint{position:absolute;right:14px;top:14px;font:500 11px Inter;color:var(--dim);pointer-events:none}
+.controls{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid var(--line);background:var(--panel2)}
+.controls button{background:var(--ink);color:var(--bg);border:0;font:700 13px Inter;padding:8px 14px;cursor:pointer;min-width:84px}
+.controls input{flex:1;accent-color:var(--red)}
+.controls span{font:600 12.5px "JetBrains Mono",monospace;color:var(--gold);min-width:56px;text-align:right}
+.caption{padding:12px 14px;border-top:1px solid var(--line);font-size:14px;color:#c6d0dc;min-height:48px}
+.caption b{color:var(--ink)}
+.trail{stroke-dasharray:10 8;animation:flow 1.2s linear infinite;transition:opacity .5s}
+@keyframes flow{to{stroke-dashoffset:-36}}
+.now{margin-top:16px;background:var(--panel);border:1px solid var(--line)}
+.nowhead{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font:700 13px Inter;text-transform:uppercase;letter-spacing:1.2px}
+.nowstamp{font:500 12px "JetBrains Mono",monospace;color:var(--dim);text-transform:none;letter-spacing:0;margin-left:auto}
+.nowgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.nowitem{padding:14px 16px;border-left:4px solid var(--c);border-right:1px solid var(--line)}
+.nowitem b{display:block;margin-bottom:4px}
+.nowitem span{font-size:13.5px;color:#b9c4d1}
+.stage2{height:560px}
+.plane2{width:920px;height:700px;margin:-350px 0 0 -460px;top:55%}
+.plane2 svg{width:920px;height:700px;box-shadow:none}
+.pillar.sm .foot{width:16px;height:16px;left:-8px;top:-8px}
+.pillar.sm .bar{width:10px;left:-5px}
+.pillar.sm .lbl{font-size:11px;padding:3px 6px}
+.pillar.sm .lbl small{font-size:10px}
+.ticker{display:flex;align-items:stretch;background:#0a0e14;border-bottom:1px solid var(--line);overflow:hidden;height:34px}
+.tick-label{flex:none;display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;font:800 11.5px Inter;letter-spacing:1.5px;padding:0 14px}
+.tick-label .dot{background:#fff}
+.tick-view{flex:1;overflow:hidden;position:relative}
+.tick-track{position:absolute;white-space:nowrap;display:flex;align-items:center;height:100%;animation:tick linear infinite;will-change:transform}
+.tick-track span{font:500 13px Inter;color:#c6d0dc;padding:0 22px;border-right:1px solid var(--line)}
+.tick-track b{color:var(--ink);margin-right:6px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.wirehead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.wirehead h2{display:flex;align-items:center;gap:10px}
+.wirectl{display:flex;align-items:center;gap:12px}
+.checked{font:500 12px "JetBrains Mono",monospace;color:var(--dim)}
+.tvbtn{background:var(--red);color:#fff;border:0;font:700 13px Inter;padding:9px 16px;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px;color:var(--dim);margin-bottom:16px}
+.st{font-style:normal;font:700 10.5px Inter;letter-spacing:.8px;text-transform:uppercase;padding:3px 7px;margin-right:6px;display:inline-block}
+.st-confirmed{background:rgba(62,207,142,.15);color:var(--green);border:1px solid rgba(62,207,142,.4)}
+.st-reported{background:rgba(76,141,255,.15);color:var(--blue);border:1px solid rgba(76,141,255,.4)}
+.st-official{background:rgba(242,193,78,.15);color:var(--gold);border:1px solid rgba(242,193,78,.4)}
+.st-disputed{background:rgba(255,90,95,.15);color:var(--red);border:1px solid rgba(255,90,95,.4)}
+.wiregrid{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;align-items:start}
+.feature{background:var(--panel);border:1px solid var(--line);position:relative;display:flex;flex-direction:column}
+.fbar{height:3px;background:var(--line)}
+.fbar i{display:block;height:100%;width:0;background:var(--red)}
+#fbody{padding:22px 24px;flex:1;display:flex;flex-direction:column}
+.fmeta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:500 12.5px Inter;color:var(--mute)}
+.kind{font:700 10.5px Inter;letter-spacing:1px;text-transform:uppercase;color:var(--ink);background:var(--panel2);border:1px solid var(--line);padding:3px 7px}
+.fhead{font-family:Fraunces,serif;font-size:clamp(22px,2.6vw,30px);line-height:1.2;margin:14px 0 10px}
+.fsum{color:#c6d0dc;font-size:15.5px;margin:0 0 14px}
+.fnote{font-size:13px;color:var(--mute);border-left:3px solid var(--line);padding-left:10px;margin-bottom:16px}
+.fopen{margin-top:auto;align-self:flex-start;color:var(--ink);text-decoration:none;font:600 13px Inter;border:1px solid var(--line);padding:8px 12px}
+.fopen:hover{border-color:var(--ink)}
+.fade{animation:fadein .5s}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.wirelist{background:var(--panel);border:1px solid var(--line);max-height:430px;overflow:auto}
+.witem{padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;border-left:3px solid transparent}
+.witem:hover{background:var(--panel2)}
+.witem.on{border-left-color:var(--red);background:var(--panel2)}
+.witem .wm{font:500 11.5px Inter;color:var(--dim);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.witem .wh{font-weight:600;font-size:14px;margin-top:4px}
+.witem.new{animation:flash 2.5s}
+@keyframes flash{0%,40%{background:rgba(255,90,95,.18)}100%{background:transparent}}
+.newtag{background:var(--red);color:#fff;font:800 9.5px Inter;letter-spacing:1px;padding:2px 5px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--red);color:#fff;font:700 14px Inter;padding:12px 18px;z-index:60;display:none;cursor:pointer}
+.tv{position:fixed;inset:0;background:#07090d;z-index:50;display:none;flex-direction:column}
+.tv.on{display:flex}
+.tvtop{display:flex;justify-content:space-between;align-items:center;padding:20px 36px;border-bottom:1px solid var(--line)}
+.tvbrand{font-family:Fraunces,serif;font-weight:800;font-size:26px}
+.tvbrand span{color:var(--red)}
+.tvclock{font:700 20px "JetBrains Mono",monospace;color:var(--mute);display:flex;gap:28px;align-items:center}
+.tvclock b{color:var(--ink)}
+.tvx{background:none;border:1px solid var(--line);color:var(--mute);font:600 13px Inter;padding:8px 12px;cursor:pointer}
+.tvmain{flex:1;display:flex;flex-direction:column;justify-content:center;padding:30px 8vw}
+.tvmain .fmeta{font-size:17px}
+.tvmain .kind,.tvmain .st{font-size:14px;padding:5px 10px}
+.tvmain .fhead{font-size:clamp(34px,4.6vw,64px);margin:22px 0 18px}
+.tvmain .fsum{font-size:clamp(18px,1.7vw,24px);max-width:1100px}
+.tvmain .fnote{font-size:16px}
+.tvcount{font:500 14px "JetBrains Mono",monospace;color:var(--dim);margin-top:18px}
+.tv .fbar{height:4px}
+.tv .ticker{height:46px}
+.tv .tick-track span{font-size:16px}
+@media (max-width:820px){.wiregrid{grid-template-columns:1fr}.tvtop{padding:14px 18px}.tvclock{font-size:14px;gap:12px}}
+.langsw{display:flex;border:1px solid var(--line)}
+.langsw button{background:none;border:0;color:var(--mute);font:700 11.5px Inter;letter-spacing:.8px;padding:7px 10px;cursor:pointer}
+.langsw button.on{background:var(--ink);color:var(--bg)}
+.sharetop{background:none;border:1px solid var(--line);color:var(--ink);font:700 13px Inter;padding:8px 12px;cursor:pointer}
+.sharetop:hover{border-color:var(--ink)}
+.sharebtn{background:none;border:1px solid var(--line);color:var(--mute);font:600 11px Inter;padding:3px 8px;cursor:pointer;margin-left:6px;vertical-align:middle}
+.sharebtn:hover{color:var(--ink);border-color:var(--ink)}
+.fbtns{margin-top:4px;display:flex;gap:8px;flex-wrap:wrap}
+.fbtns .fopen{margin-top:0;background:none;cursor:pointer}
+.smodal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:70;display:none;align-items:center;justify-content:center;padding:20px}
+.smodal.on{display:flex}
+.sbox{background:var(--panel);border:1px solid var(--line);width:min(560px,100%);padding:20px}
+.shead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:17px}
+.sbox textarea,.tipform textarea,.tipform input,.tipout textarea{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);font:14px/1.5 Inter;padding:10px;resize:vertical}
+.tipbtns{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.tipbtns .tvbtn{text-decoration:none}
+.tipbtns .fopen{margin:0;background:none;cursor:pointer}
+.claims{display:grid;gap:12px}
+.claim{display:grid;grid-template-columns:120px 1fr;background:var(--panel);border:1px solid var(--line)}
+.vd{display:flex;align-items:center;justify-content:center;font:800 13px Inter;letter-spacing:1.2px;text-transform:uppercase;text-align:center;padding:12px}
+.vd-true{background:rgba(62,207,142,.15);color:var(--green)}
+.vd-false{background:rgba(255,90,95,.15);color:var(--red)}
+.vd-misleading{background:rgba(255,138,61,.15);color:#ff8a3d}
+.vd-unproven{background:rgba(147,161,179,.12);color:var(--mute)}
+.vd-mixed{background:rgba(242,193,78,.15);color:var(--gold)}
+.cbody{padding:14px 18px}
+.ctag{font:700 10.5px Inter;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.ctext{font-family:Fraunces,serif;font-size:19px;margin:4px 0 6px}
+.cbody p{margin:0 0 8px;color:#c6d0dc;font-size:14.5px}
+.cfoot{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cfoot .badge{margin-top:0}
+.cmp{background:var(--panel);border:1px solid var(--line)}
+.cmprow{display:grid;grid-template-columns:150px 1fr 1fr;border-bottom:1px solid var(--line)}
+.cmprow>div{padding:12px 16px;font-size:14px;color:#c6d0dc}
+.cmprow>div+div{border-left:1px solid var(--line)}
+.cmphead>div{font:700 14px Inter;color:var(--ink)}
+.ck{font-weight:600;color:var(--ink)!important}
+.tipwrap{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.tipform{background:var(--panel);border:1px solid var(--line);padding:18px;display:grid;gap:12px}
+.tipform label{display:grid;gap:6px;font:600 13px Inter;color:var(--mute)}
+.tiprow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tipform .tvbtn{justify-self:start}
+.tipside{display:grid;gap:12px;align-content:start}
+.safety{background:rgba(242,193,78,.08);border:1px solid rgba(242,193,78,.35);padding:14px 16px;font-size:13.5px;color:#d8cfa8}
+.safety b{color:var(--gold)}
+.tipout{background:var(--panel);border:1px solid var(--line);padding:14px 16px}
+.tipout p{margin:0 0 10px;font-size:13.5px;color:#c6d0dc}
+@media (max-width:820px){.claim{grid-template-columns:1fr}.cmprow{grid-template-columns:100px 1fr 1fr}.tipwrap,.tiprow{grid-template-columns:1fr}}
+.cardwrap{display:grid;grid-template-columns:1.7fr 1fr;gap:16px;align-items:start}
+.cardprev{border:1px solid var(--line);background:#0b0f15}
+.cardprev img{display:block;width:100%;height:auto}
+.cardctl{display:grid;gap:10px;background:var(--panel);border:1px solid var(--line);padding:16px}
+.cardctl label{display:grid;gap:6px;font:600 13px Inter;color:var(--mute)}
+.cardctl select{background:var(--bg);color:var(--ink);border:1px solid var(--line);font:14px Inter;padding:9px}
+.cardctl .fopen{margin:0;background:none;cursor:pointer;text-align:center}
+.cardtip{font-size:12.5px;color:var(--dim);margin:0}
+.cardmsg{font-size:13px;color:var(--green);margin:0;min-height:18px}
+.recaps{display:grid;gap:12px}
+.recap{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--blue);padding:16px 18px}
+.rhead{display:flex;gap:12px;align-items:baseline}
+.rday{font:800 13px "JetBrains Mono",monospace;color:var(--blue);letter-spacing:1px;text-transform:uppercase}
+.rdate{font:600 13px Inter;color:var(--mute);text-transform:capitalize}
+.recap p{margin:8px 0 10px;font-size:15.5px;color:#d3dbe5;line-height:1.6}
+.rbtns .sharebtn{margin-left:0;margin-right:6px}
+@media (max-width:820px){.cardwrap{grid-template-columns:1fr}}
+main.wrap{display:flex;flex-direction:column}
+section[data-tab]{display:none}
+section[data-tab].show{display:block}
+.tabs{position:sticky;top:0;z-index:40;background:rgba(13,17,23,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.tabrow{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabrow a{flex:none;color:var(--mute);text-decoration:none;font:600 14px Inter;padding:14px 14px 12px;border-bottom:3px solid transparent}
+.tabrow a:hover{color:var(--ink)}
+.tabrow a.on{color:var(--ink);border-bottom-color:var(--red)}
+.trustline{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--dim)}
+.trustline b{color:var(--mute)}
+.legendbox{margin-bottom:14px;font-size:13px;color:var(--mute)}
+.legendbox summary{cursor:pointer;color:var(--dim);font-size:12.5px}
+.legendbox .legend{margin:10px 0 0}
+section{padding:34px 0;border-bottom:0}
+section + section{border-top:1px solid var(--line)}
+.hero{padding:30px 0 26px}
+.hero h1{font-size:clamp(28px,4vw,42px)}
+.wirelist{max-height:520px}
+.feature{min-height:0}
+@media (max-width:640px){.top .live,.top .tip{display:none}.top{padding:10px 0}.hero{grid-template-columns:1fr}.counter .n{font-size:36px}}
+.calgrid{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+.calstage{height:440px}
+.calplane{position:absolute;left:50%;top:52%;transform-style:preserve-3d}
+.calbase{position:absolute;inset:0;background:#141b26;border:2px solid #2a3443;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.calwd,.calwk{position:absolute;font:600 11px Inter;color:#6b7889;letter-spacing:.5px;white-space:nowrap}
+.cbox{position:absolute;width:62px;height:62px;transform-style:preserve-3d;cursor:pointer}
+.cf{position:absolute;transition:all .5s ease}
+.ct{left:0;top:0;width:62px;height:62px;background:color-mix(in srgb,var(--c) 85%,#fff 15%);transform:translateZ(var(--h))}
+.cs,.cn{left:0;width:62px;height:var(--h);transform-origin:50% 100%;background:color-mix(in srgb,var(--c) 70%,#000 30%)}
+.cs{top:calc(62px - var(--h));transform:rotateX(-90deg)}
+.cn{top:calc(0px - var(--h));transform:rotateX(-90deg);background:color-mix(in srgb,var(--c) 55%,#000 45%)}
+.cw,.ce{top:0;width:var(--h);height:62px;background:color-mix(in srgb,var(--c) 60%,#000 40%)}
+.cw{left:calc(0px - var(--h));transform-origin:100% 50%;transform:rotateY(90deg)}
+.ce{left:62px;transform-origin:0 50%;transform:rotateY(-90deg)}
+.cpend .ct{background:transparent;border:2px dashed #93a1b3}
+.csel .ct{outline:3px solid #fff;outline-offset:-3px}
+.ctoday .ct{animation:cpulse 1.6s infinite}
+@keyframes cpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,95,.7)}50%{box-shadow:0 0 0 10px rgba(255,90,95,0)}}
+.ctag{position:absolute;left:50%;bottom:0;transform-origin:0 100%;transform:rotateX(-90deg) translate(-50%,calc(-1 * var(--h) - 10px));font:700 11px Inter;color:#fff;background:var(--red);padding:3px 7px;white-space:nowrap}
+.callegend{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line);font-size:12px;color:var(--mute)}
+.callegend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.caldetail p{font-size:15px;line-height:1.6;color:#d3dbe5;margin:10px 0 0}
+.cdhead{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ctype{display:inline-block;margin-top:10px;font:700 10.5px Inter;letter-spacing:1px;text-transform:uppercase;color:var(--c);border:1px solid var(--c);padding:3px 7px}
+@media (max-width:820px){.calgrid{grid-template-columns:1fr}.calstage{height:360px}}
+.tip{display:none!important}
+/* square everything */
+
+*,*::before,*::after{border-radius:0!important}
+@media (max-width:820px){
+  .hero,.mapgrid,.debate{grid-template-columns:1fr}
+  .sources{columns:1}
+}
+</style>
+</head>
+<body>
+<div class="ticker"><div class="tick-label"><span class="dot"></span>LIVE WIRE</div><div class="tick-view"><div class="tick-track"></div></div></div>
+<header>
+  <div class="wrap top">
+    <div class="brand">HAITI<span>/</span>FRONTLINE</div>
+    <div class="right">
+      <div class="live"><span class="dot"></span><span data-t="live">Tracking live · Updated</span> <span id="upd">Nov 22, 2026 · 3:45 PM CT</span></div>
+      <div class="langsw"><button data-l="en" class="on">EN</button><button data-l="es">ES</button><button data-l="ht">KREYÒL</button></div>
+      <button class="sharetop" id="shareSite" data-t="shareBtn">Share</button>
+      <a class="tip" href="https://buymeacoffee.com/YOUR-HANDLE" target="_blank" rel="noopener">Tip me a coffee</a>
+    </div>
+  </div>
+  <div class="wrap hero">
+    <div>
+      <div class="edition"><span data-t="edi">Daily tracker · Edition</span> <span id="ed">--</span></div>
+      <h1 data-t="h1">El Salvador's war on Haiti's gangs, tracked day by day.</h1>
+      <p data-t="heroP">Bukele's 2,500-troop deployment is the largest foreign military operation in Haiti in a decade. This page tracks what's been retaken, who's been lost, and what happens next, with every claim sourced.</p>
+      <div class="trustline"><span data-t="tr1"><span class="chk">✓</span><b>Every claim sourced</b> to published reporting</span><span data-t="tr2"><b>Independent</b>: no government or party affiliation</span></div>
+    </div>
+    <div class="counters">
+      <div class="counter red"><div class="n" id="opDay">--</div><div class="l" data-t="c1">Day of the Salvadoran operation<br>(launched Oct 21)</div></div>
+      <div class="counter gold"><div class="n" id="missDay">--</div><div class="l" data-t="c2">Days the 4 Salvadoran technicians have been missing (since Oct 18)</div></div>
+    </div>
+  </div>
+</header>
+<nav class="tabs" id="tabs"><div class="wrap tabrow">
+  <a href="#today" data-tab="today" data-t="tbToday">Today</a>
+  <a href="#map" data-tab="map" data-t="tbMap">Map</a>
+  <a href="#timeline" data-tab="timeline" data-t="tbTl">Timeline</a>
+  <a href="#context" data-tab="context" data-t="tbCtx">Context</a>
+  <a href="#share" data-tab="share" data-t="tbShare">Share &amp; tips</a>
+  <a href="#about" data-tab="about" data-t="tbAbout">About</a>
+</div></nav>
+
+
+<main class="wrap">
+
+<section data-tab="today" style="order:2" id="calendar">
+  <div class="wirehead"><div><h2 id="calH">The operation, day by day</h2><p class="sub" id="calS" style="margin:0"></p></div><button class="fopen" id="calReplay" style="margin:0;background:none;cursor:pointer">Replay</button></div>
+  <div class="calgrid">
+    <div class="mapbox"><div class="stage calstage" id="calStage"><div class="plane calplane" id="calPlane"></div></div><div class="callegend" id="calLegend"></div></div>
+    <div class="detail caldetail" id="calDetail"></div>
+  </div>
+</section>
+<section data-tab="today" style="order:3" id="livewire">
+  <div class="wirehead">
+    <div>
+      <h2 data-t="lwH"><span class="dot"></span> Live Wire</h2>
+      <p class="sub" style="margin:0" data-t="lwS">Posts, statements and articles as they come in. Each one is fact-check labeled and linked to the original. Updates appear here automatically.</p>
+    </div>
+    <div class="wirectl">
+      <span class="checked" id="checked">Connecting…</span>
+      <button class="tvbtn" id="tvOpen" data-t="tv">TV mode</button>
+    </div>
+  </div>
+  <details class="legendbox"><summary data-t="lgQ">What do the labels mean?</summary><div class="legend">
+    <span data-t="lg1"><i class="st st-confirmed">Confirmed</i> Multiple independent sources or official record</span>
+    <span data-t="lg2"><i class="st st-reported">Reported</i> One credible outlet so far</span>
+    <span data-t="lg3"><i class="st st-official">Official claim</i> Comes from a party to the conflict, not independently verified</span>
+    <span data-t="lg4"><i class="st st-disputed">Disputed</i> Sides contradict each other</span>
+  </div></details>
+  <div class="wiregrid">
+    <div class="feature" id="feature"><div class="fbar"><i id="fprog"></i></div><div id="fbody"><p class="sub">Loading the wire…</p></div></div>
+    <div class="wirelist" id="wirelist"></div>
+  </div>
+</section>
+
+<section data-tab="share" style="order:1" id="sharecard">
+  <h2 data-t="scH">Share card</h2>
+  <p class="sub" data-t="scS">A ready-made image for X, built from the latest story or today's recap. Images get far more reach than plain links.</p>
+  <div class="cardwrap">
+    <div class="cardprev"><canvas id="cardCanvas" width="1200" height="675" hidden></canvas><img id="cardImg" alt="Haiti Frontline share card"></div>
+    <div class="cardctl">
+      <label><span data-t="scPick">Story</span><select id="cardPick"></select></label>
+      <button class="tvbtn" id="cardDl">Download image</button>
+      <button class="fopen" id="cardX">Post on X</button>
+      <p class="cardtip" id="cardTip"></p>
+      <p class="cardmsg" id="cardMsg"></p>
+    </div>
+  </div>
+</section>
+
+<section data-tab="today" style="order:1">
+  <h2 data-t="cuH">The 60-second catch-up</h2>
+  <p class="sub" data-t="cuS">Everything that matters, in one paragraph. Rewritten every update.</p>
+  <div class="catchup">
+    <span class="stamp" data-t="cuStamp">As of Sunday, Nov 22</span>
+    <span data-t="cuP">After gangs ambushed four Salvadoran aviation technicians outside Port-au-Prince on Oct 18, Nayib Bukele sent roughly 2,500 troops to Haiti, operating apart from the UN-backed Gang Suppression Force. They've helped retake the national stadium (Nov 12), which is now a forward base, and Haitian forces launched the first major push in five years into Martissant, the gang-held chokepoint on the road south (Nov 19). The mission has its first deaths: <strong>three Salvadoran soldiers were killed in an explosion on Nov 20</strong>. The same day, Haiti announced a deal for a Salvadoran company to help build three new prisons. The four original missing men are still unaccounted for. Thousands of Haitians have marched in support, while the UN warns civilians must be protected and Bukele, now running for a third term at home, is feuding with a US diplomat over coordination.</span>
+  </div>
+</section>
+
+<section data-tab="today" style="order:4" id="recaps">
+  <h2 id="recapH">Day in 60 seconds</h2>
+  <p class="sub" id="recapS">A dated recap of each day, written every evening.</p>
+  <div class="recaps" id="recapList"></div>
+</section>
+
+<section data-tab="context" style="order:1">
+  <h2 data-t="sbH">Scoreboard</h2>
+  <p class="sub" data-t="sbS">The key numbers, each tied to its source and date.</p>
+  <div class="board">
+    <div class="tile"><div class="n">~2,500</div><div class="l" data-t="t1">Salvadoran troops in Haiti</div><div class="s">Bukele, Nov 19</div></div>
+    <div class="tile"><div class="n" style="color:var(--red)">3</div><div class="l" data-t="t2">Salvadoran soldiers killed</div><div class="s" data-t="t2s">Explosion at work site, Nov 20 (Bloomberg)</div></div>
+    <div class="tile"><div class="n" style="color:var(--gold)">4</div><div class="l" data-t="t3">Technicians still missing</div><div class="s" data-t="t3s">Fate disputed; a gang claims they're dead, Bukele rejects it</div></div>
+    <div class="tile"><div class="n">34</div><div class="l" data-t="t4">Suspected gang members killed in Martissant push</div><div class="s">Haitian National Police, Nov 19</div></div>
+    <div class="tile"><div class="n">1,000+</div><div class="l" data-t="t5">People killed in Haiti, Jul–Sep</div><div class="s">UN report, Nov 12</div></div>
+    <div class="tile"><div class="n">33</div><div class="l" data-t="t6">Candidates in Haiti's presidential race</div><div class="s">Haitian Times</div></div>
+  </div>
+</section>
+
+<section data-tab="map" style="order:1">
+  <h2 data-t="mH">The map, in 4D</h2>
+  <p class="sub" data-t="mS">3D map plus time. Drag to rotate and tilt, scrub the timeline, or press play to watch the operation unfold since Oct 18.</p>
+  <div class="mapgrid">
+    <div class="mapbox">
+      <div class="stage" id="stage">
+        <div class="plane" id="plane">
+      <svg viewBox="0 0 800 400" role="img" aria-label="3D map of key locations in Port-au-Prince">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1f2835" stroke-width="1"/></pattern>
+        </defs>
+        <rect width="800" height="400" fill="#18202b"/>
+        <rect width="800" height="400" fill="url(#grid)"/>
+        <polygon points="0,0 320,0 260,100 200,208 120,292 0,240" fill="#10263f"/>
+        <polyline points="320,0 260,100 200,208 120,292 0,240" fill="none" stroke="#2f5a8a" stroke-width="2"/>
+        <text x="40" y="110" fill="#5b84b5" font-family="Inter" font-size="14" font-style="italic">Port-au-Prince Bay</text>
+        <line x1="152" y1="308" x2="0" y2="335" stroke="#93a1b3" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="8" y="356" fill="#93a1b3" font-family="Inter" font-size="11.5">Route 2 to the south &amp; west</text>
+        <line x1="248" y1="242" x2="692" y2="88" stroke="#2a3443" stroke-width="1.5" stroke-dasharray="3 6"/>
+        <text x="300" y="290" fill="#6b7889" font-family="Inter" font-size="13" letter-spacing="2">PORT-AU-PRINCE</text>
+
+        <rect x="0" y="0" width="800" height="400" fill="none" stroke="#3a4657" stroke-width="3"/>
+        <g fill="none" stroke="#4c8dff" stroke-width="4" stroke-linecap="square">
+          <path id="seg1" class="trail" d="M520 80 L692 88"/>
+          <path id="seg2" class="trail" d="M692 88 C 560 150, 380 200, 249 242"/>
+        </g>
+      </svg>
+          <div class="pillar" data-id="airport" style="left:520px;top:80px"><div class="foot"></div><div class="bar b2"></div><div class="bar"></div><div class="lbl"></div></div>
+          <div class="pillar" data-id="ambush" style="left:692px;top:88px"><div class="foot"></div><div class="bar b2"></div><div class="bar"></div><div class="lbl"></div></div>
+          <div class="pillar" data-id="stadium" style="left:249px;top:242px"><div class="foot"></div><div class="bar b2"></div><div class="bar"></div><div class="lbl"></div></div>
+          <div class="pillar" data-id="martissant" style="left:152px;top:308px"><div class="foot"></div><div class="bar b2"></div><div class="bar"></div><div class="lbl"></div></div>
+        </div>
+        <div class="hud">
+          <div class="hd" id="hdate">--</div>
+          <div id="hday"></div>
+          <div id="htroops"></div>
+          <div id="hloss"></div>
+        </div>
+        <div class="hint" data-t="hint">Drag to rotate</div>
+      </div>
+      <div class="controls">
+        <button id="play">Play</button>
+        <input type="range" id="dayr" min="0" max="35" value="35" aria-label="Date">
+        <span id="dlabel"></span>
+      </div>
+      <div class="caption" id="caption"></div>
+      <div class="mapnote" data-t="mN">Blue line = reported Salvadoran movements · Red = gang-held · Orange = active fighting · Green = retaken · Gold = ambush site. Positions approximate; pillar height reflects the scale of events there.</div>
+    </div>
+    <div class="detail" id="detail"></div>
+  </div>
+
+  <div class="now">
+    <div class="nowhead"><span class="dot"></span><span data-t="nowH">Right now</span> <span class="nowstamp">as of Nov 22, 8:00 PM CT</span></div>
+    <div class="nowgrid">
+      <div class="nowitem" style="--c:#3ecf8e"><b>Sylvio Cator Stadium</b><span data-t="n1">Held by Salvadoran and Haitian forces and being set up as the Salvadoran forward base for pushes into nearby gang-held neighborhoods.</span></div>
+      <div class="nowitem" style="--c:#ff8a3d"><b>Martissant</b><span data-t="n2">Haitian police, with the Vectus Global task force, are fighting to clear the corridor on Route 2. Police say 54 suspected gang members were killed in the first two days (Nov 19 and 20).</span></div>
+      <div class="nowitem" style="--c:#f2c14e"><b data-t="n3b">The four missing technicians</b><span data-t="n3">Still unaccounted for after 35 days. Bukele says troops are still searching. A gang claims they're dead, which he rejects.</span></div>
+      <div class="nowitem" style="--c:#ff5a5f"><b data-t="n4b">Salvadoran losses</b><span data-t="n4">Three soldiers were killed in an explosion on Nov 20 while working with explosive material. The exact location hasn't been published.</span></div>
+    </div>
+  </div>
+</section>
+
+<section data-tab="map" style="order:2">
+  <h2 data-t="h3H">Haiti in 3D</h2>
+  <p class="sub" data-t="h3S">The whole country, so you can see where the fighting sits. Drag to rotate and tilt, and tap any label for context.</p>
+  <div class="mapgrid">
+    <div class="mapbox">
+      <div class="stage stage2" id="stage2">
+        <div class="plane plane2" id="plane2"></div>
+        <div class="hint" data-t="hint">Drag to rotate</div>
+      </div>
+      <div class="mapnote" data-t="h3N">Red pillar = Port-au-Prince, where the operation is concentrated (the 4D city map above zooms in on the red box). Dashed lines = national routes 1 and 2. Grey pillars = highest peaks.</div>
+    </div>
+    <div class="detail" id="detail2"></div>
+  </div>
+</section>
+
+<section data-tab="timeline" style="order:1">
+  <h2 data-t="tlH">Timeline</h2>
+  <p class="sub" data-t="tlS">Every major development since the ambush, newest first.</p>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all" data-t="fA">All</button>
+    <button data-f="mil" data-t="fM">Military</button>
+    <button data-f="pol" data-t="fP">Politics</button>
+    <button data-f="hum" data-t="fH">Humanitarian</button>
+  </div>
+  <div class="tl" id="tl"></div>
+</section>
+
+<section data-tab="context" style="order:3" id="claims">
+  <h2 data-t="clH">Claims, checked</h2>
+  <p class="sub" data-t="clS">Common claims about the operation, rated against published reporting.</p>
+  <div class="claims" id="claimList"></div>
+</section>
+
+<section data-tab="context" style="order:4" id="explainer">
+  <h2 data-t="exH">Can the Bukele model work in Haiti?</h2>
+  <p class="sub" data-t="exS">What made El Salvador's crackdown possible, and how different Haiti is.</p>
+  <div class="cmp" id="cmp"></div>
+  <div class="mapnote" style="padding:8px 0" data-t="exN">Population and area are national estimates. Other rows draw on AP, Al Jazeera and Washington Post reporting cited on this page.</div>
+  <div class="debate" style="margin-top:14px">
+    <div class="side pro"><h3 data-t="exPro">Why it might work</h3><ul id="exPro"></ul></div>
+    <div class="side con"><h3 data-t="exCon">Why it might not</h3><ul id="exCon"></ul></div>
+  </div>
+</section>
+
+<section data-tab="context" style="order:2">
+  <h2 data-t="wH">What to watch next</h2>
+  <p class="sub" data-t="wS">The open questions that will drive the next headlines.</p>
+  <div class="watch">
+    <div class="q" data-t="q1"><b>The four missing technicians</b><span>The 400 Mawozo-linked gang Lanmò San Jou claims all four are dead. Bukele says remains recovered on Oct 24 aren't theirs. Proof either way would be a turning point.</span></div>
+    <div class="q" data-t="q2"><b>Does Martissant hold?</b><span>Clearing Route 2 would reconnect Port-au-Prince to the south and west for the first time in five years.</span></div>
+    <div class="q" data-t="q3"><b>Washington vs. Bukele</b><span>Bukele has publicly blasted a US diplomat over coordination concerns, even though US Southern Command flew his troops in.</span></div>
+    <div class="q" data-t="q4"><b>Two elections</b><span>Haiti has a 33-candidate presidential race. Bukele faces voters on Feb 28, 2027, and the Haiti mission is now part of his campaign.</span></div>
+  </div>
+</section>
+
+<section data-tab="context" style="order:5">
+  <h2 data-t="dH">The debate</h2>
+  <p class="sub" data-t="dS">The strongest version of each side's case.</p>
+  <div class="debate">
+    <div class="side pro">
+      <h3 data-t="dPro">Supporters say</h3>
+      <ul>
+        <li data-t="l1">Results are visible: a stadium held by gangs since early 2024 was retaken in weeks.</li>
+        <li data-t="l2">Haitians themselves are asking for it. Thousands marched on Nov 17 to praise the troops.</li>
+        <li data-t="l3">The UN-backed force alone hadn't turned the tide, and more than 1,000 people were killed in a single quarter.</li>
+      </ul>
+    </div>
+    <div class="side con">
+      <h3 data-t="dCon">Critics say</h3>
+      <ul>
+        <li data-t="l4">The UN's human rights office warns operations must put civilian protection first amid "atrocious abuses."</li>
+        <li data-t="l5">Experts warn Haiti has no long-term plan, and its own police are underpaid (about $300/month for junior officers).</li>
+        <li data-t="l6">Bukele's record at home, including mass trials and a third-term bid after rewriting the rules, raises accountability concerns.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section data-tab="share" style="order:2" id="tips">
+  <h2 data-t="tpH">Send a tip</h2>
+  <p class="sub" data-t="tpS">Seen something on the ground, or a post we should check? Send it in. Every tip is verified before anything is published.</p>
+  <div class="tipwrap">
+    <form class="tipform" id="tipForm">
+      <label><span data-t="tpL1">What happened?</span><textarea id="tpWhat" rows="4" required></textarea></label>
+      <div class="tiprow">
+        <label><span data-t="tpL2">Where?</span><input id="tpWhere" type="text"></label>
+        <label><span data-t="tpL3">When?</span><input id="tpWhen" type="text"></label>
+      </div>
+      <label><span data-t="tpL4">Link to a post, photo or article (optional)</span><input id="tpLink" type="text"></label>
+      <button type="submit" class="tvbtn" data-t="tpBtn">Prepare my tip</button>
+    </form>
+    <div class="tipside">
+      <div class="safety" data-t="tpSafe"><b>Stay safe.</b> Don't include your name, location or anything that could identify you or others. People have been targeted for showing support for one side. Never put yourself at risk to get information.</div>
+      <div class="tipout" id="tipOut" hidden>
+        <p data-t="tpOut">Your tip is ready. Copy it, then send it by direct message on X to <b>@haitifrontline</b>.</p>
+        <textarea id="tipText" rows="6" readonly></textarea>
+        <div class="tipbtns"><button type="button" class="fopen" id="tipCopy" data-t="copy">Copy</button><a class="fopen" href="https://x.com/haitifrontline" target="_blank" rel="noopener" data-t="tpX">Open X</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-tab="about" style="order:1" id="methodology">
+  <h2 data-t="meH">Methodology &amp; corrections</h2>
+  <p class="sub" data-t="meS">How this tracker is built, so you can judge it for yourself.</p>
+  <div class="method">
+    <div data-t="me1"><b>Sourcing standard</b>Every event and number links to a published report from an established outlet or official body (AP, Reuters, the UN, the Haitian National Police and others). The green badge on each item opens its source.</div>
+    <div data-t="me2"><b>Disputed claims</b>When parties disagree, as on the fate of the four missing technicians, both claims are shown and attributed. Nothing is reported as fact until it's confirmed.</div>
+    <div data-t="me3"><b>Independence</b>Haiti Frontline isn't affiliated with any government, military, party or the Gang Suppression Force. Tips from readers don't influence coverage.</div>
+    <div data-t="me4"><b>Corrections</b>Errors are fixed promptly, and significant corrections are noted in the timeline with the date they were made. Spot one? Reply to the tracker on X.</div>
+  </div>
+</section>
+
+<section data-tab="off" style="order:3">
+  <div class="support">
+    <h3 data-t="sup">If this has been useful</h3>
+    <a class="tip" href="https://buymeacoffee.com/YOUR-HANDLE" target="_blank" rel="noopener">Tip me a coffee</a>
+  </div>
+</section>
+
+<section data-tab="about" style="order:2">
+  <h2 data-t="srcH">Sources</h2>
+  <ol class="sources">
+    <li><a href="https://www.washingtonpost.com/world/2026/10/20/four-international-troops-missing-haiti-after-gang-ambush/">Washington Post: Four troops missing after ambush (Oct 20)</a></li>
+    <li><a href="https://www.npr.org/2026/10/22/nx-s1-6012029/bukele-military-operation-haiti">NPR: Bukele launches rescue operation (Oct 22)</a></li>
+    <li><a href="https://haitiantimes.com/2026/10/25/bukele-denies-bodies-haiti-anti-gang-force-salvadoran-soldiers/">Haitian Times: Bukele disputes remains (Oct 25)</a></li>
+    <li><a href="https://www.usnews.com/news/world/articles/2026-10-27/around-1-000-soldiers-from-el-salvador-have-deployed-to-haiti-source-says">Reuters via US News: ~1,000 troops sent (Oct 27)</a></li>
+    <li><a href="https://www.washingtontimes.com/news/2026/oct/28/el-salvador-reportedly-sends-hundreds-troops-haiti-gang-ambush/">Washington Times: SOUTHCOM airlift (Oct 28)</a></li>
+    <li><a href="https://www.latintimes.com/salvadoran-haitian-forces-seize-haiti-stadium-601282">Latin Times: 400 Mawozo HQ, stadium (Nov 13)</a></li>
+    <li><a href="https://haitiantimes.com/2026/11/12/haiti-el-salvador-forces-retake-sylvio-cator-stadium/">Haitian Times: Stadium retaken (Nov 12)</a></li>
+    <li><a href="https://ticotimes.net/2026/11/13/bukele-haiti-stadium-base-sylvio-cator">Tico Times: Stadium becomes base (Nov 13)</a></li>
+    <li><a href="https://news.un.org/en/focus-topic/haiti">UN News: Haiti coverage (Nov 12 &amp; 17)</a></li>
+    <li><a href="https://www.nbcnews.com/world/haiti/thousands-demonstrate-haitis-capital-praise-bukele-salvadoran-troops-f-rcna609918">AP via NBC: Thousands march for Bukele (Nov 17)</a></li>
+    <li><a href="https://www.wlrn.org/americas/2026-11-18/el-salvadors-president-confirms-and-celebrates-attack-on-home-of-key-haitian-gang-leader">AP via WLRN: Bukele says troops destroyed Larose home in Canaan (Nov 18)</a></li>
+    <li><a href="https://www.nbcnews.com/world/haiti/heavy-fighting-erupts-haiti-armed-forces-fight-gangs-regain-control-ke-rcna610288">AP via NBC: Martissant offensive (Nov 19)</a></li>
+    <li><a href="https://www.washingtonpost.com/world/2026/11/20/el-salvadors-bukele-seeks-third-term-that-could-keep-him-power-until-2033/">Washington Post: Bukele third-term bid (Nov 20)</a></li>
+    <li><a href="https://bloomberg.com/news/articles/2026-11-20/el-salvador-troops-killed-in-haiti-blast-after-rescue-deployment">Bloomberg: Three soldiers killed in blast (Nov 20)</a></li>
+    <li><a href="https://latintimes.com/nayib-bukele-files-third-consecutive-term-el-salvadors-2027-election-601641">Latin Times: Missing men's status disputed (Nov 21)</a></li>
+    <li><a href="https://lanacion.com.ar/el-mundo/haiti-acuerda-con-el-salvador-la-construccion-de-tres-carceles-tras-el-envio-de-tropas-de-bukele-nid21112026">AP via La Nación: Three-prison deal with El Salvador (Nov 21)</a></li>
+    <li><a href="https://www.infobae.com/el-salvador/2026/11/22/54-pandilleros-muertos-en-dos-dias-en-haiti-drones-blindados-y-soldados-de-bukele-en-la-ofensiva-que-busca-recuperar-puerto-principe/">Infobae: Police report 54 killed in Martissant (Nov 22)</a></li>
+    <li><a href="https://eldia.com.do/la-fuerza-de-supresion-de-pandillas-lanza-una-operacion-contra-las-bandas-en-tres-puntos-de-haiti/">EFE via El Día: GSF operations in three areas (Nov 22)</a></li>
+    <li><a href="https://haitiantimes.com/">Haitian Times: Bukele vs. US diplomat; presidential field</a></li>
+  </ol>
+</section>
+
+</main>
+<footer class="wrap" data-t="ft">Haiti Frontline is an independent tracker compiled from published reporting. It is not affiliated with any government or force. Numbers reflect the latest published figures and may be revised.</footer>
+
+<script>
+(function(){
+  // Live day counters (Central Time is fine for whole days)
+  var DAY = 86400000;
+  function daysSince(y,m,d){
+    var start = Date.UTC(y,m-1,d);
+    var now = new Date();
+    var today = Date.UTC(now.getFullYear(),now.getMonth(),now.getDate());
+    return Math.floor((today-start)/DAY);
+  }
+  document.getElementById('opDay').textContent = daysSince(2026,10,21)+1;
+  document.getElementById('missDay').textContent = daysSince(2026,10,18);
+  document.getElementById('ed').textContent = daysSince(2026,10,21)+1;
+
+  // Map details
+  var places = {
+    stadium:{tag:'Retaken',when:'Nov 12, 2026',title:'Sylvio Cator Stadium',
+      body:'Haiti\'s national stadium had been held by gangs since February 2024, forcing the national team to play its World Cup qualifiers abroad. Haitian police, the army and Salvadoran special forces retook it on Nov 12, and human remains were found inside. El Salvador is turning it into a forward base for pushes into nearby gang-held neighborhoods.'},
+    martissant:{tag:'Active fighting',when:'Since Nov 19, 2026',title:'Martissant',
+      body:'The gang-held chokepoint on Route 2, the main road out of the capital to the south and west. Gangs have controlled it for more than five years. Haitian forces, working with a task force from Erik Prince\'s Vectus Global, launched the first major operation to retake it on Nov 19. Police say at least 34 suspected gang members were killed.'},
+    ambush:{tag:'Where it started',when:'Oct 18, 2026',title:'Croix-des-Bouquets',
+      body:'Gangs ambushed an armored vehicle carrying four Salvadoran aviation technicians from the UN-backed Gang Suppression Force here, in the Santo area. The men fled the burning vehicle and have been missing since. The area is 400 Mawozo territory, and Helicopter-backed forces destroyed the gang\'s headquarters and its leader\'s house on Nov 8.'}
+  };
+
+  // Timeline (newest first)
+  var C = {mil:'var(--mil)',pol:'var(--pol)',hum:'var(--hum)'};
+  var L = {mil:'Military',pol:'Politics',hum:'Humanitarian'};
+  var events = [
+    ['Nov 20','pol','Haiti announces deal with El Salvador to build three prisons','Justice Minister Patrick Pélissier, who toured El Salvador\'s CECOT prison, said a Salvadoran company will build three prisons with a Haitian firm. Costs, locations and whether El Salvador will help pay or run them were not disclosed.','AP via La Nación','https://lanacion.com.ar/el-mundo/haiti-acuerda-con-el-salvador-la-construccion-de-tres-carceles-tras-el-envio-de-tropas-de-bukele-nid21112026'],
+    ['Nov 20','mil','Three Salvadoran soldiers killed in explosion','Two died at the scene while working with explosive material. A third died after being airlifted to the Dominican Republic, and a fourth wounded soldier is out of danger. These are the mission\'s first confirmed deaths.','Bloomberg','https://bloomberg.com/news/articles/2026-11-20/el-salvador-troops-killed-in-haiti-blast-after-rescue-deployment'],
+    ['Nov 19','pol','Bukele registers for a third term','He filed for the Feb 28, 2027 election alongside VP Félix Ulloa after constitutional changes removed term limits. He told supporters about 2,500 troops are in Haiti.','Washington Post','https://www.washingtonpost.com/world/2026/11/20/el-salvadors-bukele-seeks-third-term-that-could-keep-him-power-until-2033/'],
+    ['Nov 19','mil','Offensive launched into Martissant','This is the first significant push in five years into the gang-held corridor linking the capital to the south and west. Police report at least 34 suspected gang members killed.','AP via NBC News','https://www.nbcnews.com/world/haiti/heavy-fighting-erupts-haiti-armed-forces-fight-gangs-regain-control-ke-rcna610288'],
+    ['Nov 18','mil','Bukele says his troops destroyed a gang leader\'s home in Canaan','Bukele posted video of Salvadoran helicopters firing on the mansion of Jeff Larose, whose gang controls Canaan north of the capital. It was not clear whether Larose was killed, and the UN-backed force said it was not involved.','AP via WLRN','https://www.wlrn.org/americas/2026-11-18/el-salvadors-president-confirms-and-celebrates-attack-on-home-of-key-haitian-gang-leader'],
+    ['Nov 17','hum','UN: "atrocious abuses" continue','The UN human rights office urged greater protection for civilians amid gang abuses and intensified security operations.','UN News','https://news.un.org/en/focus-topic/haiti'],
+    ['Nov 17','pol','Thousands march in Port-au-Prince for Bukele','Crowds across the capital praised Bukele and his troops. Some carried signs begging him not to give up.','AP via NBC News','https://www.nbcnews.com/world/haiti/thousands-demonstrate-haitis-capital-praise-bukele-salvadoran-troops-f-rcna609918'],
+    ['Nov 12','mil','National stadium retaken from gangs','A joint Haitian-Salvadoran operation retook Sylvio Cator Stadium after more than two years of gang control. Human remains were found inside, and El Salvador will use it as a base.','Haitian Times','https://haitiantimes.com/2026/11/12/haiti-el-salvador-forces-retake-sylvio-cator-stadium/'],
+    ['Nov 12','hum','UN: more than 1,000 killed in three months','A UN report found more than 1,000 people were killed in Haiti between July and September.','UN News','https://news.un.org/en/focus-topic/haiti'],
+    ['Nov 11','pol','Bukele clashes with US diplomats over coordination','After US diplomats raised concerns about coordination with the UN-backed force and stray gunfire, Bukele publicly defended the operation.','Haitian Times','https://haitiantimes.com/2026/11/11/bukele-defends-haiti-gang-operations-amid-pressure/'],
+    ['Nov 8','mil','400 Mawozo headquarters destroyed','Helicopters, two Salvadoran and two from the task force, backed a ground assault that destroyed the house of gang leader Wilson Joseph (Lanmò San Jou). Bukele posted the video on Nov 10.','Reuters via Yahoo','https://www.yahoo.com/news/world/articles/haiti-police-salvadoran-troops-destroy-161358636.html'],
+    ['Nov 5','hum','Missing technicians\' vehicle found','Haitian police, working with the UN-backed force and Salvadoran troops, found a vehicle used by the four missing technicians.','Al Jazeera','https://www.aljazeera.com/news/2026/11/5/el-salvadors-bukele-touts-military-intervention-in-haiti'],
+    ['Oct 31','mil','Salvadoran troops set up camp in Tabarre','Troops began patrolling Port-au-Prince from an encampment in Tabarre, positioned to reach Croix-des-Bouquets.','The New Humanitarian','https://www.thenewhumanitarian.org/analysis/2026/11/11/haiti-depth-what-bukeles-intervention-means-security-crisis'],
+    ['Oct 28','mil','2,000 Salvadoran troops on the ground','US Southern Command provided C-130 transport aircraft to move the troops.','Washington Times','https://www.washingtontimes.com/news/2026/oct/28/el-salvador-reportedly-sends-hundreds-troops-haiti-gang-ambush/'],
+    ['Oct 27','mil','About 1,000 troops rushed in','A Haitian security official told Reuters about 1,000 Salvadoran soldiers had deployed.','Reuters via US News','https://www.usnews.com/news/world/articles/2026-10-27/around-1-000-soldiers-from-el-salvador-have-deployed-to-haiti-source-says'],
+    ['Oct 24','hum','Bukele disputes that recovered remains are his men','Four bodies handed to the Gang Suppression Force were reported to be the missing technicians. Bukele rejected the reports, and the GSF said identities were unconfirmed.','Haitian Times','https://haitiantimes.com/2026/10/25/bukele-denies-bodies-haiti-anti-gang-force-salvadoran-soldiers/'],
+    ['Oct 21','mil','Bukele launches a rescue operation','He announced a military operation to rescue the four technicians and warned of a more forceful response if they aren\'t released alive and unharmed.','NPR','https://www.npr.org/2026/10/22/nx-s1-6012029/bukele-military-operation-haiti'],
+    ['Oct 18','mil','The ambush','Gangs attacked an armored vehicle carrying four Salvadoran aviation technicians from the UN-backed Gang Suppression Force in Croix-des-Bouquets. The men fled the burning vehicle and went missing.','Washington Post','https://www.washingtonpost.com/world/2026/10/20/four-international-troops-missing-haiti-after-gang-ambush/']
+  ];
+  var tl = document.getElementById('tl');
+  tl.innerHTML = events.map(function(e,i){
+    return '<div class="ev" data-k="'+e[1]+'" style="--c:'+C[e[1]]+'"><span class="d">'+e[0]+'</span><span class="k">'+L[e[1]]+'</span><h4>'+e[2]+'</h4><p>'+e[3]+'</p><a class="badge" href="'+e[5]+'" target="_blank" rel="noopener"><span class="chk">✓</span>Sourced: '+e[4]+'</a> <button class="sharebtn" data-ev="'+i+'">Share</button></div>';
+  }).join('');
+  window.HW=window.HW||{lang:'en',listeners:[]}; window.HW.eventText=function(i){ var e=events[i]; return e[0]+': '+e[2]+'.'; };
+  var btns = document.querySelectorAll('#filters button');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      var f = b.dataset.f;
+      document.querySelectorAll('.ev').forEach(function(ev){
+        ev.classList.toggle('hide', f!=='all' && ev.dataset.k!==f);
+      });
+    });
+  });
+
+  // ===== 4D map: 3D space + time =====
+  var MON = ['Oct','Nov'];
+  function dayIdx(s){ var p=s.split(' '); return p[0]==='Oct' ? (+p[1]-18) : (13 + +p[1]); }
+  function dayName(d){ return d<=13 ? 'Oct '+(18+d) : 'Nov '+(d-13); }
+  var RED='#ff5a5f', GREEN='#3ecf8e', ORANGE='#ff8a3d', GOLD='#f2c14e';
+  function stateAt(id,d){
+    if(id==='airport') return d>=13 ? {c:'#4c8dff',h:110,s:'Salvadoran base',live:d<=15} : null;
+    if(id==='ambush') return d>=21 ? {c:GOLD,h:150,s:'400 Mawozo HQ destroyed',live:false}
+                                   : {c:GOLD,h:95,s:'Ambush · 4 missing',live:d<=3};
+    if(id==='stadium') return d>=25 ? {c:GREEN,h:175,s:'Retaken · Salvadoran base',live:d<=27}
+                                    : {c:RED,h:55,s:'Gang-held since 2024',live:false};
+    if(id==='martissant') return d>=32 ? {c:ORANGE,h:135,s:'Offensive underway',live:true}
+                                       : {c:RED,h:55,s:'Gang-held 5+ years',live:false};
+  }
+  places.airport = {tag:'Base',when:'Since Oct 31, 2026',title:'Tabarre',
+    body:'Salvadoran troops set up their encampment in Tabarre, northeast of central Port-au-Prince and positioned to reach Croix-des-Bouquets. They were flown in from late October with US C-130 support: about 1,000 by Oct 27, 2,000 by Oct 28 and about 2,500 by Nov 19.'};
+  var names = {airport:'Tabarre',ambush:'Croix-des-Bouquets',stadium:'Sylvio Cator Stadium',martissant:'Martissant'};
+  var stage = document.getElementById('stage'), plane = document.getElementById('plane');
+  var rz=-22, rx=56, sc=1, cur=35, selected='stadium';
+  function place(){ plane.style.transform='scale('+sc+') rotateX('+rx+'deg) rotateZ('+rz+'deg)'; }
+  function fit(){ sc=Math.min(1,(stage.clientWidth-20)/820); place(); }
+  window.addEventListener('resize',fit);
+
+  var pillars = document.querySelectorAll('.pillar');
+  function render(d){
+    cur=d;
+    pillars.forEach(function(el){
+      var s=stateAt(el.dataset.id,d);
+      el.style.display = s ? '' : 'none';
+      if(!s) return;
+      el.style.setProperty('--pc',s.c);
+      el.style.setProperty('--h',s.h+'px');
+      el.querySelector('.lbl').innerHTML = names[el.dataset.id]+'<small>'+s.s+'</small>';
+      el.classList.toggle('live',s.live);
+    });
+    document.getElementById('seg1').style.opacity = d>=21 ? 1 : 0;
+    document.getElementById('seg2').style.opacity = d>=25 ? 1 : 0;
+    document.getElementById('hdate').textContent = dayName(d)+', 2026';
+    document.getElementById('hday').textContent = d<3 ? 'Pre-operation · GSF only' : 'Operation day '+(d-2);
+    var t = d>=32?'~2,500':d>=10?'~2,000':d>=9?'~1,000':d>=3?'Deploying':'0';
+    document.getElementById('htroops').textContent = 'Salvadoran troops: '+t;
+    document.getElementById('hloss').textContent = 'Missing: 4 · Killed: '+(d>=33?3:0);
+    document.getElementById('dlabel').textContent = dayName(d);
+    document.getElementById('dayr').value = d;
+    var latest = events.filter(function(e){ return dayIdx(e[0])<=d; })[0];
+    document.getElementById('caption').innerHTML = latest ? '<b>'+latest[0]+': '+latest[2]+'.</b> '+latest[3] : '';
+    showDetail(selected);
+  }
+  var detail = document.getElementById('detail');
+  function showDetail(id){
+    selected=id;
+    var p=places[id], s=stateAt(id,cur);
+    detail.innerHTML = '<span class="tag" style="color:'+s.c+'">'+s.s+' · as of '+dayName(cur)+'</span><h3>'+p.title+'</h3><div class="when">'+p.when+'</div><p style="margin-top:10px">'+p.body+'</p>';
+  }
+
+  // drag to rotate / tilt
+  var drag=null;
+  stage.addEventListener('pointerdown',function(e){ drag={x:e.clientX,y:e.clientY,rz:rz,rx:rx,moved:false}; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointermove',function(e){
+    if(!drag) return;
+    var dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+    if(Math.abs(dx)+Math.abs(dy)>4) drag.moved=true;
+    rz=Math.max(-70,Math.min(70,drag.rz+dx*0.3));
+    rx=Math.max(25,Math.min(72,drag.rx-dy*0.25));
+    place();
+  });
+  stage.addEventListener('pointerup',function(e){
+    if(drag && !drag.moved){
+      var hit=document.elementsFromPoint(e.clientX,e.clientY).find(function(n){return n.closest && n.closest('.pillar');});
+      if(hit) showDetail(hit.closest('.pillar').dataset.id);
+    }
+    drag=null;
+  });
+
+  // time controls
+  var timer=null, playBtn=document.getElementById('play');
+  function stop(){ clearInterval(timer); timer=null; playBtn.textContent='Play'; }
+  playBtn.addEventListener('click',function(){
+    if(timer){ stop(); return; }
+    if(cur>=35) render(0);
+    playBtn.textContent='Pause';
+    timer=setInterval(function(){ if(cur>=35){ stop(); return; } render(cur+1); },420);
+  });
+  document.getElementById('dayr').addEventListener('input',function(e){ stop(); render(+e.target.value); });
+
+  fit(); render(35);
+})();
+</script>
+<script>
+(function(){
+  var HTI = "M817.2 149.2L820.3 157.5L821.3 162.6L820.3 167.7L820.3 175.5L821.3 182.6L829.6 201.7L832.7 225.3L832.7 239.2L829.6 245.9L827.5 247.9L824.4 257.2L821.3 259.2L814.1 263.8L812.0 265.4L813.0 271.6L818.2 278.7L819.2 280.3L828.5 290.1L847.2 298.8L851.3 300.8L850.3 318.8L848.2 324.0L845.1 329.6L834.8 336.3L830.6 340.4L822.3 352.2L809.9 366.1L805.8 368.7L791.3 372.8L786.1 375.9L787.1 381.5L792.3 380.5L799.6 377.9L805.8 378.4L808.9 380.5L813.0 389.2L815.1 392.3L822.3 398.0L824.4 401.1L825.4 406.7L826.5 419.0L828.5 430.9L827.5 436.5L826.5 442.2L824.4 447.3L821.3 453.0L817.2 456.6L808.9 461.2L807.8 462.2L802.7 467.4L796.5 477.6L793.4 481.2L782.0 485.3L760.2 481.2L749.9 483.8L744.7 487.4L746.8 492.5L773.7 519.3L774.7 521.8L775.8 526.5L774.7 528.5L771.6 529.5L770.6 532.6L772.7 538.3L776.8 540.8L788.2 543.9L790.2 546.0L795.4 552.2L797.5 555.2L807.8 562.4L823.4 568.1L827.5 571.2L830.6 573.2L827.5 579.9L815.1 602.5L812.0 608.2L812.0 614.3L812.0 616.9L815.1 625.6L816.1 629.2L816.1 634.4L816.1 643.1L815.1 648.3L812.0 657.5L806.8 654.4L787.1 628.2L777.8 620.0L768.5 613.8L745.7 605.6L736.4 601.0L727.1 597.4L715.7 597.4L693.0 601.0L662.9 601.0L620.5 601.5L598.8 605.6L592.6 602.5L589.5 601.0L587.4 602.5L589.5 613.8L586.3 616.9L583.2 616.9L576.0 613.8L570.8 613.3L537.7 616.4L530.5 615.9L531.5 617.4L531.5 621.0L532.5 622.0L528.4 622.0L526.3 621.5L524.2 620.0L516.0 625.1L500.4 623.6L493.2 626.7L484.9 622.0L475.6 617.9L464.2 615.4L434.2 611.8L425.9 612.3L423.9 611.8L415.6 606.6L413.5 605.6L375.2 599.4L357.6 601.0L355.5 600.5L356.6 596.3L360.7 594.8L371.1 594.8L371.1 593.3L351.4 591.2L328.6 591.2L321.4 593.3L312.1 598.4L309.0 599.4L306.9 597.9L303.8 592.8L301.7 590.7L297.6 593.3L295.5 598.9L293.4 603.5L290.3 601.5L288.3 601.5L285.2 603.5L282.1 602.0L281.0 597.9L282.1 593.3L277.9 594.3L274.8 602.5L270.7 605.6L270.7 601.5L271.7 597.9L273.8 590.7L271.7 592.8L268.6 596.9L266.5 599.4L264.5 597.9L261.4 597.4L260.3 598.9L260.3 600.5L247.9 611.8L227.2 621.0L222.0 626.2L216.9 634.9L229.3 647.7L231.3 652.4L232.4 658.5L231.3 660.6L228.2 661.6L208.6 661.6L206.5 661.1L203.4 659.6L201.3 657.5L200.3 653.4L181.7 626.7L180.6 625.6L178.6 624.6L176.5 623.1L176.5 621.0L175.4 620.0L170.3 614.8L142.3 594.3L137.2 591.7L128.9 590.2L124.7 588.6L121.6 586.6L120.6 583.5L119.6 580.4L118.5 579.4L115.4 579.4L112.3 578.4L105.1 575.3L103.0 574.3L100.9 576.3L95.8 574.3L89.5 576.8L83.3 580.4L77.1 582.5L71.9 581.4L65.7 578.9L59.5 575.8L57.5 573.2L55.4 569.6L44.0 564.0L41.9 558.3L40.9 552.7L38.8 548.6L31.6 538.8L41.9 524.4L40.9 522.9L39.9 519.8L45.0 516.2L48.1 502.3L52.3 499.2L53.3 497.7L53.3 494.1L52.3 490.0L50.2 487.9L50.2 484.3L52.3 481.7L61.6 476.1L75.1 471.0L80.2 469.9L86.4 471.5L89.5 471.5L90.6 468.9L92.6 466.8L95.8 465.8L98.9 465.3L115.4 466.3L126.8 468.9L164.1 485.9L180.6 486.4L182.7 488.9L183.7 490.0L183.7 492.0L185.8 492.0L187.9 491.0L189.9 490.5L198.2 495.1L201.3 496.6L214.8 497.2L217.9 497.7L221.0 499.2L227.2 504.4L229.3 505.4L232.4 505.9L233.4 504.9L234.4 503.8L238.6 503.8L242.7 505.4L244.8 505.4L246.9 504.9L250.0 501.8L252.0 501.3L255.1 496.1L257.2 495.1L259.3 495.1L262.4 495.1L264.5 495.1L277.9 491.0L281.0 490.5L291.4 493.1L291.4 498.7L286.2 502.3L277.9 501.3L277.9 503.3L271.7 501.3L266.5 500.2L260.3 500.8L254.1 503.3L256.2 504.4L261.4 506.9L265.5 508.0L266.5 510.0L266.5 512.1L267.6 514.6L272.7 517.2L282.1 515.7L286.2 517.7L296.5 511.6L309.0 510.0L354.5 513.6L359.7 515.2L371.1 520.8L377.3 522.3L401.1 521.3L412.5 522.3L421.8 526.5L427.0 529.5L432.1 531.1L436.3 531.6L443.5 530.1L464.2 526.5L489.1 532.6L488.0 537.2L493.2 536.2L500.4 533.7L505.6 533.7L509.8 535.2L530.5 538.8L541.8 536.2L549.1 529.5L555.3 520.3L559.4 509.5L566.7 500.8L576.0 498.7L623.6 503.3L625.7 502.3L626.7 501.3L626.7 499.7L629.8 499.2L630.9 500.2L631.9 501.3L638.1 508.0L641.2 509.5L645.3 508.5L648.4 503.3L648.4 496.1L648.4 477.6L648.4 474.0L650.5 469.9L652.6 467.4L653.6 465.3L652.6 461.7L649.5 459.6L637.1 453.5L632.9 452.5L626.7 452.5L622.6 451.4L617.4 446.3L612.2 440.1L606.0 435.5L599.8 436.5L589.5 430.4L587.4 427.8L584.3 422.1L569.8 399.0L565.6 394.9L560.5 389.8L554.3 386.2L549.1 384.6L543.9 382.0L513.9 349.2L511.8 341.4L524.2 336.3L535.6 335.8L541.8 333.7L543.9 329.1L542.9 323.5L538.7 320.4L533.6 318.3L528.4 315.8L525.3 311.6L518.0 299.3L517.0 294.7L518.0 293.1L519.1 290.6L521.1 288.0L524.2 280.8L526.3 278.2L529.4 276.7L534.6 275.7L538.7 275.2L541.8 275.7L537.7 268.0L535.6 265.9L529.4 265.4L526.3 262.8L525.3 257.2L525.3 250.5L526.3 246.9L528.4 248.9L530.5 250.5L533.6 251.0L536.7 251.0L539.8 248.4L539.8 246.4L538.7 243.8L537.7 236.6L541.8 236.6L543.9 237.1L546.0 239.2L548.1 240.7L552.2 240.7L547.0 229.4L543.9 227.9L528.4 226.8L525.3 224.3L522.2 220.2L519.1 215.5L512.9 211.4L495.3 203.2L479.7 194.0L474.6 192.4L469.4 190.4L459.0 181.6L457.0 181.1L454.9 182.1L436.3 176.0L434.2 175.5L428.0 173.9L424.9 173.9L421.8 176.0L419.7 177.5L417.6 178.0L412.5 177.0L406.3 174.4L400.0 170.8L396.9 167.7L390.7 173.4L378.3 174.9L350.4 173.4L345.2 171.9L342.1 171.9L340.0 170.3L334.8 164.7L332.8 163.1L328.6 160.5L326.6 154.4L326.6 148.2L325.5 144.6L335.9 128.2L336.9 124.6L340.0 124.6L355.5 117.4L355.5 115.3L339.0 115.3L344.2 111.7L349.3 111.2L355.5 111.7L360.7 111.2L395.9 95.3L406.3 87.6L412.5 79.9L415.6 84.0L418.7 85.0L427.0 84.0L431.1 85.0L438.3 87.6L442.5 88.1L445.6 88.1L447.7 87.6L453.9 86.0L458.0 85.5L462.1 86.0L466.3 87.6L469.4 90.7L471.5 85.5L476.6 82.9L483.9 81.9L489.1 84.0L496.3 80.9L505.6 78.8L516.0 77.3L524.2 77.8L553.2 85.0L560.5 89.1L566.7 92.2L584.3 97.3L585.3 98.9L590.5 106.1L598.8 111.2L607.0 114.3L611.2 111.2L616.4 114.3L624.6 117.4L632.9 119.4L637.1 118.4L638.1 123.5L652.6 136.4L652.6 138.5L651.6 137.4L646.4 136.4L650.5 145.1L651.6 146.7L656.7 147.7L656.7 144.6L660.9 140.5L657.8 140.5L657.8 138.5L658.8 136.4L657.8 135.4L656.7 132.3L658.8 132.3L662.9 134.3L668.1 134.9L673.3 133.3L676.4 128.7L678.5 126.1L684.7 125.6L688.8 129.2L685.7 136.4L690.9 139.5L696.1 139.5L707.4 137.9L709.5 138.5L711.6 139.5L715.7 143.6L718.8 144.6L728.1 144.6L731.3 145.1L732.3 146.7L733.3 148.2L735.4 149.2L739.5 152.3L742.6 152.8L744.7 151.8L745.7 149.8L747.8 147.2L750.9 146.7L756.1 142.6L764.4 142.6L778.9 146.7L786.1 147.7L788.2 149.2L787.1 152.8L784.0 154.4L780.9 154.9L772.7 154.9L775.8 160.5L780.9 161.1L786.1 159.5L790.2 159.0L795.4 163.1L798.5 165.2L800.6 164.1L801.6 160.0L801.6 158.0L794.4 156.4L792.3 154.4L791.3 151.8L792.3 148.7L794.4 146.7L797.5 147.2L804.7 148.7L817.2 149.2ZM279.0 641.1L284.1 641.1L289.3 642.6L293.4 644.7L293.4 649.3L290.3 651.3L284.1 651.9L272.7 651.3L268.6 650.3L263.4 647.7L256.2 641.1L257.2 638.0L258.3 636.4L260.3 636.9L262.4 639.0L265.5 636.4L267.6 637.5L268.6 639.5L270.7 641.1L279.0 641.1ZM231.3 478.1L237.6 475.1L246.9 475.6L254.1 479.7L254.1 486.4L247.9 490.5L238.6 490.5L231.3 486.4L231.3 478.1ZM502.5 34.1L510.8 33.6L517.0 34.1L522.2 36.7L528.4 40.3L555.3 51.1L566.7 58.3L563.6 65.5L559.4 63.4L534.6 60.3L523.2 55.7L509.8 52.6L504.6 50.6L501.5 51.1L498.4 52.1L495.3 52.6L489.1 51.6L481.8 49.0L475.6 45.9L471.5 42.3L473.5 41.8L475.6 40.3L488.0 35.7L502.5 34.1ZM385.6 402.1L380.4 398.5L378.3 396.9L376.2 394.4L375.2 391.3L374.2 387.7L375.2 384.6L378.3 380.5L383.5 376.9L389.7 374.9L395.9 373.8L402.1 374.9L442.5 391.8L462.1 398.0L483.9 409.3L504.6 418.0L512.9 428.3L514.9 435.0L516.0 442.7L514.9 450.4L511.8 456.6L508.7 457.6L506.7 455.5L503.5 450.4L501.5 448.3L499.4 447.3L493.2 447.3L467.3 441.1L458.0 440.6L449.7 438.6L423.9 422.1L398.0 414.9L391.8 410.3L385.6 402.1Z", DOM = "M817.2 149.2L822.3 150.3L827.5 152.8L826.5 147.2L821.3 135.4L822.3 132.3L822.3 129.7L814.1 129.7L813.0 126.1L816.1 121.5L821.3 116.4L822.3 115.3L826.5 115.3L828.5 114.3L831.6 110.7L833.7 109.2L836.8 107.6L839.9 107.1L842.0 106.1L845.1 103.0L844.1 98.9L843.0 95.8L845.1 93.2L848.2 92.2L850.3 92.7L854.4 94.3L856.5 94.8L857.5 93.7L859.6 91.2L889.6 88.1L897.9 89.1L905.1 91.7L932.0 106.1L940.3 107.6L947.6 104.5L953.8 109.2L957.9 110.7L970.3 111.2L974.5 110.7L974.5 108.1L974.5 105.0L976.5 102.0L979.7 100.4L982.8 103.5L985.9 111.2L987.9 110.2L989.0 108.6L991.0 106.6L991.0 104.5L989.0 104.0L987.9 103.0L987.9 100.9L992.1 102.5L996.2 102.5L999.3 101.4L1004.5 100.9L1007.6 98.4L1012.8 88.6L1015.9 86.0L1020.0 85.0L1029.3 80.4L1034.5 79.9L1039.7 80.9L1043.8 83.5L1045.9 87.6L1044.9 92.2L1050.0 94.8L1052.1 94.8L1051.1 89.6L1050.0 88.1L1064.5 90.7L1068.7 90.1L1076.9 88.1L1080.0 88.1L1083.2 90.7L1096.6 105.6L1097.6 108.6L1095.6 111.2L1107.0 111.2L1111.1 113.3L1121.4 122.5L1131.8 128.2L1143.2 131.8L1155.6 133.8L1173.2 133.8L1175.3 133.3L1176.3 131.3L1179.4 128.7L1183.5 126.6L1186.7 125.6L1198.0 129.2L1215.6 147.7L1226.0 159.0L1230.1 162.6L1236.3 165.2L1241.5 166.7L1255.0 168.3L1265.3 171.9L1285.0 176.0L1289.1 176.0L1292.2 174.9L1294.3 172.4L1304.6 161.1L1310.9 158.5L1326.4 159.0L1333.6 158.0L1337.8 158.5L1341.9 161.1L1352.3 171.9L1355.4 178.5L1354.3 186.2L1350.2 203.2L1355.4 205.8L1358.5 210.9L1357.4 224.8L1358.5 231.0L1360.5 235.6L1379.2 264.4L1388.5 273.1L1389.5 274.1L1398.8 278.2L1405.0 277.2L1416.4 272.6L1421.6 271.6L1435.1 271.0L1440.2 270.0L1446.4 267.4L1454.7 261.8L1457.8 261.3L1460.9 261.8L1467.1 264.9L1471.3 265.4L1477.5 263.8L1480.6 263.3L1482.7 263.3L1484.7 263.8L1485.8 264.9L1485.8 266.4L1486.8 268.0L1488.9 267.4L1492.0 265.4L1508.5 272.6L1513.7 275.7L1516.8 269.5L1522.0 264.4L1535.5 257.2L1543.7 254.6L1545.8 258.2L1543.7 265.4L1538.6 274.1L1544.8 276.2L1551.0 276.2L1557.2 274.6L1562.4 271.6L1564.4 278.2L1560.3 283.9L1555.1 288.5L1553.0 293.7L1552.0 299.3L1547.9 303.9L1543.7 308.0L1537.5 309.6L1514.8 305.0L1489.9 307.0L1483.7 305.5L1473.4 300.3L1437.1 295.7L1433.0 296.7L1430.9 300.8L1429.9 315.2L1427.8 327.6L1428.8 332.2L1432.0 334.3L1435.1 336.8L1450.6 334.3L1456.8 336.3L1463.0 334.3L1476.5 339.4L1483.7 338.9L1481.6 337.3L1479.6 335.8L1477.5 334.8L1474.4 334.3L1474.4 332.2L1488.9 331.2L1494.1 332.2L1499.2 335.8L1502.3 345.6L1507.5 349.2L1512.7 350.2L1522.0 351.7L1548.9 358.9L1560.3 362.0L1564.4 361.5L1570.6 358.4L1568.6 356.4L1564.4 354.3L1564.4 351.2L1569.6 349.7L1574.8 353.8L1580.0 363.5L1584.1 366.1L1588.2 367.1L1592.4 368.7L1594.4 372.3L1597.6 369.2L1604.8 366.1L1607.9 363.5L1605.8 361.0L1610.0 360.5L1612.0 359.4L1615.1 356.4L1616.2 355.3L1627.6 355.8L1633.8 356.9L1639.0 358.9L1643.1 361.5L1644.1 362.5L1644.1 364.6L1645.2 365.6L1651.4 367.7L1662.8 369.7L1669.0 370.2L1671.0 370.7L1674.1 372.8L1677.2 374.3L1681.4 374.9L1684.5 375.9L1718.7 407.2L1730.0 422.1L1747.6 435.5L1760.1 444.2L1764.2 445.8L1765.2 447.3L1778.7 459.6L1795.2 469.9L1803.5 481.7L1801.5 494.1L1774.5 535.2L1772.5 536.7L1770.4 538.8L1769.4 541.9L1770.4 552.7L1769.4 555.2L1766.3 560.9L1762.1 562.9L1755.9 564.0L1748.7 564.0L1743.5 561.9L1732.1 554.7L1728.0 553.2L1723.8 556.3L1723.8 561.4L1725.9 567.1L1722.8 573.2L1719.7 577.8L1717.6 583.5L1713.5 601.0L1711.4 604.1L1708.3 605.6L1683.5 607.1L1679.3 605.6L1678.3 594.3L1671.0 579.9L1661.7 565.5L1653.4 555.2L1644.1 549.1L1632.7 543.9L1620.3 542.4L1606.9 548.0L1585.1 549.1L1580.0 548.0L1567.5 543.9L1561.3 542.9L1557.2 541.4L1548.9 534.2L1541.7 532.6L1536.5 533.7L1531.3 535.7L1525.1 535.7L1518.9 532.6L1513.7 538.3L1476.5 540.8L1465.1 545.0L1458.9 545.5L1443.3 534.2L1437.1 531.1L1433.0 530.6L1430.9 533.1L1430.9 536.7L1432.0 539.8L1430.9 542.9L1427.8 543.9L1423.7 543.9L1420.6 542.9L1418.5 541.9L1414.4 533.7L1411.3 531.6L1409.2 530.6L1365.7 525.9L1357.4 525.9L1351.2 527.5L1341.9 532.1L1334.7 537.2L1331.6 538.3L1324.3 540.8L1321.2 542.4L1318.1 544.4L1310.9 550.1L1306.7 557.8L1304.6 567.1L1302.6 569.6L1296.4 572.7L1295.3 575.3L1293.3 578.4L1283.9 587.6L1276.7 595.8L1273.6 598.9L1271.5 598.4L1264.3 598.4L1259.1 599.4L1255.0 601.5L1250.8 598.4L1244.6 596.9L1208.4 597.4L1202.2 599.4L1189.8 606.1L1183.5 607.7L1163.9 607.7L1158.7 605.6L1158.7 603.0L1160.8 601.0L1162.8 598.9L1164.9 597.4L1163.9 593.8L1161.8 592.2L1159.7 591.2L1157.7 588.1L1152.5 584.5L1150.4 581.4L1151.5 578.4L1153.5 577.3L1155.6 576.3L1156.6 574.3L1157.7 568.1L1158.7 561.4L1157.7 555.7L1155.6 552.2L1149.4 544.4L1146.3 541.4L1139.0 538.8L1133.9 537.8L1126.6 536.7L1120.4 538.8L1117.3 543.9L1118.3 550.1L1117.3 552.7L1109.0 561.4L1107.0 562.9L1103.9 564.0L1100.7 563.5L1094.5 561.9L1091.4 561.4L1089.4 562.4L1085.2 565.5L1083.2 566.0L1079.0 565.5L1074.9 569.1L1072.8 573.7L1071.8 575.3L1067.6 577.8L1058.3 587.6L1054.2 590.2L1048.0 590.7L1044.9 589.7L1042.8 587.1L1041.8 584.0L1039.7 581.4L1036.6 579.4L1033.5 577.8L1021.1 575.3L1014.8 575.3L1010.7 576.8L1008.6 581.4L1008.6 584.0L1005.5 588.6L1005.5 591.7L1005.5 595.8L1007.6 597.9L1008.6 599.9L1010.7 603.5L1015.9 620.0L1016.9 622.6L1017.9 626.2L1011.7 634.9L1006.6 647.2L979.7 687.3L977.6 694.0L976.5 696.6L973.4 698.6L968.3 701.7L964.1 704.8L962.1 707.4L960.0 711.0L957.9 716.1L955.8 715.6L953.8 714.0L953.8 716.1L952.7 717.1L951.7 718.1L953.8 718.1L952.7 720.7L951.7 722.3L949.6 723.8L947.6 724.3L946.5 725.3L944.5 731.5L943.4 733.6L939.3 738.7L930.0 767.5L926.9 773.1L915.5 790.1L912.4 788.6L909.3 786.0L907.2 782.4L886.5 749.5L882.4 744.4L872.0 740.2L849.2 743.3L839.9 740.8L842.0 738.7L851.3 729.5L853.4 725.3L853.4 718.7L852.3 714.0L847.2 705.3L844.1 700.7L844.1 699.1L844.1 695.5L845.1 683.7L843.0 678.6L838.9 672.4L827.5 663.7L812.0 657.5L815.1 648.3L816.1 643.1L816.1 634.4L816.1 629.2L815.1 625.6L812.0 616.9L812.0 614.3L812.0 608.2L815.1 602.5L827.5 580.4L830.6 574.3L827.5 571.2L823.4 568.1L807.8 562.4L797.5 555.2L795.4 552.2L790.2 546.0L788.2 543.9L776.8 540.8L772.7 538.3L770.6 532.6L771.6 529.5L774.7 528.5L775.8 526.5L774.7 521.8L773.7 519.3L746.8 492.5L744.7 487.4L749.9 483.8L760.2 481.2L782.0 485.3L793.4 481.2L796.5 477.6L802.7 467.4L806.8 462.7L808.9 461.2L817.2 456.6L821.3 453.0L824.4 447.3L826.5 442.2L827.5 436.5L828.5 430.9L826.5 419.0L825.4 406.7L824.4 401.1L822.3 398.0L815.1 392.3L813.0 389.2L808.9 380.5L805.8 378.4L799.6 377.9L792.3 380.5L787.1 381.5L786.1 375.9L791.3 372.8L805.8 368.7L809.9 366.1L822.3 352.2L830.6 340.4L834.8 336.3L845.1 329.6L848.2 324.0L850.3 318.8L851.3 300.8L847.2 298.8L828.5 290.1L819.2 280.3L818.2 278.7L813.0 271.6L812.0 265.4L814.1 263.8L821.3 259.2L824.4 257.2L827.5 247.9L829.6 245.9L832.7 239.2L832.7 225.3L829.6 201.7L821.3 182.6L820.3 175.5L820.3 167.7L821.3 162.6L820.3 157.5L817.2 149.2ZM884.4 808.1L879.3 805.0L879.3 798.3L882.4 791.1L885.5 785.0L889.6 787.0L893.7 790.1L901.0 797.3L895.8 798.8L889.6 806.0L884.4 808.1ZM1706.2 617.9L1721.8 617.4L1724.9 619.0L1728.0 623.1L1731.1 628.7L1733.1 634.4L1733.1 636.9L1729.0 635.9L1719.7 631.3L1714.5 630.3L1709.3 631.3L1701.1 633.9L1695.9 634.9L1685.5 631.8L1678.3 625.1L1674.1 617.4L1671.0 609.7L1675.2 608.7L1680.4 609.2L1685.5 611.8L1689.7 614.8L1692.8 616.4L1706.2 617.9Z";
+  window.HW=window.HW||{lang:'en',listeners:[]}; window.HW.HTI=HTI;
+  var W=920,H=700;
+  var plane=document.getElementById('plane2'), stage=document.getElementById('stage2');
+  // extruded slab: stacked layers under the top surface
+  var html='';
+  for(var i=7;i>=1;i--){
+    html+='<svg viewBox="0 0 920 700" style="transform:translateZ('+(-i*3)+'px)"><path d="'+HTI+'" fill="'+(i>1?'#0e2a1b':'#123522')+'"/></svg>';
+  }
+  html+='<svg viewBox="0 0 920 700">'+
+    '<defs><pattern id="g2" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M46 0H0V46" fill="none" stroke="#16233a" stroke-width="1"/></pattern>'+
+    '<linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c6b45"/><stop offset="1" stop-color="#1f4f33"/></linearGradient></defs>'+
+    '<rect width="920" height="700" fill="#0f2238" opacity=".55"/><rect width="920" height="700" fill="url(#g2)"/>'+
+    '<path d="'+DOM+'" fill="#26303d" stroke="#3a4657" stroke-width="1.5"/>'+
+    '<path d="'+HTI+'" fill="url(#land)" stroke="#5fd39a" stroke-width="2"/>'+
+    '<polyline points="650,505 566,514 434,530 244,609" fill="none" stroke="#f2c14e" stroke-width="2.5" stroke-dasharray="7 6"/>'+
+    '<polyline points="650,505 600,430 546,332 549,228 690,134" fill="none" stroke="#f2c14e" stroke-width="2.5" stroke-dasharray="7 6"/>'+
+    '<rect x="632" y="487" width="58" height="30" fill="rgba(255,90,95,.18)" stroke="#ff5a5f" stroke-width="2"/>'+
+    '<text x="300" y="40" fill="#5b84b5" font-family="Inter" font-size="18" font-style="italic" letter-spacing="3">ATLANTIC OCEAN</text>'+
+    '<text x="380" y="680" fill="#5b84b5" font-family="Inter" font-size="18" font-style="italic" letter-spacing="3">CARIBBEAN SEA</text>'+
+    '<text x="300" y="360" fill="#5b84b5" font-family="Inter" font-size="14" font-style="italic">Gulf of Gonâve</text>'+
+    '<text x="835" y="300" fill="#6b7889" font-family="Inter" font-size="13" letter-spacing="2" transform="rotate(-70 835 300)">DOMINICAN REPUBLIC</text>'+
+    '<text x="470" y="575" fill="#f2c14e" font-family="Inter" font-size="12" font-weight="600">Route 2</text>'+
+    '<text x="560" y="300" fill="#f2c14e" font-family="Inter" font-size="12" font-weight="600">Route 1</text>'+
+    '<rect width="920" height="700" fill="none" stroke="#3a4657" stroke-width="3"/>'+
+    '</svg>';
+  var P = [
+    ['pap',650,505,110,'#ff5a5f','Port-au-Prince','Capital','Haiti\'s capital and the center of the gang crisis. Gangs, the UN-backed Gang Suppression Force, Haitian police and about 2,500 Salvadoran troops are all operating here. The red box is the area shown in the 4D city map above.'],
+    ['cap',690,134,44,'#e8edf3','Cap-Haïtien','2nd city','Haiti\'s second-largest city, on the north coast at the end of Route 1.'],
+    ['gon',549,228,34,'#e8edf3','Gonaïves','City','Where Haiti declared its independence in 1804. It sits on Route 1 between the capital and the north.'],
+    ['stm',546,332,30,'#e8edf3','Saint-Marc','City','A port on Route 1, the main road north out of the capital.'],
+    ['leo',566,514,30,'#e8edf3','Léogâne','City','On Route 2 just west of the capital, and the epicenter of the 2010 earthquake. Traffic from Port-au-Prince has to pass Martissant to get here.'],
+    ['mrg',434,530,28,'#e8edf3','Miragoâne','City','A port on Route 2, the road linking the capital to the south.'],
+    ['cay',244,609,40,'#e8edf3','Les Cayes','City','The main city of the south, at the far end of Route 2. Gang control of Martissant has cut the road between here and the capital for more than five years.'],
+    ['jac',595,600,32,'#e8edf3','Jacmel','City','A south-coast city known for its colonial architecture and carnival.'],
+    ['jer',138,472,30,'#e8edf3','Jérémie','City','The main city of Haiti\'s far southwest.'],
+    ['pdp',509,79,28,'#e8edf3','Port-de-Paix','City','A port on the northwest coast, facing Tortuga island.'],
+    ['hin',745,320,30,'#e8edf3','Hinche','City','The main town of the Central Plateau.'],
+    ['mir',719,417,30,'#e8edf3','Mirebalais','City','A Central Plateau town northeast of the capital.'],
+    ['selle',753,560,75,'#93a1b3','Pic la Selle','2,680 m','Haiti\'s highest point, in the Massif de la Selle southeast of the capital.'],
+    ['mac',164,554,65,'#93a1b3','Pic Macaya','2,347 m','The second-highest peak, in the Massif de la Hotte in the far southwest.'],
+    ['gonv',446,411,14,'#5fd39a','Île de la Gonâve','Island','Haiti\'s largest island, in the Gulf of Gonâve west of the capital.'],
+    ['tort',523,52,14,'#5fd39a','Tortuga','Island','Île de la Tortue, off the north coast. It was famous as a pirate haven in the 1600s.']
+  ];
+  P.forEach(function(p){
+    html+='<div class="pillar sm" data-id="'+p[0]+'" style="left:'+p[1]+'px;top:'+p[2]+'px;--pc:'+p[4]+';--h:'+p[3]+'px"><div class="foot"></div><div class="bar b2"></div><div class="bar"></div><div class="lbl">'+p[5]+'<small>'+p[6]+'</small></div></div>';
+  });
+  plane.innerHTML=html;
+  var pp=plane.querySelector('[data-id="pap"]'); pp.classList.add('live');
+
+  var detail=document.getElementById('detail2');
+  function show(id){
+    var p=P.filter(function(x){return x[0]===id;})[0];
+    detail.innerHTML='<span class="tag" style="color:'+p[4]+'">'+p[6]+'</span><h3>'+p[5]+'</h3><p style="margin-top:10px">'+p[7]+'</p>';
+  }
+  show('pap');
+
+  var rz=-14, rx=52, sc=1;
+  function place(){ plane.style.transform='scale('+sc+') rotateX('+rx+'deg) rotateZ('+rz+'deg)'; }
+  function fit(){ sc=Math.min(0.82,(stage.clientWidth-20)/1000); place(); }
+  window.addEventListener('resize',fit);
+  var drag=null;
+  stage.addEventListener('pointerdown',function(e){ drag={x:e.clientX,y:e.clientY,rz:rz,rx:rx,moved:false}; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointermove',function(e){
+    if(!drag) return;
+    var dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+    if(Math.abs(dx)+Math.abs(dy)>4) drag.moved=true;
+    rz=Math.max(-70,Math.min(70,drag.rz+dx*0.3));
+    rx=Math.max(20,Math.min(72,drag.rx-dy*0.25));
+    place();
+  });
+  stage.addEventListener('pointerup',function(e){
+    if(drag && !drag.moved){
+      var hit=document.elementsFromPoint(e.clientX,e.clientY).find(function(n){return n.closest && n.closest('.pillar');});
+      if(hit) show(hit.closest('.pillar').dataset.id);
+    }
+    drag=null;
+  });
+  fit();
+})();
+</script>
+
+<div class="smodal" id="shareModal"><div class="sbox"><div class="shead"><b id="shareTitle">Share</b><button class="tvx" id="shareClose">Close</button></div><textarea id="shareText" rows="6"></textarea><div class="tipbtns"><a class="tvbtn" id="shareX" href="#" target="_blank" rel="noopener">Post on X</a><button class="fopen" id="shareCopy">Copy</button><span class="checked" id="shareHint"></span></div></div></div>
+<div class="toast" id="toast"></div>
+<div class="tv" id="tv">
+  <div class="tvtop">
+    <div class="tvbrand">HAITI<span>/</span>FRONTLINE <span style="font:700 13px Inter;letter-spacing:1.5px;color:var(--red);vertical-align:middle;margin-left:10px">● LIVE WIRE</span></div>
+    <div class="tvclock"><span>Operation day <b id="tvday">--</b></span><span id="tvtime"></span><button class="tvx" id="tvClose">Exit (Esc)</button></div>
+  </div>
+  <div class="fbar"><i id="tvprog"></i></div>
+  <div class="tvmain"><div id="tvbody"></div><div class="tvcount" id="tvcount"></div></div>
+  <div class="ticker"><div class="tick-label"><span class="dot"></span>LATEST</div><div class="tick-view"><div class="tick-track"></div></div></div>
+</div>
+<script>
+window.HW = window.HW || {lang:'en', listeners:[]};
+(function(){
+var SITE='https://haitifrontline.com';
+var T = {
+ tr1:{es:'<span class="chk">✓</span><b>Cada dato con fuente</b> en reportes publicados',ht:'<span class="chk">✓</span><b>Chak enfòmasyon gen sous</b> nan rapò ki pibliye'},
+ tr2:{es:'<b>Independiente</b>: sin afiliación a gobiernos ni partidos',ht:'<b>Endepandan</b>: pa gen lyen ak okenn gouvènman oswa pati'},
+ tr3:{es:'Metodología y correcciones',ht:'Metodoloji ak koreksyon'},
+ live:{es:'En vivo · Actualizado',ht:'An dirèk · Mizajou'},
+ edi:{es:'Rastreador diario · Edición',ht:'Swivi chak jou · Edisyon'},
+ h1:{es:'La guerra de El Salvador contra las pandillas de Haití, día a día.',ht:'Lagè El Salvador kont gang ann Ayiti, jou pa jou.'},
+ heroP:{es:'El despliegue de 2.500 soldados de Bukele es la mayor operación militar extranjera en Haití en una década. Esta página sigue lo que se ha recuperado, quiénes se han perdido y lo que viene, con fuente para cada dato.',ht:'2,500 sòlda Bukele voye yo se pi gwo operasyon militè etranje ann Ayiti depi dis ane. Paj sa a swiv ki zòn yo reprann, ki moun ki tonbe, ak sa k ap vini, ak yon sous pou chak enfòmasyon.'},
+ c1:{es:'Día de la operación salvadoreña<br>(inició el 21 de oct.)',ht:'Jou operasyon salvadoryen an<br>(te kòmanse 21 okt.)'},
+ c2:{es:'Días que los 4 técnicos salvadoreños llevan desaparecidos (desde el 18 de oct.)',ht:'Kantite jou 4 teknisyen salvadoryen yo disparèt (depi 18 okt.)'},
+ lwH:{es:'<span class="dot"></span> En vivo',ht:'<span class="dot"></span> An dirèk'},
+ lwS:{es:'Publicaciones, declaraciones y artículos en cuanto llegan. Cada uno lleva su verificación y enlace al original. Se actualiza solo.',ht:'Pòs, deklarasyon ak atik yo jan yo rive. Chak youn gen yon nòt verifikasyon ak lyen pou orijinal la. Li mete tèt li ajou poukont li.'},
+ lg1:{es:'<i class="st st-confirmed">Confirmado</i> Varias fuentes independientes o registro oficial',ht:'<i class="st st-confirmed">Konfime</i> Plizyè sous endepandan oswa dosye ofisyèl'},
+ lg2:{es:'<i class="st st-reported">Reportado</i> Un medio confiable hasta ahora',ht:'<i class="st st-reported">Rapòte</i> Yon sèl medya serye pou kounye a'},
+ lg3:{es:'<i class="st st-official">Dato oficial</i> Viene de una de las partes, sin verificación independiente',ht:'<i class="st st-official">Deklarasyon ofisyèl</i> Soti nan youn nan pati yo, poko verifye'},
+ lg4:{es:'<i class="st st-disputed">En disputa</i> Las partes se contradicen',ht:'<i class="st st-disputed">Diskite</i> Pati yo pa dakò'},
+ tv:{es:'Modo TV',ht:'Mòd TV'},
+ cuH:{es:'Resumen en 60 segundos',ht:'Rezime an 60 segonn'},
+ cuS:{es:'Todo lo importante, en un párrafo. Se reescribe con cada actualización.',ht:'Tout sa ki enpòtan, nan yon sèl paragraf. Nou reekri l chak mizajou.'},
+ cuStamp:{es:'Al domingo 22 de nov.',ht:'Jiska dimanch 22 nov.'},
+ cuP:{es:'Después de que pandillas emboscaron a cuatro técnicos de aviación salvadoreños en las afueras de Puerto Príncipe el 18 de oct., Nayib Bukele envió unos 2.500 soldados a Haití, que operan aparte de la Fuerza de Supresión de Pandillas respaldada por la ONU. Ayudaron a recuperar el estadio nacional (12 de nov.), ahora base avanzada, y las fuerzas haitianas lanzaron la primera gran ofensiva en cinco años sobre Martissant, el paso controlado por pandillas en la carretera al sur (19 de nov.). La misión tiene sus primeras muertes: <strong>tres soldados salvadoreños murieron en una explosión el 20 de nov.</strong> Ese mismo día, Haití anunció un acuerdo para que una empresa salvadoreña ayude a construir tres cárceles nuevas. Los cuatro desaparecidos originales siguen sin aparecer. Miles de haitianos han marchado en apoyo, mientras la ONU advierte que hay que proteger a los civiles y Bukele, que busca un tercer mandato, choca con un diplomático estadounidense por la coordinación.',
+       ht:'Apre gang yo te pran nan pyèj kat teknisyen avyasyon salvadoryen toupre Pòtoprens 18 okt., Nayib Bukele voye anviwon 2,500 sòlda ann Ayiti. Yo travay apa de Fòs pou Kraze Gang (GSF) ONI sipòte a. Yo ede reprann estad nasyonal la (12 nov.), ki se baz yo kounye a, epi fòs ayisyen yo lanse premye gwo atak an senk ane sou Matisan, pasaj gang yo kontwole sou wout ki mennen nan Sid la (19 nov.). Misyon an gen premye mò li: <strong>twa sòlda salvadoryen mouri nan yon eksplozyon 20 nov.</strong> Menm jou a, Ayiti anonse yon akò pou yon konpayi salvadoryen ede bati twa nouvo prizon. Kat moun ki te disparèt yo toujou pa jwenn. Plizyè milye Ayisyen te mache pou sipòte yo, pandan ONI ap mande pou pwoteje sivil yo, e Bukele, k ap chèche yon twazyèm manda, ap goumen ak yon diplomat ameriken sou kowòdinasyon.'},
+ sbH:{es:'Marcador',ht:'Tablo chif'},
+ sbS:{es:'Las cifras clave, cada una con su fuente y fecha.',ht:'Chif kle yo, chak ak sous li ak dat li.'},
+ t1:{es:'Soldados salvadoreños en Haití',ht:'Sòlda salvadoryen ann Ayiti'},
+ t2:{es:'Soldados salvadoreños muertos',ht:'Sòlda salvadoryen ki mouri'},
+ t2s:{es:'Explosión en zona de trabajo, 20 de nov. (Bloomberg)',ht:'Eksplozyon kote yo t ap travay, 20 nov. (Bloomberg)'},
+ t3:{es:'Técnicos aún desaparecidos',ht:'Teknisyen ki toujou disparèt'},
+ t3s:{es:'Destino en disputa; una pandilla dice que murieron, Bukele lo niega',ht:'Sò yo diskite; yon gang di yo mouri, Bukele di non'},
+ t4:{es:'Presuntos pandilleros muertos en la ofensiva de Martissant',ht:'Moun yo sispèk se gang ki mouri nan atak Matisan an'},
+ t5:{es:'Personas asesinadas en Haití, jul–sep',ht:'Moun ki mouri ann Ayiti, jiy–sept'},
+ t6:{es:'Candidatos en la carrera presidencial de Haití',ht:'Kandida nan eleksyon prezidansyèl Ayiti'},
+ mH:{es:'El mapa, en 4D',ht:'Kat la, an 4D'},
+ mS:{es:'Mapa 3D más el tiempo. Arrastra para girar e inclinar, mueve la línea de tiempo o presiona play para ver la operación desde el 18 de oct.',ht:'Kat 3D plis tan an. Trennen pou vire l, deplase liy tan an, oswa peze play pou wè operasyon an depi 18 okt.'},
+ hint:{es:'Arrastra para girar',ht:'Trennen pou vire'},
+ mN:{es:'Línea azul = movimientos salvadoreños reportados · Rojo = bajo control de pandillas · Naranja = combates · Verde = recuperado · Dorado = sitio de la emboscada. Posiciones aproximadas; la altura indica la magnitud de lo ocurrido.',ht:'Liy ble = deplasman salvadoryen yo rapòte · Wouj = gang kontwole · Oranj = batay ap fèt · Vèt = reprann · Lò = kote pyèj la te fèt. Pozisyon yo apwoksimatif; wotè a montre gwosè sa k pase.'},
+ nowH:{es:'Ahora mismo',ht:'Kounye a'},
+ n1:{es:'En manos de fuerzas salvadoreñas y haitianas; se prepara como base avanzada salvadoreña para avanzar sobre barrios vecinos controlados por pandillas.',ht:'Fòs salvadoryen ak ayisyen kenbe l; y ap prepare l kòm baz pou antre nan katye gang yo kontwole bò kote l.'},
+ n2:{es:'La policía haitiana, con la fuerza de tarea de Vectus Global, combate para despejar el corredor de la Ruta 2. La policía dice que 54 presuntos pandilleros murieron en los dos primeros días (19 y 20 de nov.).',ht:'Lapolis ayisyen, ak fòs travay Vectus Global la, ap goumen pou libere koridò Wout 2 a. Lapolis di 54 moun yo sispèk se gang mouri nan de premye jou yo (19 ak 20 nov.).'},
+ n3b:{es:'Los cuatro técnicos desaparecidos',ht:'Kat teknisyen ki disparèt yo'},
+ n3:{es:'Sin aparecer tras 35 días. Bukele dice que las tropas siguen buscando. Una pandilla afirma que murieron, lo que él rechaza.',ht:'Yo toujou pa jwenn yo apre 35 jou. Bukele di sòlda yo toujou ap chèche. Yon gang di yo mouri, men li rejte sa.'},
+ n4b:{es:'Bajas salvadoreñas',ht:'Pèt salvadoryen'},
+ n4:{es:'Tres soldados murieron en una explosión el 20 de nov. mientras manipulaban material explosivo. No se ha publicado el lugar exacto.',ht:'Twa sòlda mouri nan yon eksplozyon 20 nov. pandan yo t ap manyen eksplozif. Yo poko pibliye kote egzak la.'},
+ h3H:{es:'Haití en 3D',ht:'Ayiti an 3D'},
+ h3S:{es:'Todo el país, para ver dónde están los combates. Arrastra para girar e inclinar, y toca cualquier etiqueta para más contexto.',ht:'Tout peyi a, pou w wè kote batay yo ye. Trennen pou vire l, epi touche nenpòt non pou plis enfòmasyon.'},
+ h3N:{es:'Pilar rojo = Puerto Príncipe, donde se concentra la operación (el mapa 4D de arriba amplía el recuadro rojo). Líneas punteadas = rutas nacionales 1 y 2. Pilares grises = picos más altos.',ht:'Poto wouj = Pòtoprens, kote operasyon an konsantre (kat 4D anwo a zoume sou kare wouj la). Liy pwentiye = wout nasyonal 1 ak 2. Poto gri = pi wo mòn yo.'},
+ tlH:{es:'Cronología',ht:'Kwonoloji'},
+ tlS:{es:'Cada hecho importante desde la emboscada, lo más reciente primero. (Entradas en inglés.)',ht:'Chak gwo evènman depi pyèj la, sa ki pi resan an anvan. (Antre yo an angle.)'},
+ fA:{es:'Todo',ht:'Tout'}, fM:{es:'Militar',ht:'Militè'}, fP:{es:'Política',ht:'Politik'}, fH:{es:'Humanitario',ht:'Imanitè'},
+ wH:{es:'Qué vigilar',ht:'Sa pou swiv'},
+ wS:{es:'Las preguntas abiertas que marcarán los próximos titulares.',ht:'Kesyon ki pa gen repons yo ki pral fè pwochen tit yo.'},
+ q1:{es:'<b>Los cuatro técnicos desaparecidos</b><span>La pandilla Lanmò San Jou, vinculada a 400 Mawozo, afirma que los cuatro murieron. Bukele dice que los restos hallados el 24 de oct. no son de ellos. Una prueba en cualquier sentido cambiaría todo.</span>',ht:'<b>Kat teknisyen ki disparèt yo</b><span>Gang Lanmò San Jou, ki gen lyen ak 400 Mawozo, di tout kat yo mouri. Bukele di rès kadav yo jwenn 24 okt. yo pa pou yo. Yon prèv nan yon sans oswa lòt ta chanje tout bagay.</span>'},
+ q2:{es:'<b>¿Resiste Martissant?</b><span>Despejar la Ruta 2 reconectaría Puerto Príncipe con el sur y el oeste por primera vez en cinco años.</span>',ht:'<b>Èske Matisan ap kenbe?</b><span>Libere Wout 2 ta rekonekte Pòtoprens ak Sid la ak Lwès la pou premye fwa an senk ane.</span>'},
+ q3:{es:'<b>Washington vs. Bukele</b><span>Bukele criticó públicamente a un diplomático estadounidense por la coordinación, aunque el Comando Sur de EE. UU. trasladó a sus tropas.</span>',ht:'<b>Washington kont Bukele</b><span>Bukele kritike yon diplomat ameriken an piblik sou kowòdinasyon, malgre Kòmandman Sid Ameriken an te transpòte sòlda l yo.</span>'},
+ q4:{es:'<b>Dos elecciones</b><span>Haití tiene 33 candidatos presidenciales. Bukele enfrenta a los votantes el 28 de febrero de 2027, y la misión en Haití ya es parte de su campaña.</span>',ht:'<b>De eleksyon</b><span>Ayiti gen 33 kandida pou prezidans. Bukele ap fè fas ak votè yo 28 fevriye 2027, e misyon ann Ayiti a fè pati kanpay li kounye a.</span>'},
+ dH:{es:'El debate',ht:'Deba a'},
+ dS:{es:'La versión más sólida de cada postura.',ht:'Pi bon agiman chak bò.'},
+ dPro:{es:'Los partidarios dicen',ht:'Moun ki dakò yo di'},
+ dCon:{es:'Los críticos dicen',ht:'Kritik yo di'},
+ l1:{es:'Los resultados se ven: un estadio en manos de pandillas desde 2024 se recuperó en semanas.',ht:'Rezilta yo vizib: yon estad gang te kenbe depi 2024 reprann nan kèk semèn.'},
+ l2:{es:'Los propios haitianos lo piden. Miles marcharon el 17 de nov. para elogiar a las tropas.',ht:'Se Ayisyen yo menm ki mande l. Plizyè milye te mache 17 nov. pou fè lwanj sòlda yo.'},
+ l3:{es:'La fuerza respaldada por la ONU sola no había cambiado el rumbo, y más de 1.000 personas murieron en un solo trimestre.',ht:'Fòs ONI sipòte a poukont li pa t chanje sitiyasyon an, e plis pase 1,000 moun mouri nan yon sèl trimès.'},
+ l4:{es:'La oficina de derechos humanos de la ONU advierte que las operaciones deben priorizar la protección de civiles ante "abusos atroces".',ht:'Biwo dwa moun ONI a avèti operasyon yo dwe mete pwoteksyon sivil an premye devan "abi terib" yo.'},
+ l5:{es:'Expertos advierten que Haití no tiene un plan a largo plazo, y su propia policía está mal pagada (unos 300 dólares al mes para agentes de menor rango).',ht:'Ekspè yo avèti Ayiti pa gen plan alontèm, e pwòp lapolis li mal peye (anviwon 300 dola pa mwa pou ti grad yo).'},
+ l6:{es:'El historial de Bukele en casa, con juicios masivos y una tercera candidatura tras cambiar las reglas, genera dudas sobre la rendición de cuentas.',ht:'Dosye Bukele lakay li, ak jijman an mas ak yon twazyèm kandidati apre li chanje règ yo, leve kesyon sou responsablite.'},
+ meH:{es:'Metodología y correcciones',ht:'Metodoloji ak koreksyon'},
+ meS:{es:'Cómo se construye este rastreador, para que lo juzgues tú mismo.',ht:'Kijan nou fè paj sa a, pou w ka jije l ou menm.'},
+ me1:{es:'<b>Estándar de fuentes</b>Cada hecho y cifra enlaza a un reporte publicado de un medio establecido u organismo oficial (AP, Reuters, la ONU, la Policía Nacional de Haití y otros). La insignia verde de cada entrada abre su fuente.',ht:'<b>Règ pou sous</b>Chak evènman ak chak chif gen lyen ak yon rapò yon medya rekonèt oswa yon enstitisyon ofisyèl pibliye (AP, Reuters, ONI, Polis Nasyonal Ayiti ak lòt). Badj vèt la louvri sous la.'},
+ me2:{es:'<b>Datos en disputa</b>Cuando las partes no coinciden, como sobre el destino de los cuatro técnicos, se muestran ambas versiones con atribución. Nada se presenta como hecho hasta que se confirma.',ht:'<b>Enfòmasyon ki diskite</b>Lè pati yo pa dakò, tankou sou sò kat teknisyen yo, nou montre de vèsyon yo ak ki moun ki di yo. Anyen pa prezante kòm verite toutotan li pa konfime.'},
+ me3:{es:'<b>Independencia</b>Haiti Frontline no está afiliado a ningún gobierno, ejército, partido ni a la Fuerza de Supresión de Pandillas. Las propinas de los lectores no influyen en la cobertura.',ht:'<b>Endepandans</b>Haiti Frontline pa gen lyen ak okenn gouvènman, lame, pati oswa GSF. Kado lektè yo pa chanje sa nou pibliye.'},
+ me4:{es:'<b>Correcciones</b>Los errores se corrigen de inmediato y las correcciones importantes se anotan en la cronología con su fecha. ¿Ves uno? Responde al rastreador en X.',ht:'<b>Koreksyon</b>Nou korije erè yo vit, e gwo koreksyon yo make nan kwonoloji a ak dat yo. Ou wè youn? Reponn nou sou X.'},
+ sup:{es:'Si esto te ha sido útil',ht:'Si sa te itil ou'},
+ srcH:{es:'Fuentes',ht:'Sous'},
+ ft:{es:'Haiti Frontline es un rastreador independiente basado en reportes publicados. No está afiliado a ningún gobierno ni fuerza. Las cifras reflejan los últimos datos publicados y pueden cambiar.',ht:'Haiti Frontline se yon paj swivi endepandan ki baze sou rapò ki pibliye. Li pa gen lyen ak okenn gouvènman oswa fòs. Chif yo se dènye chif ki pibliye, yo ka chanje.'},
+ clH:{es:'Afirmaciones, verificadas',ht:'Deklarasyon, verifye'},
+ clS:{es:'Afirmaciones comunes sobre la operación, evaluadas con base en reportes publicados.',ht:'Deklarasyon moun fè souvan sou operasyon an, nou verifye yo ak rapò ki pibliye.'},
+ exH:{es:'¿Puede funcionar el modelo Bukele en Haití?',ht:'Èske modèl Bukele a ka mache ann Ayiti?'},
+ exS:{es:'Qué hizo posible la ofensiva de El Salvador y cuán distinto es Haití.',ht:'Sa ki te fè kanpay El Salvador a posib, ak jan Ayiti diferan.'},
+ exPro:{es:'Por qué podría funcionar',ht:'Poukisa li ta ka mache'},
+ exCon:{es:'Por qué podría no funcionar',ht:'Poukisa li ta ka pa mache'},
+ tpH:{es:'Envía un dato',ht:'Voye yon enfòmasyon'},
+ tpS:{es:'¿Viste algo en el terreno, o una publicación que debamos revisar? Envíala. Cada dato se verifica antes de publicar nada.',ht:'Ou wè yon bagay sou teren an, oswa yon pòs nou ta dwe verifye? Voye l. Nou verifye chak enfòmasyon anvan nou pibliye anyen.'},
+ tpL1:{es:'¿Qué pasó?',ht:'Kisa k pase?'},
+ tpL2:{es:'¿Dónde?',ht:'Ki kote?'},
+ tpL3:{es:'¿Cuándo?',ht:'Ki lè?'},
+ tpL4:{es:'Enlace a una publicación, foto o artículo (opcional)',ht:'Lyen yon pòs, foto oswa atik (si ou genyen)'},
+ tpBtn:{es:'Preparar mi dato',ht:'Prepare enfòmasyon an'},
+ tpSafe:{es:'<b>Cuídate.</b> No incluyas tu nombre, ubicación ni nada que pueda identificarte a ti o a otros. Ha habido personas atacadas por mostrar apoyo a un bando. Nunca te pongas en riesgo para conseguir información.',ht:'<b>Pran swen tèt ou.</b> Pa mete non w, kote w ye, oswa anyen ki ka fè moun rekonèt ou oswa lòt moun. Gen moun yo te atake paske yo te montre sipò pou yon bò. Pa janm mete tèt ou an danje pou jwenn enfòmasyon.'},
+ tpOut:{es:'Tu dato está listo. Cópialo y envíalo por mensaje directo en X a <b>@haitifrontline</b>.',ht:'Enfòmasyon w lan pare. Kopye l, epi voye l an mesaj prive sou X bay <b>@haitifrontline</b>.'},
+ tpX:{es:'Abrir X',ht:'Louvri X'},
+ copy:{es:'Copiar',ht:'Kopye'},
+ exN:{es:'Población y superficie son estimaciones nacionales. Las demás filas se basan en reportes de AP, Al Jazeera y el Washington Post citados en esta página.',ht:'Popilasyon ak sipèfisi se estimasyon nasyonal. Lòt liy yo baze sou rapò AP, Al Jazeera ak Washington Post nou site sou paj sa a.'},
+ scH:{es:'Imagen para compartir',ht:'Imaj pou pataje'},
+ scS:{es:'Una imagen lista para X, hecha con la última noticia o el resumen de hoy. Las imágenes llegan a mucha más gente que los enlaces solos.',ht:'Yon imaj ki pare pou X, fèt ak dènye nouvèl la oswa rezime jodi a. Imaj rive jwenn plis moun pase lyen senp.'},
+ scPick:{es:'Noticia',ht:'Nouvèl'},
+ tbToday:{es:'Hoy',ht:'Jodi a'},tbMap:{es:'Mapa',ht:'Kat'},tbTl:{es:'Cronología',ht:'Kwonoloji'},tbCtx:{es:'Contexto',ht:'Kontèks'},tbShare:{es:'Compartir y datos',ht:'Pataje ak enfòmasyon'},tbAbout:{es:'Acerca de',ht:'Apwopo'},
+ lgQ:{es:'¿Qué significan las etiquetas?',ht:'Kisa etikèt yo vle di?'},
+ shareBtn:{es:'Compartir',ht:'Pataje'}
+};
+var UI = {
+ tip:{en:'Tip me a coffee',es:'Invítame un café',ht:'Ofri m yon kafe'},
+ shareTitle:{en:'Share Haiti Frontline',es:'Compartir Haiti Frontline',ht:'Pataje Haiti Frontline'},
+ postX:{en:'Post on X',es:'Publicar en X',ht:'Poste sou X'},
+ copy:{en:'Copy',es:'Copiar',ht:'Kopye'},
+ copied:{en:'Copied',es:'Copiado',ht:'Kopye'},
+ selectCopy:{en:'Press Ctrl/Cmd+C to copy',es:'Presiona Ctrl/Cmd+C para copiar',ht:'Peze Ctrl/Cmd+C pou kopye'},
+ close:{en:'Close',es:'Cerrar',ht:'Fèmen'},
+ share:{en:'Share',es:'Compartir',ht:'Pataje'},
+ siteLine:{en:'Live map + fact-checked updates:',es:'Mapa en vivo + actualizaciones verificadas:',ht:'Kat an dirèk + mizajou verifye:'},
+ siteMain:{en:'Day {d} of El Salvador\'s operation in Haiti. Live 4D map, fact-checked updates and every source in one place.',es:'Día {d} de la operación de El Salvador en Haití. Mapa 4D en vivo, actualizaciones verificadas y todas las fuentes en un solo lugar.',ht:'Jou {d} operasyon El Salvador ann Ayiti. Kat 4D an dirèk, mizajou verifye ak tout sous yo nan yon sèl kote.'},
+ verdict:{
+   true:{en:'True',es:'Verdadero',ht:'Vre'}, false:{en:'False',es:'Falso',ht:'Fo'},
+   misleading:{en:'Misleading',es:'Engañoso',ht:'Twonpe'}, unproven:{en:'Unproven',es:'Sin probar',ht:'Poko pwouve'},
+   mixed:{en:'Mixed',es:'Mixto',ht:'Melanje'}},
+ claimLbl:{en:'Claim',es:'Afirmación',ht:'Deklarasyon'},
+ srcLbl:{en:'Source',es:'Fuente',ht:'Sous'},
+ tipHead:{en:'TIP FOR HAITI FRONTLINE',es:'DATO PARA HAITI FRONTLINE',ht:'ENFÒMASYON POU HAITI FRONTLINE'},
+ tipW:{en:'What',es:'Qué',ht:'Kisa'},tipWh:{en:'Where',es:'Dónde',ht:'Ki kote'},tipWn:{en:'When',es:'Cuándo',ht:'Ki lè'},tipL:{en:'Link',es:'Enlace',ht:'Lyen'}
+};
+window.HW.UI=UI;
+var CLAIMS=[
+ {v:'misleading',src:['Al Jazeera / Reuters','https://www.aljazeera.com/news/2026/11/5/el-salvadors-bukele-touts-military-intervention-in-haiti'],
+  c:{en:'The 2,500 Salvadoran troops are part of the UN mission.',es:'Los 2.500 soldados salvadoreños son parte de la misión de la ONU.',ht:'2,500 sòlda salvadoryen yo fè pati misyon ONI a.'},
+  x:{en:'The four missing technicians were serving with the UN-backed Gang Suppression Force. The much larger deployment Bukele sent after the ambush operates separately from it.',es:'Los cuatro técnicos desaparecidos servían en la Fuerza de Supresión de Pandillas respaldada por la ONU. El despliegue mucho mayor que Bukele envió tras la emboscada opera aparte.',ht:'Kat teknisyen ki disparèt yo te nan Fòs pou Kraze Gang ONI sipòte a. Gwo kontenjan Bukele voye apre pyèj la travay apa.'}},
+ {v:'unproven',src:['AP','https://www.nbcnews.com/world/haiti/heavy-fighting-erupts-haiti-armed-forces-fight-gangs-regain-control-ke-rcna610288'],
+  c:{en:'Salvadoran troops are leading the Martissant offensive.',es:'Las tropas salvadoreñas lideran la ofensiva en Martissant.',ht:'Se sòlda salvadoryen yo k ap dirije atak Matisan an.'},
+  x:{en:'AP reports the Nov 19 operation was carried out by Haitian police working with a Vectus Global task force. No Salvadoran role has been reported so far.',es:'AP informa que la operación del 19 de nov. la realizó la policía haitiana con una fuerza de tarea de Vectus Global. Hasta ahora no se ha reportado participación salvadoreña.',ht:'AP di se lapolis ayisyen ak yon fòs travay Vectus Global ki te fè operasyon 19 nov. la. Pou kounye a pa gen rapò sou wòl salvadoryen.'}},
+ {v:'unproven',src:['Haitian Times','https://haitiantimes.com/2026/10/25/bukele-denies-bodies-haiti-anti-gang-force-salvadoran-soldiers/'],
+  c:{en:'The bodies found in October were the four missing soldiers.',es:'Los cuerpos hallados en octubre eran de los cuatro soldados desaparecidos.',ht:'Kadav yo jwenn nan mwa oktòb yo se kat sòlda ki te disparèt yo.'},
+  x:{en:'Bukele denied it on Oct 24, and the Gang Suppression Force said the identities hadn\'t been confirmed. A gang now claims all four are dead, which Bukele rejects.',es:'Bukele lo negó el 24 de oct., y la Fuerza de Supresión de Pandillas dijo que las identidades no estaban confirmadas. Ahora una pandilla afirma que los cuatro murieron, lo que Bukele rechaza.',ht:'Bukele te demanti sa 24 okt., e GSF di idantite yo pa t konfime. Kounye a yon gang di tout kat yo mouri, Bukele rejte sa.'}},
+ {v:'true',src:['SOFX','https://www.sofx.com/haiti-police-salvadoran-troops-and-armed-robot-dogs-retake-haitis-national-stadium-from-gangs/'],
+  c:{en:'Troops brought rifle-armed robot dogs to the national stadium.',es:'Las tropas llevaron perros robot armados con rifles al estadio nacional.',ht:'Sòlda yo pote chen robo ak fizi nan estad nasyonal la.'},
+  x:{en:'Bukele posted video showing Salvadoran soldiers fitting rifles onto four-legged robots inside Sylvio Cator Stadium.',es:'Bukele publicó un video de soldados salvadoreños montando rifles en robots de cuatro patas dentro del estadio Sylvio Cator.',ht:'Bukele poste yon videyo ki montre sòlda salvadoryen ap monte fizi sou robo kat pye anndan Estad Sylvio Cator.'}},
+ {v:'mixed',src:['Washington Times / Haitian Times','https://www.washingtontimes.com/news/2026/oct/28/el-salvador-reportedly-sends-hundreds-troops-haiti-gang-ambush/'],
+  c:{en:'The US is fully backing the operation.',es:'EE. UU. respalda plenamente la operación.',ht:'Etazini ap sipòte operasyon an nèt.'},
+  x:{en:'US Southern Command provided C-130 aircraft to fly the troops in, but Bukele has publicly clashed with a US diplomat over coordination.',es:'El Comando Sur de EE. UU. aportó aviones C-130 para trasladar a las tropas, pero Bukele ha chocado públicamente con un diplomático estadounidense por la coordinación.',ht:'Kòmandman Sid Ameriken an bay avyon C-130 pou transpòte sòlda yo, men Bukele goumen an piblik ak yon diplomat ameriken sou kowòdinasyon.'}}
+];
+var CMP=[
+ {k:{en:'Population',es:'Población',ht:'Popilasyon'},a:{en:'About 6.3 million',es:'Unos 6,3 millones',ht:'Anviwon 6.3 milyon'},b:{en:'About 11.8 million',es:'Unos 11,8 millones',ht:'Anviwon 11.8 milyon'}},
+ {k:{en:'Area',es:'Superficie',ht:'Sipèfisi'},a:{en:'21,041 km²',es:'21.041 km²',ht:'21,041 km²'},b:{en:'27,750 km²',es:'27.750 km²',ht:'27,750 km²'}},
+ {k:{en:'The gangs',es:'Las pandillas',ht:'Gang yo'},a:{en:'Two dominant national gangs, MS-13 and Barrio 18',es:'Dos grandes pandillas nacionales, MS-13 y Barrio 18',ht:'De gwo gang nasyonal, MS-13 ak Barrio 18'},b:{en:'Many armed groups, some in alliances, holding neighborhoods and key roads like Route 2',es:'Muchos grupos armados, algunos aliados, que controlan barrios y vías clave como la Ruta 2',ht:'Anpil gwoup ame, kèk ladan yo alye, ki kontwole katye ak wout enpòtan tankou Wout 2'}},
+ {k:{en:'The state',es:'El Estado',ht:'Leta'},a:{en:'A functioning army, police and prison system Bukele could expand',es:'Ejército, policía y sistema penitenciario funcionales que Bukele pudo ampliar',ht:'Yon lame, yon lapolis ak yon sistèm prizon ki mache, Bukele te ka agrandi'},b:{en:'Underpaid police (about $300/month for junior officers) and elections repeatedly delayed',es:'Policía mal pagada (unos 300 dólares al mes para agentes de menor rango) y elecciones aplazadas una y otra vez',ht:'Lapolis mal peye (anviwon 300 dola pa mwa pou ti grad yo) ak eleksyon ki ranvwaye plizyè fwa'}},
+ {k:{en:'Who\'s fighting',es:'Quién combate',ht:'Kiyès k ap goumen'},a:{en:'El Salvador\'s own army and police, under one command',es:'El propio ejército y policía de El Salvador, bajo un solo mando',ht:'Pwòp lame ak lapolis El Salvador, anba yon sèl kòmandman'},b:{en:'A mix: Haitian police, foreign troops, a UN-backed force and private contractors',es:'Una mezcla: policía haitiana, tropas extranjeras, una fuerza respaldada por la ONU y contratistas privados',ht:'Yon melanj: lapolis ayisyen, sòlda etranje, yon fòs ONI sipòte ak kontraktè prive'}}
+];
+var PRO=[
+ {en:'Fast, visible wins: the national stadium and 400 Mawozo\'s headquarters fell within weeks.',es:'Victorias rápidas y visibles: el estadio nacional y la sede de 400 Mawozo cayeron en semanas.',ht:'Viktwa rapid ki vizib: estad nasyonal la ak katye jeneral 400 Mawozo tonbe nan kèk semèn.'},
+ {en:'Strong public support in Port-au-Prince, shown by the Nov 17 marches.',es:'Fuerte apoyo popular en Puerto Príncipe, como mostraron las marchas del 17 de nov.',ht:'Gwo sipò popilè nan Pòtoprens, jan mach 17 nov. yo montre l.'},
+ {en:'Salvadoran forces bring years of experience in urban anti-gang operations.',es:'Las fuerzas salvadoreñas traen años de experiencia en operaciones urbanas contra pandillas.',ht:'Fòs salvadoryen yo gen plizyè ane eksperyans nan operasyon kont gang nan vil.'}
+];
+var CON=[
+ {en:'Experts warn the model can\'t simply be exported, and that Haiti has no long-term plan for after the fighting.',es:'Expertos advierten que el modelo no se puede exportar sin más, y que Haití no tiene un plan a largo plazo para después de los combates.',ht:'Ekspè yo avèti modèl la pa ka senpleman ekspòte, e Ayiti pa gen plan alontèm pou apre batay yo.'},
+ {en:'El Salvador\'s crackdown relied on mass detention in a vast prison system. Haiti has nothing comparable to hold detainees.',es:'La ofensiva salvadoreña se basó en detenciones masivas en un enorme sistema carcelario. Haití no tiene nada comparable.',ht:'Kanpay El Salvador a te baze sou arestasyon an mas nan yon gwo sistèm prizon. Ayiti pa gen anyen konsa.'},
+ {en:'Rights groups say the Salvadoran model came with mass trials and abuses, and the UN is already urging civilian protection in Haiti.',es:'Grupos de derechos humanos dicen que el modelo salvadoreño trajo juicios masivos y abusos, y la ONU ya pide proteger a los civiles en Haití.',ht:'Gwoup dwa moun di modèl salvadoryen an te vini ak jijman an mas ak abi, e ONI deja ap mande pou pwoteje sivil ann Ayiti.'}
+];
+// ---------- language ----------
+var nodes=[].slice.call(document.querySelectorAll('[data-t]')), EN={};
+nodes.forEach(function(el){ EN[el.dataset.t+'#'+nodes.indexOf(el)]=el.innerHTML; });
+function L(o){ return (o && (o[HW.lang]||o.en)) || ''; }
+window.HW.L=L;
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function renderClaims(){
+  document.getElementById('claimList').innerHTML=CLAIMS.map(function(c,i){
+    return '<div class="claim"><div class="vd vd-'+c.v+'">'+L(UI.verdict[c.v])+'</div><div class="cbody"><div class="ctag">'+L(UI.claimLbl)+'</div><div class="ctext">“'+esc(L(c.c))+'”</div><p>'+esc(L(c.x))+'</p><div class="cfoot"><a class="badge" href="'+c.src[1]+'" target="_blank" rel="noopener"><span class="chk">✓</span>'+L(UI.srcLbl)+': '+esc(c.src[0])+'</a><button class="sharebtn" data-claim="'+i+'">'+L(UI.share)+'</button></div></div></div>';
+  }).join('');
+}
+function renderExplainer(){
+  document.getElementById('cmp').innerHTML='<div class="cmprow cmphead"><div></div><div>El Salvador</div><div>'+(HW.lang==='ht'?'Ayiti':HW.lang==='es'?'Haití':'Haiti')+'</div></div>'+
+    CMP.map(function(r){return '<div class="cmprow"><div class="ck">'+esc(L(r.k))+'</div><div>'+esc(L(r.a))+'</div><div>'+esc(L(r.b))+'</div></div>';}).join('');
+  document.getElementById('exPro').innerHTML=PRO.map(function(x){return '<li>'+esc(L(x))+'</li>';}).join('');
+  document.getElementById('exCon').innerHTML=CON.map(function(x){return '<li>'+esc(L(x))+'</li>';}).join('');
+}
+function setLang(l){
+  HW.lang=l; document.documentElement.lang=l==='ht'?'ht':l;
+  nodes.forEach(function(el,i){
+    var k=el.dataset.t, en=EN[k+'#'+i];
+    el.innerHTML = l==='en' ? en : ((T[k]&&T[k][l]) || en);
+  });
+  document.querySelectorAll('.tip').forEach(function(b){ b.textContent=L(UI.tip); });
+  document.querySelectorAll('.langsw button').forEach(function(b){ b.classList.toggle('on',b.dataset.l===l); });
+  renderClaims(); renderExplainer();
+  try{ localStorage.setItem('hw-lang',l); }catch(e){}
+  (HW.listeners||[]).forEach(function(f){ try{f(l);}catch(e){} });
+}
+window.HW.setLang=setLang;
+document.querySelectorAll('.langsw button').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.l); }); });
+
+// ---------- share modal ----------
+var modal=document.getElementById('shareModal'), stext=document.getElementById('shareText'), sx=document.getElementById('shareX'), scopy=document.getElementById('shareCopy'), shint=document.getElementById('shareHint');
+function opDay(){ var n=new Date(); return Math.floor((Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())-Date.UTC(2026,9,21))/86400000)+1; }
+function openShare(text){
+  document.getElementById('shareTitle').textContent=L(UI.shareTitle);
+  stext.value=text; sx.textContent=L(UI.postX); scopy.textContent=L(UI.copy); shint.textContent='';
+  document.getElementById('shareClose').textContent=L(UI.close);
+  sx.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);
+  modal.classList.add('on');
+}
+window.HW.share=function(line){ if(line.length>200) line=line.slice(0,197).replace(/\s+\S*$/,'')+'…'; openShare(line+'\n\n'+L(UI.siteLine)+' '+SITE); };
+function copyText(txt, btn, hint){
+  function fallback(){ var ta=btn.closest('.tipout')?document.getElementById('tipText'):stext; ta.focus(); ta.select(); if(hint) hint.textContent=L(UI.selectCopy); }
+  try{
+    navigator.clipboard.writeText(txt).then(function(){ var o=btn.textContent; btn.textContent=L(UI.copied); setTimeout(function(){btn.textContent=o;},1800); }, fallback);
+  }catch(e){ fallback(); }
+}
+scopy.addEventListener('click',function(){ copyText(stext.value,scopy,shint); });
+document.getElementById('shareClose').addEventListener('click',function(){ modal.classList.remove('on'); });
+modal.addEventListener('click',function(e){ if(e.target===modal) modal.classList.remove('on'); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') modal.classList.remove('on'); });
+document.getElementById('shareSite').addEventListener('click',function(){ openShare(L(UI.siteMain).replace('{d}',opDay())+'\n\n'+SITE); });
+document.addEventListener('click',function(e){
+  var b=e.target.closest && e.target.closest('.sharebtn'); if(!b) return;
+  if(b.dataset.claim!==undefined){ var c=CLAIMS[+b.dataset.claim]; HW.share(L(UI.claimLbl)+': “'+L(c.c)+'”\n'+L(UI.verdict[c.v]).toUpperCase()+'. '+L(c.x)); }
+  if(b.dataset.ev!==undefined && window.HW.eventText){ HW.share(HW.eventText(+b.dataset.ev)); }
+});
+
+// ---------- tip line ----------
+document.getElementById('tipForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var g=function(id){return document.getElementById(id).value.trim();};
+  var t=L(UI.tipHead)+'\n'+L(UI.tipW)+': '+g('tpWhat')+(g('tpWhere')?'\n'+L(UI.tipWh)+': '+g('tpWhere'):'')+(g('tpWhen')?'\n'+L(UI.tipWn)+': '+g('tpWhen'):'')+(g('tpLink')?'\n'+L(UI.tipL)+': '+g('tpLink'):'');
+  document.getElementById('tipText').value=t;
+  document.getElementById('tipOut').hidden=false;
+});
+document.getElementById('tipCopy').addEventListener('click',function(){ copyText(document.getElementById('tipText').value,this,null); });
+
+var start='en'; try{ start=localStorage.getItem('hw-lang')||'en'; }catch(e){}
+if(location.hash==='#es'||location.hash==='#ht'||location.hash==='#en') start=location.hash.slice(1);
+setLang(start);
+})();
+</script>
+
+<script>
+(function(){
+  var ST={confirmed:{en:'Confirmed',es:'Confirmado',ht:'Konfime'},reported:{en:'Reported',es:'Reportado',ht:'Rapòte'},official:{en:'Official claim',es:'Dato oficial',ht:'Deklarasyon ofisyèl'},disputed:{en:'Disputed',es:'En disputa',ht:'Diskite'}};
+  var KD={post:{en:'Post on X',es:'Publicación en X',ht:'Pòs sou X'},article:{en:'Article',es:'Artículo',ht:'Atik'},official:{en:'Statement',es:'Declaración',ht:'Deklarasyon'}};
+  var W={fc:{en:'Fact check:',es:'Verificación:',ht:'Verifikasyon:'},open:{en:'Open original',es:'Ver original',ht:'Wè orijinal la'},share:{en:'Share',es:'Compartir',ht:'Pataje'},
+    ago:{now:{en:'just now',es:'ahora',ht:'kounye a'},m:{en:'m ago',es:' min',ht:' min'},h:{en:'h ago',es:' h',ht:' è'},y:{en:'yesterday',es:'ayer',ht:'yè'},d:{en:' days ago',es:' días',ht:' jou'}},
+    chk:{en:'Checked for updates ',es:'Revisado ',ht:'Verifye '},jn:{en:'just now',es:'ahora',ht:'kounye a'},s:{en:'s ago',es:' s',ht:' s'},newu:{en:' new update',es:' nueva actualización',ht:' nouvo mizajou'},newus:{en:' new updates',es:' nuevas actualizaciones',ht:' nouvo mizajou'}};
+  function lg(){ return (window.HW&&HW.lang)||'en'; }
+  function tr(o){ return o[lg()]||o.en; }
+  var STATUS={}, KIND={};
+  function fld(it,f){ var l=lg(); return (l!=='en' && it[l] && it[l][f]) || it[f]; }
+  var items=[], seen={}, fi=0, fTimer=null, fStart=0, DUR=9000, pinned=false, lastCheck=null, firstLoad=true;
+  function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function ago(ts){
+    var d=(Date.now()-new Date(ts).getTime())/1000;
+    var A=W.ago; if(d<60) return tr(A.now); if(d<3600) return Math.floor(d/60)+tr(A.m);
+    if(d<86400) return Math.floor(d/3600)+tr(A.h);
+    var n=Math.floor(d/86400); if(n===1) return tr(A.y); return lg()==='es'?'hace '+n+tr(A.d):lg()==='ht'?'sa gen '+n+tr(A.d):n+tr(A.d);
+  }
+  function when(ts){ try{return new Date(ts).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/Chicago'})+' CT';}catch(e){return ts;} }
+  function card(it){
+    return '<div class="fmeta"><span class="kind">'+tr(KD[it.kind])+'</span><i class="st st-'+it.status+'">'+tr(ST[it.status])+'</i><span>'+esc(it.source)+(it.handle?' · '+esc(it.handle):'')+'</span><span>· '+ago(it.ts)+'</span></div>'+
+      '<div class="fhead">'+esc(fld(it,'headline'))+'</div><p class="fsum">'+esc(fld(it,'summary'))+'</p>'+
+      '<div class="fnote"><b>'+tr(W.fc)+'</b> '+esc(fld(it,'note'))+'</div>'+
+      '<div class="fbtns"><a class="fopen" href="'+esc(it.url)+'" target="_blank" rel="noopener">'+tr(W.open)+'</a><button class="fopen wshare" data-id="'+esc(it.id)+'">'+tr(W.share)+'</button></div>';
+  }
+  var fbody=document.getElementById('fbody'), fprog=document.getElementById('fprog'), list=document.getElementById('wirelist');
+  var tv=document.getElementById('tv'), tvbody=document.getElementById('tvbody'), tvprog=document.getElementById('tvprog'), tvcount=document.getElementById('tvcount');
+  function feature(i){
+    if(!items.length) return;
+    fi=(i+items.length)%items.length;
+    var it=items[fi];
+    fbody.innerHTML='<div class="fade" style="display:flex;flex-direction:column;flex:1">'+card(it)+'</div>';
+    tvbody.innerHTML='<div class="fade">'+card(it)+'</div>';
+    tvcount.textContent=(fi+1)+' / '+items.length+'  ·  '+(it.exact?when(it.ts):new Date(it.ts).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'America/Chicago'}));
+    list.querySelectorAll('.witem').forEach(function(el){el.classList.toggle('on',el.dataset.id===it.id);});
+    fStart=Date.now();
+  }
+  function renderList(newIds){
+    list.innerHTML=items.map(function(it){
+      var isNew=newIds&&newIds.indexOf(it.id)>-1;
+      return '<div class="witem'+(isNew?' new':'')+'" data-id="'+esc(it.id)+'"><div class="wm">'+(isNew?'<span class="newtag">NEW</span>':'')+'<span>'+tr(KD[it.kind])+'</span><i class="st st-'+it.status+'">'+tr(ST[it.status])+'</i><span>'+esc(it.source)+' · '+ago(it.ts)+'</span></div><div class="wh">'+esc(fld(it,'headline'))+'</div></div>';
+    }).join('');
+    list.querySelectorAll('.witem').forEach(function(el){
+      el.addEventListener('click',function(){ pinned=false; var idx=items.findIndex(function(x){return x.id===el.dataset.id;}); feature(idx); });
+    });
+  }
+  function renderTicker(){
+    var html=items.map(function(it){return '<span><b>'+esc(it.source)+':</b>'+esc(fld(it,'headline'))+'</span>';}).join('');
+    document.querySelectorAll('.tick-track').forEach(function(t){
+      t.innerHTML=html+html;
+      t.style.animationDuration=Math.max(40,items.length*9)+'s';
+    });
+  }
+  function tick(){
+    var p=Math.min(1,(Date.now()-fStart)/DUR);
+    fprog.style.width=(p*100)+'%'; tvprog.style.width=(p*100)+'%';
+    if(p>=1) feature(fi+1);
+    if(lastCheck){ var s=Math.floor((Date.now()-lastCheck)/1000); document.getElementById('checked').textContent=tr(W.chk)+(s<5?tr(W.jn):(lg()==='es'?'hace ':lg()==='ht'?'sa gen ':'')+s+tr(W.s)); }
+    requestAnimationFrame(tick);
+  }
+  var toast=document.getElementById('toast');
+  toast.addEventListener('click',function(){ document.getElementById('livewire').scrollIntoView({behavior:'smooth'}); toast.style.display='none'; });
+  function load(){
+    fetch('feed.json?t='+Date.now(),{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(data){
+      lastCheck=Date.now();
+      var incoming=(data.items||[]).slice().sort(function(a,b){return new Date(b.ts)-new Date(a.ts);});
+      var newIds=firstLoad?[]:incoming.filter(function(x){return !seen[x.id];}).map(function(x){return x.id;});
+      incoming.forEach(function(x){seen[x.id]=1;});
+      var changed=firstLoad||newIds.length||JSON.stringify(incoming)!==JSON.stringify(items);
+      items=incoming; if(window.HW){ HW.items=items; if(changed&&HW.onItems) HW.onItems(); }
+      if(data.updated){ var u=document.getElementById('upd'); if(u) u.textContent=when(data.updated).replace(',',' ·'); }
+      if(changed){ renderList(newIds); renderTicker(); }
+      if(firstLoad){ feature(0); firstLoad=false; }
+      else if(newIds.length){
+        feature(items.findIndex(function(x){return x.id===newIds[0];}));
+        toast.textContent=newIds.length+(newIds.length>1?tr(W.newus):tr(W.newu));
+        toast.style.display='block'; setTimeout(function(){toast.style.display='none';},8000);
+      }
+    }).catch(function(){
+      document.getElementById('checked').textContent='Feed unavailable, retrying…';
+    });
+  }
+  // TV mode
+  function clock(){
+    var n=new Date();
+    try{ document.getElementById('tvtime').textContent=n.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit',timeZone:'America/Chicago'})+' CT'; }catch(e){}
+    var start=Date.UTC(2026,9,21), today=Date.UTC(n.getFullYear(),n.getMonth(),n.getDate());
+    document.getElementById('tvday').textContent=Math.floor((today-start)/86400000)+1;
+  }
+  setInterval(clock,1000); clock();
+  document.getElementById('tvOpen').addEventListener('click',function(){
+    tv.classList.add('on'); feature(fi);
+    try{ var p=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); if(p&&p.catch) p.catch(function(){}); }catch(e){}
+  });
+  function closeTV(){ tv.classList.remove('on'); try{ if(document.fullscreenElement) document.exitFullscreen(); }catch(e){} }
+  document.getElementById('tvClose').addEventListener('click',closeTV);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeTV(); if(tv.classList.contains('on')){ if(e.key==='ArrowRight') feature(fi+1); if(e.key==='ArrowLeft') feature(fi-1);} });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.wshare'); if(!b||!window.HW||!HW.share) return;
+    var it=items.filter(function(x){return x.id===b.dataset.id;})[0]; if(!it) return;
+    HW.share(fld(it,'headline')+' ['+tr(ST[it.status])+'] · '+it.source+'\n'+fld(it,'summary'));
+  });
+  if(window.HW){ HW.listeners=HW.listeners||[]; HW.listeners.push(function(){ if(items.length){ renderList([]); renderTicker(); feature(fi); } }); }
+  load(); setInterval(load,60000); requestAnimationFrame(tick);
+  setInterval(function(){ if(items.length) renderList([]); },60000*5);
+})();
+</script>
+
+<script>
+(function(){
+  var HW=window.HW=window.HW||{lang:'en',listeners:[]};
+  function L(o){ return (o&&(o[HW.lang]||o.en))||''; }
+  var U={
+    sub:{en:"El Salvador's operation in Haiti",es:'La operación de El Salvador en Haití',ht:'Operasyon El Salvador ann Ayiti'},
+    day:{en:'DAY',es:'DÍA',ht:'JOU'},
+    troops:{en:'troops',es:'soldados',ht:'sòlda'}, killed:{en:'killed',es:'muertos',ht:'mouri'}, missing:{en:'missing',es:'desaparecidos',ht:'disparèt'},
+    foot:{en:'Live 4D map · Fact-checked updates · EN / ES / KREYÒL',es:'Mapa 4D en vivo · Actualizaciones verificadas · EN / ES / KREYÒL',ht:'Kat 4D an dirèk · Mizajou verifye · EN / ES / KREYÒL'},
+    recap:{en:'Day {d} recap',es:'Resumen del día {d}',ht:'Rezime jou {d}'},
+    st:{confirmed:{en:'CONFIRMED',es:'CONFIRMADO',ht:'KONFIME'},reported:{en:'REPORTED',es:'REPORTADO',ht:'RAPÒTE'},official:{en:'OFFICIAL CLAIM',es:'DATO OFICIAL',ht:'DEKLARASYON OFISYÈL'},disputed:{en:'DISPUTED',es:'EN DISPUTA',ht:'DISKITE'}},
+    stc:{confirmed:'#3ecf8e',reported:'#4c8dff',official:'#f2c14e',disputed:'#ff5a5f'},
+    todayRecap:{en:"Today's recap",es:'Resumen de hoy',ht:'Rezime jodi a'},
+    dl:{en:'Download image',es:'Descargar imagen',ht:'Telechaje imaj la'},
+    hold:{en:'Right-click or long-press the image to save it.',es:'Haz clic derecho o mantén presionada la imagen para guardarla.',ht:'Klike adwat oswa kenbe imaj la pou anrejistre l.'},
+    saved:{en:'Saved Attach it to your post on X.',es:'Guardada Adjúntala a tu publicación en X.',ht:'Anrejistre Mete l nan pòs ou sou X.'},
+    declined:{en:'Download cancelled.',es:'Descarga cancelada.',ht:'Telechajman anile.'},
+    postX:{en:'Post on X',es:'Publicar en X',ht:'Poste sou X'},
+    tip:{en:'Download the image first, then attach it to your post.',es:'Primero descarga la imagen y luego adjúntala a tu publicación.',ht:'Telechaje imaj la anvan, epi mete l nan pòs ou.'}
+  };
+  var cv=document.getElementById('cardCanvas'), ctx=cv.getContext('2d'), sel=document.getElementById('cardPick');
+  var W=1200,H=675, path=null;
+  function opDay(){ var n=new Date(); return Math.floor((Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())-Date.UTC(2026,9,21))/86400000)+1; }
+  function wrap(text,x,y,maxW,lh,maxLines){
+    var words=String(text).split(' '), line='', lines=[];
+    words.forEach(function(w){ var t=line?line+' '+w:w; if(ctx.measureText(t).width>maxW && line){ lines.push(line); line=w; } else line=t; });
+    if(line) lines.push(line);
+    if(lines.length>maxLines){ lines=lines.slice(0,maxLines); lines[maxLines-1]=lines[maxLines-1].replace(/\s+\S*$/,'')+'…'; }
+    lines.forEach(function(l,i){ ctx.fillText(l,x,y+i*lh); });
+    return y+lines.length*lh;
+  }
+  function stats(){
+    var n=document.querySelectorAll('.tile .n');
+    return [(n[0]&&n[0].textContent)||'', (n[1]&&n[1].textContent)||'', (n[2]&&n[2].textContent)||''];
+  }
+  function current(){
+    var v=sel.value, items=HW.items||[], recaps=HW.recaps||[];
+    if(v.indexOf('recap:')===0){ var r=recaps.filter(function(x){return x.date===v.slice(6);})[0]; if(r) return {recap:r}; }
+    var it=items.filter(function(x){return x.id===v;})[0]||items[0];
+    return it?{item:it}:null;
+  }
+  function fld(it,f){ return (HW.lang!=='en'&&it[HW.lang]&&it[HW.lang][f])||it[f]; }
+  function draw(){
+    var c=current(), d=opDay();
+    ctx.fillStyle='#0b0f15'; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='#161f2c'; ctx.lineWidth=1;
+    for(var gx=0;gx<W;gx+=40){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
+    for(var gy=0;gy<H;gy+=40){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+    // map (right side)
+    if(HW.HTI){
+      if(!path) path=new Path2D(HW.HTI);
+      ctx.save(); ctx.translate(640,95); ctx.scale(0.62,0.62);
+      ctx.fillStyle='#0e2a1b'; ctx.save(); ctx.translate(0,14); ctx.fill(path); ctx.restore();
+      ctx.fillStyle='#1f4f33'; ctx.fill(path); ctx.lineWidth=3; ctx.strokeStyle='#5fd39a'; ctx.stroke(path);
+      ctx.setLineDash([12,10]); ctx.strokeStyle='#f2c14e'; ctx.lineWidth=4;
+      ctx.beginPath(); ctx.moveTo(650,505); ctx.lineTo(566,514); ctx.lineTo(434,530); ctx.lineTo(244,609); ctx.stroke(); ctx.setLineDash([]);
+      [[34,.12],[22,.25],[11,1]].forEach(function(r){ ctx.beginPath(); ctx.arc(650,505,r[0],0,7); ctx.fillStyle='rgba(255,90,95,'+r[1]+')'; ctx.fill(); });
+      ctx.restore();
+      ctx.fillStyle='#e8edf3'; ctx.font='600 17px Inter, sans-serif'; ctx.fillText('Port-au-Prince',1048,412);
+      ctx.strokeStyle='#ff5a5f'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(1046,407); ctx.lineTo(1050,407); ctx.stroke();
+    }
+    // brand
+    ctx.font='800 30px Fraunces, Georgia, serif'; ctx.fillStyle='#e8edf3'; ctx.fillText('HAITI',56,72);
+    var bw=ctx.measureText('HAITI').width; ctx.fillStyle='#ff5a5f'; ctx.fillText('/',56+bw,72);
+    var sw=ctx.measureText('/').width; ctx.fillStyle='#e8edf3'; ctx.fillText('FRONTLINE',56+bw+sw,72);
+    ctx.fillStyle='#ff5a5f'; ctx.fillRect(56,96,10,10); ctx.font='700 15px Inter, sans-serif'; ctx.fillText(L({en:'LIVE',es:'EN VIVO',ht:'AN DIRÈK'}),74,106);
+    // day
+    ctx.fillStyle='#ff5a5f'; ctx.font='800 92px "JetBrains Mono", monospace'; ctx.fillText(L(U.day)+' '+d,52,210);
+    ctx.fillStyle='#93a1b3'; ctx.font='600 22px Inter, sans-serif'; ctx.fillText(L(U.sub),56,248);
+    // story
+    var y=310;
+    if(c&&c.item){
+      var it=c.item, col=U.stc[it.status];
+      ctx.font='800 15px Inter, sans-serif'; var lbl=L(U.st[it.status]); var lw=ctx.measureText(lbl).width+20;
+      ctx.fillStyle=col; ctx.globalAlpha=.18; ctx.fillRect(56,y-22,lw,32); ctx.globalAlpha=1;
+      ctx.strokeStyle=col; ctx.lineWidth=2; ctx.strokeRect(56,y-22,lw,32); ctx.fillText(lbl,66,y);
+      ctx.fillStyle='#93a1b3'; ctx.font='500 17px Inter, sans-serif'; ctx.fillText(it.source,56+lw+14,y);
+      ctx.fillStyle='#e8edf3'; ctx.font='600 40px Fraunces, Georgia, serif';
+      y=wrap(fld(it,'headline'),56,y+60,560,50,4);
+    } else if(c&&c.recap){
+      ctx.fillStyle='#4c8dff'; ctx.font='800 15px Inter, sans-serif'; ctx.fillText(L(U.recap).replace('{d}',c.recap.day).toUpperCase(),56,y);
+      ctx.fillStyle='#e8edf3'; ctx.font='500 24px Inter, sans-serif';
+      y=wrap(c.recap[HW.lang]||c.recap.en,56,y+44,560,34,7);
+    }
+    // stats bar
+    var s=stats(); ctx.fillStyle='#151b24'; ctx.fillRect(0,H-92,W,92); ctx.fillStyle='#2a3443'; ctx.fillRect(0,H-92,W,2);
+    var parts=[[s[0],L(U.troops),'#e8edf3'],[s[1],L(U.killed),'#ff5a5f'],[s[2],L(U.missing),'#f2c14e']], x=56;
+    parts.forEach(function(p){ ctx.font='800 30px "JetBrains Mono", monospace'; ctx.fillStyle=p[2]; ctx.fillText(p[0],x,H-36); x+=ctx.measureText(p[0]).width+10;
+      ctx.font='600 18px Inter, sans-serif'; ctx.fillStyle='#93a1b3'; ctx.fillText(p[1],x,H-38); x+=ctx.measureText(p[1]).width+36; });
+    ctx.font='600 15px Inter, sans-serif'; ctx.fillStyle='#6b7889'; ctx.textAlign='right'; ctx.fillText(L(U.foot),W-40,H-38); ctx.textAlign='left';
+    document.getElementById('cardImg').src=cv.toDataURL('image/png');
+  }
+  function fillPick(){
+    var keep=sel.value, opts='';
+    (HW.recaps||[]).slice(0,1).forEach(function(r){ opts+='<option value="recap:'+r.date+'">'+L(U.todayRecap)+' · '+r.date.slice(5)+'</option>'; });
+    (HW.items||[]).forEach(function(it){ var h=fld(it,'headline'); opts+='<option value="'+it.id+'">'+(h.length>70?h.slice(0,68)+'…':h)+'</option>'; });
+    sel.innerHTML=opts; if(keep && sel.querySelector('option[value="'+keep+'"]')) sel.value=keep;
+  }
+  function labels(){
+    document.getElementById('cardDl').textContent=L(U.dl);
+    document.getElementById('cardX').textContent=L(U.postX);
+    document.getElementById('cardTip').textContent=L(U.tip);
+  }
+  function refresh(){ fillPick(); labels(); draw(); }
+  HW.refreshCard=refresh;
+  HW.listeners=HW.listeners||[]; HW.listeners.push(function(){ refresh(); });
+  sel.addEventListener('change',draw);
+  var dlApi=null;
+  if(window.claude && claude.use){ claude.use('downloads').then(function(d){ dlApi=d; }).catch(function(){}); }
+  document.getElementById('cardDl').addEventListener('click',function(){
+    var msg=document.getElementById('cardMsg'); msg.textContent='';
+    if(!dlApi){ cv.toBlob(function(b){ var a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='haiti-frontline-day-'+opDay()+'.png'; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},2000); msg.textContent=L(U.saved); },'image/png'); return; }
+    cv.toBlob(function(blob){
+      dlApi.save({filename:'haiti-frontline-day-'+opDay()+'.png',data:blob}).then(function(){ msg.textContent=L(U.saved); },function(e){ msg.textContent=(e&&e.code==='declined')?L(U.declined):L(U.hold); });
+    },'image/png');
+  });
+  document.getElementById('cardX').addEventListener('click',function(e){
+    e.preventDefault();
+    var c=current(), txt;
+    if(c&&c.item) txt=fld(c.item,'headline'); else txt=L(U.recap).replace('{d}',opDay());
+    if(HW.share) HW.share(txt);
+  });
+  // recaps
+  var R={h:{en:'Day in 60 seconds',es:'El día en 60 segundos',ht:'Jounen an an 60 segonn'},
+         s:{en:'A dated recap of each day, written every evening. The archive builds over time.',es:'Un resumen fechado de cada día, escrito cada noche. El archivo crece con el tiempo.',ht:'Yon rezime chak jou ak dat li, nou ekri l chak aswè. Achiv la ap grandi.'},
+         day:{en:'Day',es:'Día',ht:'Jou'}, pre:{en:'Before Day 1',es:'Antes del Día 1',ht:'Anvan Jou 1'}, share:{en:'Share',es:'Compartir',ht:'Pataje'}, card:{en:'Make card',es:'Crear imagen',ht:'Fè imaj'}};
+  function renderRecaps(){
+    document.getElementById('recapH').textContent=L(R.h);
+    document.getElementById('recapS').textContent=L(R.s);
+    document.getElementById('recapList').innerHTML=(HW.recaps||[]).map(function(r){
+      var dt=new Date(r.date+'T12:00:00'); var ds=dt.toLocaleDateString(HW.lang==='es'?'es':HW.lang==='ht'?'fr':'en-US',{weekday:'long',month:'long',day:'numeric'});
+      return '<div class="recap"><div class="rhead"><span class="rday">'+(r.day?L(R.day)+' '+r.day:L(R.pre))+'</span><span class="rdate">'+ds+'</span></div><p>'+String(r[HW.lang]||r.en).replace(/</g,'&lt;')+'</p><div class="rbtns"><button class="sharebtn rshare" data-date="'+r.date+'">'+L(R.share)+'</button><button class="sharebtn rcard" data-date="'+r.date+'">'+L(R.card)+'</button></div></div>';
+    }).join('');
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.rshare,.rcard'); if(!b) return;
+    var r=(HW.recaps||[]).filter(function(x){return x.date===b.dataset.date;})[0]; if(!r) return;
+    if(b.classList.contains('rshare')){ HW.share && HW.share(L(U.recap).replace('{d}',r.day)+': '+(r[HW.lang]||r.en)); }
+    else { if(!sel.querySelector('option[value="recap:'+r.date+'"]')){ var o=document.createElement('option'); o.value='recap:'+r.date; o.textContent=L(U.recap).replace('{d}',r.day); sel.insertBefore(o,sel.firstChild); }
+      sel.value='recap:'+r.date; draw(); if(HW.showTab) HW.showTab('share'); document.getElementById('sharecard').scrollIntoView({behavior:'smooth'}); }
+  });
+  HW.listeners.push(renderRecaps);
+  function loadRecaps(){
+    fetch('recaps.json?t='+Date.now(),{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
+      var n=JSON.stringify(d.recaps||[]); if(n===HW._rk) return; HW._rk=n;
+      HW.recaps=(d.recaps||[]).slice().sort(function(a,b){return a.date<b.date?1:-1;}); renderRecaps(); refresh(); if(HW.onRecaps) HW.onRecaps();
+    }).catch(function(){});
+  }
+  HW.onItems=function(){ refresh(); };
+  loadRecaps(); setInterval(loadRecaps,300000);
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){ refresh(); });
+  renderRecaps(); refresh();
+})();
+</script>
+
+<script>
+(function(){
+  var TABS=['today','map','timeline','context','share','about'];
+  function show(t){
+    if(TABS.indexOf(t)<0) t='today';
+    document.querySelectorAll('section[data-tab]').forEach(function(s){ s.classList.toggle('show', s.dataset.tab===t); });
+    document.querySelectorAll('#tabs a').forEach(function(a){ a.classList.toggle('on', a.dataset.tab===t); });
+    setTimeout(function(){ window.dispatchEvent(new Event('resize')); },30);
+  }
+  function fromHash(){ var h=location.hash.slice(1); if(['en','es','ht'].indexOf(h)>-1) return null; return h||'today'; }
+  document.querySelectorAll('#tabs a').forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); show(a.dataset.tab); try{ history.replaceState(null,'','#'+a.dataset.tab); }catch(err){ location.hash=a.dataset.tab; } window.scrollTo({top:document.getElementById('tabs').offsetTop,behavior:'smooth'}); });
+  });
+  window.addEventListener('hashchange',function(){ var t=fromHash(); if(t) show(t); });
+  document.addEventListener('click',function(e){ var a=e.target.closest&&e.target.closest('a[href="#methodology"]'); if(a){ e.preventDefault(); show('about'); } });
+  show(fromHash()||'today');
+  window.HW=window.HW||{}; window.HW.showTab=show;
+})();
+</script>
+<script>
+(function(){
+  var HW=window.HW=window.HW||{lang:'en',listeners:[]};
+  function L(o){ return (o&&(o[HW.lang]||o.en))||''; }
+  var U={
+    h:{en:'The operation, day by day',es:'La operación, día por día',ht:'Operasyon an, jou pa jou'},
+    s:{en:'Every day since the ambush, in 3D. Taller blocks mean bigger days. Tap a day to read it, drag to turn the calendar, or replay it from the start. A new block is added every day.',es:'Cada día desde la emboscada, en 3D. Los bloques más altos son los días más importantes. Toca un día para leerlo, arrastra para girar el calendario o repítelo desde el inicio. Cada día se agrega un bloque nuevo.',ht:'Chak jou depi pyèj la, an 3D. Blòk ki pi wo yo se jou ki pi enpòtan. Touche yon jou pou li l, trennen pou vire kalandriye a, oswa rejwe l depi kòmansman. Chak jou gen yon nouvo blòk.'},
+    replay:{en:'Replay',es:'Repetir',ht:'Rejwe'},
+    day:{en:'Day',es:'Día',ht:'Jou'}, pre:{en:'Before Day 1',es:'Antes del Día 1',ht:'Anvan Jou 1'},
+    today:{en:'Today',es:'Hoy',ht:'Jodi a'},
+    pending:{en:"Today's recap is written in the evening. Check the Live Wire for what's happening now.",es:'El resumen de hoy se escribe en la noche. Mira En vivo para lo que pasa ahora.',ht:'Rezime jodi a ekri nan aswè. Gade An dirèk pou sa k ap pase kounye a.'},
+    none:{en:'No recap for this day.',es:'No hay resumen para este día.',ht:'Pa gen rezime pou jou sa a.'},
+    lg:{mil:{en:'Military',es:'Militar',ht:'Militè'},pol:{en:'Politics',es:'Política',ht:'Politik'},hum:{en:'Humanitarian',es:'Humanitario',ht:'Imanitè'},q:{en:'Quiet day',es:'Día tranquilo',ht:'Jou kalm'}},
+    wd:{en:['S','M','T','W','T','F','S'],es:['D','L','M','M','J','V','S'],ht:['D','L','M','M','J','V','S']}
+  };
+  var COL={mil:'#ff5a5f',pol:'#4c8dff',hum:'#f2c14e'}, QCOL='#3a4657';
+  var START=Date.UTC(2026,9,18), CELL=62, GAP=12, W0=26;
+  var stage=document.getElementById('calStage'), plane=document.getElementById('calPlane'), det=document.getElementById('calDetail');
+  var rz=-20, rx=46, sc=1, sel=null, built=0;
+  function todayIdx(){ var n=new Date(); return Math.floor((Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())-START)/86400000); }
+  function dateOf(i){ return new Date(START+i*86400000); }
+  function iso(i){ return dateOf(i).toISOString().slice(0,10); }
+  function recap(i){ var k=iso(i); return (HW.recaps||[]).filter(function(r){return r.date===k;})[0]; }
+  function place(){ plane.style.transform='scale('+sc+') rotateX('+rx+'deg) rotateZ('+rz+'deg)'; }
+  function fit(){ var w=plane.offsetWidth||400; sc=Math.min(0.95,(stage.clientWidth-40)/(w*1.5)); place(); }
+  window.addEventListener('resize',fit);
+  function heightOf(r){ if(!r) return 8; return [10,42,82,128][r.level||0]; }
+  function build(animate){
+    var n=todayIdx()+1, cols=Math.ceil(n/7);
+    var W=W0+cols*(CELL+GAP), H=7*(CELL+GAP)+30;
+    plane.style.width=W+'px'; plane.style.height=H+'px'; plane.style.marginLeft=(-W/2)+'px'; plane.style.marginTop=(-H/2)+'px';
+    var html='<div class="calbase"></div>';
+    U.wd[HW.lang==='en'?'en':HW.lang].forEach(function(d,r){ html+='<div class="calwd" style="left:4px;top:'+(30+r*(CELL+GAP)+CELL/2-8)+'px">'+d+'</div>'; });
+    for(var c=0;c<cols;c++){ var dt=dateOf(c*7); html+='<div class="calwk" style="left:'+(W0+c*(CELL+GAP))+'px;top:4px">'+dt.toLocaleDateString(HW.lang==='es'?'es':HW.lang==='ht'?'fr':'en-US',{month:'short',day:'numeric',timeZone:'UTC'})+'</div>'; }
+    for(var i=0;i<n;i++){
+      var r=recap(i), col=r?(r.level?COL[r.cat]||QCOL:QCOL):'transparent', h=heightOf(r), isT=(i===n-1);
+      var x=W0+Math.floor(i/7)*(CELL+GAP), y=30+(i%7)*(CELL+GAP);
+      html+='<div class="cbox'+(isT?' ctoday':'')+(r?'':' cpend')+'" data-i="'+i+'" style="left:'+x+'px;top:'+y+'px;--c:'+col+';--h:'+(animate?0:h)+'px;--th:'+h+'px">'+
+        '<div class="cf ct"></div><div class="cf cs"></div><div class="cf cn"></div><div class="cf cw"></div><div class="cf ce"></div>'+
+        (isT?'<div class="ctag">'+L(U.today)+'</div>':'')+'</div>';
+    }
+    plane.innerHTML=html; built=n;
+    fit();
+    if(animate){
+      var boxes=plane.querySelectorAll('.cbox');
+      boxes.forEach(function(b,k){ setTimeout(function(){ b.style.setProperty('--h',b.style.getPropertyValue('--th')); }, 60+k*55); });
+    }
+    if(sel===null||sel>=n) sel=lastWithRecap();
+    mark();
+  }
+  function lastWithRecap(){ for(var i=todayIdx();i>=0;i--) if(recap(i)) return i; return todayIdx(); }
+  function mark(){
+    plane.querySelectorAll('.cbox').forEach(function(b){ b.classList.toggle('csel',+b.dataset.i===sel); });
+    var i=sel, r=recap(i), d=dateOf(i), ds=d.toLocaleDateString(HW.lang==='es'?'es':HW.lang==='ht'?'fr':'en-US',{weekday:'long',month:'long',day:'numeric',timeZone:'UTC'});
+    var dayN=Math.max(0,i-2), lbl=dayN?L(U.day)+' '+dayN:L(U.pre);
+    var tag=r?(r.level?L(U.lg[r.cat]):L(U.lg.q)):'';
+    det.innerHTML='<div class="cdhead"><span class="rday">'+lbl+'</span><span class="rdate">'+ds+'</span></div>'+
+      (tag?'<span class="ctype" style="--c:'+(r.level?COL[r.cat]:'#93a1b3')+'">'+tag+'</span>':'')+
+      '<p>'+(r?String(r[HW.lang]||r.en).replace(/</g,'&lt;'):(i===todayIdx()?L(U.pending):L(U.none)))+'</p>';
+  }
+  var drag=null;
+  stage.addEventListener('pointerdown',function(e){ drag={x:e.clientX,y:e.clientY,rz:rz,rx:rx,moved:false}; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointermove',function(e){ if(!drag) return; var dx=e.clientX-drag.x, dy=e.clientY-drag.y; if(Math.abs(dx)+Math.abs(dy)>4) drag.moved=true; rz=Math.max(-75,Math.min(75,drag.rz+dx*0.3)); rx=Math.max(20,Math.min(72,drag.rx-dy*0.25)); place(); });
+  stage.addEventListener('pointerup',function(e){
+    if(drag&&!drag.moved){ var hit=document.elementsFromPoint(e.clientX,e.clientY).find(function(n){return n.closest&&n.closest('.cbox');}); if(hit){ sel=+hit.closest('.cbox').dataset.i; mark(); } }
+    drag=null;
+  });
+  document.getElementById('calReplay').addEventListener('click',function(){ build(true); });
+  function labels(){
+    document.getElementById('calH').textContent=L(U.h); document.getElementById('calS').textContent=L(U.s);
+    document.getElementById('calReplay').textContent=L(U.replay);
+    document.getElementById('calLegend').innerHTML=['mil','pol','hum'].map(function(k){return '<span><i style="background:'+COL[k]+'"></i>'+L(U.lg[k])+'</span>';}).join('')+'<span><i style="background:'+QCOL+'"></i>'+L(U.lg.q)+'</span>';
+  }
+  HW.listeners=HW.listeners||[]; HW.listeners.push(function(){ labels(); build(false); });
+  var prevOnRecaps=HW.onRecaps; HW.onRecaps=function(){ if(prevOnRecaps) prevOnRecaps(); build(false); };
+  setInterval(function(){ if(todayIdx()+1!==built) build(true); },60000);
+  labels(); build(true);
+})();
+</script>
+
+</body>
+</html>
